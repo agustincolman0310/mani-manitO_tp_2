@@ -10,10 +10,9 @@ protected:
     Escritor escritor;
     char tipo_lectura;
 public:
-    Lectura();
     Lectura(std::string titulo,int minutos, int anio_publicacion,Escritor escritor, char tipo_lectura);
     ~Lectura(){};
     virtual void mostrar() = 0;
-}
+};
 
 #endif

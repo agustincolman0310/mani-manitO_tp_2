@@ -1,7 +1,8 @@
 #ifndef CUENTO_H_INCLUDED
 #define CUENTO_H_INCLUDED
-#include "string.h"
 
+#include "lectura.h"
+ 
 class Cuento : public Lectura{
 private:
     std::string libro;
@@ -10,6 +11,5 @@ public:
     ~Cuento(){};
     void mostrar();
 };
-
 
 #endif

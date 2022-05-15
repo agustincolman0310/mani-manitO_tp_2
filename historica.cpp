@@ -1,5 +1,5 @@
 #include <iostream>
-#include "novela.h"
+#include "historica.h"
 #include "string.h"
 
 
