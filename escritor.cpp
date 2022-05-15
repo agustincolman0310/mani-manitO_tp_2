@@ -11,4 +11,26 @@ Escritor::Escritor(std::string nombre, std::string apellido, std::string naciona
     this->referencia = referencia;
 }
 
+std::string Escritor::obtener_nombre(){
+    return nombre;
+}
+std::string Escritor::obtener_apellido(){
+    return apellido;
+}
+std::string Escritor::obtener_nacionalidad(){
+    return nacionalidad;
+}
+int Escritor::obtener_anio_nacimiento(){
+    return anio_nacimiento;
+}
+int Escritor::obtener_anio_falllecimiento(){
+    return anio_fallecimiento;
+}
 
+Escritor::Escritor(){
+    nombre = " ";
+    apellido = " ";
+    nacionalidad = " ";
+    anio_nacimiento = 0;
+    anio_fallecimiento = 0;
+}
