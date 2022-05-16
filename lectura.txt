@@ -1,0 +1,59 @@
+C
+Casa Tomada
+20
+1951
+Bestiario
+(1)
+
+N
+Rayuela
+2900
+1963
+FICCION
+(1)
+
+N
+Misery
+2100
+1987
+TERROR
+(3)
+
+P
+El Poema del Mío Cid
+480
+1140
+3733
+ANONIMO
+
+P
+Voy a dormir
+1
+1938
+14
+(4)
+
+N
+Frankestein
+1600
+1818
+TERROR
+(2)
+
+N
+Una columna de fuego
+4800
+2017
+HISTORICA
+Guerra de religiones en Europa en la segunda mitad del siglo XVI
+(5)
+
+N (novela), C (cuento) o P (poema)
+título
+minutos (estimados para su lectura)
+año (de su publicación)
+Si es novela, va el género
+Si es novela histórica, va el tema
+Si es cuento, va el título del libro en donde está publicado
+Si es un poema, va la cantidad de versos
+Referencia al autor (puede ser ANONIMO) 
