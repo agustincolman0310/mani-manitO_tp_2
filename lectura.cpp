@@ -16,3 +16,7 @@ void Lectura::mostrar(){
         // std::cout<< "El escritor es: " << escritor<< std::endl;
         std::cout<< "El tipo de lectura es: "<< tipo_lectura<< std::endl;
 }
+
+char Lectura::obtener_tipo_lectura(){
+        return tipo_lectura;
+}

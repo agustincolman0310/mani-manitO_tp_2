@@ -39,7 +39,7 @@ void validar_opcion_elegida(int &opcion_elegida){
     }
 }
 
-void cargar_escritores(Escritor* escritor){
+void cargar_escritores(Escritor escritor){
     
     fstream archivo_escritores(PATH_ESCRITORES, ios::in);
 
@@ -51,7 +51,7 @@ void cargar_escritores(Escritor* escritor){
     }
 
     string referencia, nombre_completo, nacionalidad, anio_nacimiento, anio_fallecimiento, espacio;
-   
+    int referencia_n = 0;
     while(getline(archivo_escritores,referencia)){
         getline(archivo_escritores,nombre_completo);
         getline(archivo_escritores,nacionalidad);
@@ -59,12 +59,13 @@ void cargar_escritores(Escritor* escritor){
         getline(archivo_escritores,anio_fallecimiento);
         getline(archivo_escritores,espacio);  
         
-    
-        escritor -> obtener_referencia() = (stoi(referencia));
-        escritor -> obtener_nombre_completo() = nombre_completo;
-        escritor -> obtener_nacionalidad() = nacionalidad;
-        escritor -> obtener_anio_nacimiento() = stoi(anio_nacimiento);
-        escritor -> obtener_anio_fallecimiento() = stoi(anio_fallecimiento);
+        referencia_n = stoi(referencia);
+        cout << referencia_n;
+        escritor.obtener_referencia() = referencia_n;
+        //escritor -> obtener_nombre_completo() = nombre_completo;
+        //escritor -> obtener_nacionalidad() = nacionalidad;
+        //escritor -> obtener_anio_nacimiento() = stoi(anio_nacimiento);
+        //escritor -> obtener_anio_fallecimiento() = stoi(anio_fallecimiento);
     }
 
     cout<<referencia<<endl;

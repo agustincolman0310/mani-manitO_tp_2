@@ -13,7 +13,7 @@ const int SALIR = 12;
 
 //Precondiciones: -
 //Postcondiciones: Carga la agenda con los datos del archivo de contactos
-void cargar_escritores(Escritor* escritor);
+void cargar_escritores(Escritor escritor);
 
 //Precondiciones: -
 //Postcondiciones: imprime por pantalla el menu

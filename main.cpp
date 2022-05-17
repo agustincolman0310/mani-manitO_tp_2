@@ -1,9 +1,11 @@
 #include <iostream>
 #include "archivos.h"
+#include "escritor.h"
 
 int main() {
-    
-    std::cout<<"hola"<<std::endl;
+    Escritor escritor;
+    cargar_escritores(escritor);
+    //std::cout<<"probando"<<std::endl;
     
 
     return 0;
