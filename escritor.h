@@ -4,21 +4,20 @@
 #include <string>
 class Escritor{
 private:
-    std::string nombre;
-    std::string apellido;
+    std::string nombre_completo;
     std::string nacionalidad;
     int anio_nacimiento;
     int anio_fallecimiento;
     int referencia;
 public:
     Escritor();
-    Escritor(std::string nombre, std::string apellido, std::string nacionalidad, int anio_nacimiento, int anio_fallecimiento, int referencia);
+    Escritor(std::string nombre_completo, std::string nacionalidad, int anio_nacimiento, int anio_fallecimiento, int referencia);
    
-    std::string obtener_nombre();
-    std::string obtener_apellido();
+    std::string obtener_nombre_completo();
     std::string obtener_nacionalidad();
     int obtener_anio_nacimiento();
-    int obtener_anio_falllecimiento();
+    int obtener_anio_fallecimiento();
+    int obtener_referencia();
 
     void mostrar();
 };

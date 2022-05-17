@@ -1,8 +1,9 @@
 #include <iostream>
-
+#include "archivos.h"
 
 int main() {
-    std::cout<<"Probando"<<std::endl;
+    
+    std::cout<<"hola"<<std::endl;
     
 
     return 0;

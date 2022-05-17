@@ -1,9 +1,8 @@
 #include <iostream>
 #include "cuento.h"
 
-
-Cuento::Cuento(std::string titulo, int minutos, int anio_publicacion, Escritor escritor, char tipo_lectura, std::string libro)
-    :Lectura(titulo, minutos, anio_publicacion, escritor, tipo_lectura){
+Cuento::Cuento(std::string titulo, int minutos, int anio_publicacion, int referencia, char tipo_lectura, std::string libro)
+    :Lectura(titulo, minutos, anio_publicacion, referencia, tipo_lectura){
         this->libro = libro;
 }
 

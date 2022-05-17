@@ -1,7 +1,7 @@
 #include <iostream>
 #include "archivos.h"
 #include <fstream>
-
+#include <string>
 using namespace std;
 
 const int MOSTRAR_ESCRITORES = 1;
@@ -10,6 +10,7 @@ const int AGREGAR_ESCRITOR = 3;
 const int BUSCAR_ESCRITOR = 4;
 const int ERROR = -1;
 const string PATH_ESCRITORES = "escritores.txt";
+const string PATH_LECTURA = "lectura.txt";
 
 void mostrar_menu(){
     cout << endl << endl << endl;
@@ -49,72 +50,27 @@ void cargar_escritores(Escritor* escritor){
         archivo_escritores.open(PATH_ESCRITORES, ios::in);
     }
 
-    string referencia, nombre_completo, nacionalidad, anio_nacimiento, anio_fallecimiento;
-
+    string referencia, nombre_completo, nacionalidad, anio_nacimiento, anio_fallecimiento, espacio;
+   
     while(getline(archivo_escritores,referencia)){
         getline(archivo_escritores,nombre_completo);
         getline(archivo_escritores,nacionalidad);
         getline(archivo_escritores,anio_nacimiento);
         getline(archivo_escritores,anio_fallecimiento);
+        getline(archivo_escritores,espacio);  
         
-        
-        escritor = new Escritor;
-        escritor -> referencia = stoi(referencia);
-        escritor -> nombre_completo = nombre_completo;
-        escritor -> nacionalidad = nacionalidad;
-        escritor -> anio_nacimiento = stoi(anio_nacimiento);
-        escritor -> anio_fallecimiento = stoi(anio_fallecimiento);
+    
+        escritor -> obtener_referencia() = (stoi(referencia));
+        escritor -> obtener_nombre_completo() = nombre_completo;
+        escritor -> obtener_nacionalidad() = nacionalidad;
+        escritor -> obtener_anio_nacimiento() = stoi(anio_nacimiento);
+        escritor -> obtener_anio_fallecimiento() = stoi(anio_fallecimiento);
     }
+
+    cout<<referencia<<endl;
+    cout<<anio_fallecimiento<<endl;
+    cout<<anio_nacimiento<<endl;
 
     archivo_escritores.close();
 }
 
-void cargar_lecturas(Lectura* lectura){
-    
-    fstream archivo_escritores(PATH_LECTURA, ios::in);
-    /*Poema* poema;
-    Cuento* cuento;
-    Novela* novela;
-    Historica* historica;*/ // no se si está bien
-    if(!archivo_lecturas.is_open()){
-        cout << "No se encontro un archivo con nombre \"" << PATH_LECTURA << "\", se va a crear el archivo" << endl;
-        archivo_lecturas.open(PATH_LECTURA, ios::out);
-        archivo_lecturas.close();
-        archivo_lecturas.open(PATH_LECTURA, ios::in);
-    }
-
-    string titulo, minutos, anio_publicacion, tipo_lectura, genero, tema, libro, cant_versos, referencia_autor;
-
-    while(getline(archivo_lecturas, tipo_lectura)){
-        getline(archivo_lecturas, titulo);
-        getline(archivo_lecturas, minutos);
-        getline(archivo_lecturas, anio_publicacion);
-        if(tipo_lectura = 'N'){
-            getline(archivo_lecturas, genero);
-            if(genero == 'HISTORICA'){
-                getline(archivo_lecturas, tema); 
-            }
-            novela -> genero = genero;
-            //historica -> tema = tema;
-        }
-        else if(tipo_lectura = 'C'){
-            getline(archivo_lecturas, libro);  
-        }
-        else if(tipo_lectura = 'P'){
-            getline(archivo_lecturas, cant_versos);  
-           // poema-> cant_versos = stoi(cant_versos);
-
-        }
-        getline(archivo_lecturas, referencia_autor);
-        
-        
-        lectura = new lectura;
-    
-        lectura -> tipo_lectura = tipo_lectura;
-        lectura -> titulo = titulo;
-        lectura -> minutos = stoi(minutos);
-        lectura -> anio_publicacion = stoi(anio_publicacion);
-        lectura -> referencia = stoi(referencia);
-    }
-    archivo_lecturas.close();
-}

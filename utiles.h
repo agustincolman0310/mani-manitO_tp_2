@@ -1,4 +1,4 @@
-#ifndef AGENDA_UTILES_H
+/*#ifndef AGENDA_UTILES_H
 #define AGENDA_UTILES_H
 #include <string>
 
@@ -84,3 +84,4 @@ Contacto* pedir_contacto();
 void swap(Agenda* agenda, int posicion1, int posicion2);
 
 #endif //AGENDA_UTILES_H
+*/

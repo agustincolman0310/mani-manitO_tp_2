@@ -1,3 +1,5 @@
+/*
+
 #include "parser.h"
 #include "camion.h"
 #include "auto.h"
@@ -39,3 +41,7 @@ float Parser::kilometraje() const {
 float Parser::combustible() const {
     return stof(this->entrada[posicion::COMBUSTIBLE]);
 }
+
+
+
+*/

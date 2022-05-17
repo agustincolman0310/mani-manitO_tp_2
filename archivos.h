@@ -1,6 +1,7 @@
-#ifndef ARCHIVOS_H
-#define ARCHIVOS_H
+#ifndef ARCHIVOS_H_INCLUDED
+#define ARCHIVOS_H_INCLUDED
 #include "escritor.h"
+#include "lectura.h"
 #include <string>
 
 using namespace std;
@@ -23,3 +24,6 @@ void mostrar_menu();
 int pedir_opcion();
 
 
+// void cargar_lecturas(Lectura* Lectura);
+
+#endif

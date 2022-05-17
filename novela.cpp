@@ -3,8 +3,8 @@
 #include "string.h"
 
 
-Novela::Novela(std::string titulo,int minutos, int anio_publicacion,Escritor escritor, char tipo_lectura, int genero)
-    :Lectura(titulo,minutos, anio_publicacion,escritor, tipo_lectura){
+Novela::Novela(std::string titulo,int minutos, int anio_publicacion, int referencia, char tipo_lectura, int genero)
+    :Lectura(titulo,minutos, anio_publicacion,referencia, tipo_lectura){
         this->genero = genero;
 }
 

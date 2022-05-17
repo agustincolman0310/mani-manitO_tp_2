@@ -1,3 +1,5 @@
+/*
+
 #include <iostream>
 #include "utiles.h"
 #include <fstream>
@@ -266,4 +268,6 @@ void swap(Agenda* agenda, int posicion1, int posicion2){
     Contacto* aux = agenda -> contactos[posicion1];
     agenda -> contactos[posicion1] = agenda -> contactos[posicion2];
     agenda -> contactos[posicion2] = aux;
-}
+
+
+*/
