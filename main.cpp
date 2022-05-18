@@ -1,11 +1,12 @@
 #include <iostream>
 #include "archivos.h"
 #include "escritor.h"
-
 int main() {
-    Escritor escritor;
+
+    Escritor* escritor;
+    escritor = new Escritor;
+    // mostrar_menu();
     cargar_escritores(escritor);
-    //std::cout<<"probando"<<std::endl;
     
 
     return 0;

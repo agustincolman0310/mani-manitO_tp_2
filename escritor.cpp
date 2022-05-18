@@ -1,33 +1,36 @@
+#include <fstream>
 #include <iostream>
 #include "escritor.h"
-#include "string.h"
+using namespace std;
 
-Escritor::Escritor(std::string nombre_completo, std::string nacionalidad, int anio_nacimiento, int anio_fallecimiento, int referencia){
-    this->nombre_completo = nombre_completo;
-    this->nacionalidad = nacionalidad;
-    this->anio_nacimiento = anio_nacimiento;
-    this->anio_fallecimiento = anio_fallecimiento;
-    this->referencia = referencia;
+void Escritor::obtener_nombre_completo(string _nombre_completo){
+    this->nombre_completo = _nombre_completo;
 }
-
-std::string Escritor::obtener_nombre_completo(){
+string Escritor::devolver_nombre_completo(){
     return nombre_completo;
 }
-std::string Escritor::obtener_nacionalidad(){
+void Escritor::obtener_nacionalidad(string _nacionalidad){
+    this->nacionalidad = _nacionalidad;
+}
+string Escritor::devolver_nacionalidad(){
     return nacionalidad;
 }
-int Escritor::obtener_anio_nacimiento(){
+void Escritor::obtener_anio_nacimiento(int _anio_nacimiento){
+    this->anio_nacimiento = _anio_nacimiento;
+}
+int Escritor::devolver_anio_nacimiento(){
     return anio_nacimiento;
 }
-int Escritor::obtener_anio_fallecimiento(){
+void Escritor::obtener_anio_fallecimiento(int _anio_fallecimiento){
+    this->anio_fallecimiento = _anio_fallecimiento;
+}    
+int Escritor::devolver_anio_fallecimiento(){
     return anio_fallecimiento;
 }
-int Escritor::obtener_referencia(){
+void Escritor::obtener_referencia(string referencia){
+    this->referencia = referencia;
+}
+string Escritor::devolver_referencia(){
     return referencia;
 }
-Escritor::Escritor(){
-    nombre_completo = " ";
-    nacionalidad = " ";
-    anio_nacimiento = 0;
-    anio_fallecimiento = 0;
-}
+

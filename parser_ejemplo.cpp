@@ -1,9 +1,11 @@
-/*
 
 #include "parser.h"
 #include "camion.h"
 #include "auto.h"
 #include "camioneta.h"
+#include "poema.h"
+#include "novela.h"
+#include "cuento.h"
 #include "constantes.h"
 
 using namespace std;
@@ -12,10 +14,10 @@ Parser::Parser(char** argv) {
     this->entrada = argv;
 }
 
-Vehiculo* Parser::procesarEntrada() const {
-    Vehiculo* vehiculo = NULL;
-    if(this->tipoVehiculo() == CAMION) {
-        vehiculo = new Camion(this->cilindrada(), this->kilometraje(), this->combustible());
+Lectura* Parser::procesarEntrada() const {
+    Lectura* lectura = NULL;
+    if(this->obtener_tipo_lectura() == "N") {
+        lectura = new novela();
     }
     else if (this->tipoVehiculo() == AUTO) {
         vehiculo = new Auto(this->cilindrada(), this->kilometraje(), this->combustible());
@@ -26,7 +28,7 @@ Vehiculo* Parser::procesarEntrada() const {
     return vehiculo;
 }
 
-std::string Parser::tipoVehiculo() const {
+std::string Parser::obtener_tipo_lectura() const {
     return this->entrada[posicion::TIPO_VEHICULO];
 }
 
@@ -43,5 +45,3 @@ float Parser::combustible() const {
 }
 
 
-
-*/

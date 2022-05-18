@@ -39,39 +39,35 @@ void validar_opcion_elegida(int &opcion_elegida){
     }
 }
 
-void cargar_escritores(Escritor escritor){
-    
-    fstream archivo_escritores(PATH_ESCRITORES, ios::in);
-
+void cargar_escritores(Escritor escritor){  
+    fstream archivo_escritores("escritores.txt", ios::in);  
     if(!archivo_escritores.is_open()){
-        cout << "No se encontro un archivo con nombre \"" << PATH_ESCRITORES << "\", se va a crear el archivo" << endl;
-        archivo_escritores.open(PATH_ESCRITORES, ios::out);
+        cout << "No se encontro un archivo con nombre " << "escritores.txt" << ", se va a crear el archivo" << endl;
+        archivo_escritores.open("escritores.txt", ios::out);
         archivo_escritores.close();
-        archivo_escritores.open(PATH_ESCRITORES, ios::in);
-    }
-
-    string referencia, nombre_completo, nacionalidad, anio_nacimiento, anio_fallecimiento, espacio;
-    int referencia_n = 0;
-    while(getline(archivo_escritores,referencia)){
+        archivo_escritores.open("escritores.txt", ios::in);
+    }   
+    string referencia, nombre_completo, nacionalidad, anio_nacimiento, anio_fallecimiento, linea_espacio;
+    while(getline(archivo_escritores, referencia)){
         getline(archivo_escritores,nombre_completo);
         getline(archivo_escritores,nacionalidad);
         getline(archivo_escritores,anio_nacimiento);
         getline(archivo_escritores,anio_fallecimiento);
-        getline(archivo_escritores,espacio);  
-        
-        referencia_n = stoi(referencia);
-        cout << referencia_n;
-        escritor.obtener_referencia() = referencia_n;
-        //escritor -> obtener_nombre_completo() = nombre_completo;
-        //escritor -> obtener_nacionalidad() = nacionalidad;
-        //escritor -> obtener_anio_nacimiento() = stoi(anio_nacimiento);
-        //escritor -> obtener_anio_fallecimiento() = stoi(anio_fallecimiento);
-    }
-
-    cout<<referencia<<endl;
-    cout<<anio_fallecimiento<<endl;
-    cout<<anio_nacimiento<<endl;
-
+        getline(archivo_escritores, linea_espacio); 
+    
+        escritor.obtener_referencia(referencia);
+        escritor.obtener_nombre_completo(nombre_completo);
+        escritor.obtener_nacionalidad(nacionalidad);
+        escritor.obtener_anio_fallecimiento(stoi(anio_fallecimiento));
+        escritor.obtener_anio_nacimiento(stoi(anio_nacimiento));
+            
+        cout << "N° referencia: " << escritor.devolver_referencia() << endl;
+        cout << "Nombre completo: " << escritor.devolver_nombre_completo() << endl;
+        cout << "Nacionalidad: " << escritor.devolver_nacionalidad() << endl;
+        cout << "Año nacimiento: " << escritor.devolver_anio_nacimiento() << endl;
+        cout << "Año fallecimiento: " << escritor.devolver_anio_fallecimiento() << endl;
+        cout << "\n";
+    }   
     archivo_escritores.close();
 }
 
