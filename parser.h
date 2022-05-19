@@ -2,24 +2,26 @@
 #define PARSER_H_INCLUDED
 
 #include "lectura.h"
+#include "escritor.h"
 #include <string>
 #include <iostream>
 
 class Parser {
 private:
-    std::string tipo_lectura() const;
-    std::string nombre_completo;
-    std::string nacionalidad;
+    string tipo_lectura;
+    string nombre_completo;
+    string nacionalidad;
+    string referencia;
     int anio_nacimiento;
     int anio_fallecimiento;
-    int referencia;
+    
 
 
 public:
     Parser(int numero_seleccionado);
     ~Parser(){};
-    Escritor procesar_escritores() const;
-    Lectura* procesar_lectura() const;
+    void procesar_escritores(Escritor escritor);
+    void procesar_lectura(Lectura lectura);
 };
 
 

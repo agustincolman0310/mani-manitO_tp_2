@@ -34,3 +34,18 @@ string Escritor::devolver_referencia(){
     return referencia;
 }
 
+Escritor::Escritor(string nombre_completo, string nacionalidad, int anio_nacimiento, int anio_fallecimiento, string referencia){
+    this->nombre_completo = nombre_completo;
+    this->nacionalidad = nacionalidad;
+    this->anio_nacimiento = anio_nacimiento;
+    this->anio_fallecimiento = anio_fallecimiento;
+    this->referencia = referencia;
+}
+Escritor::mostrar_atributos(string nombre_completo, string nacionalidad, int anio_nacimiento, int anio_fallecimiento, string referencia){
+        cout << "N° referencia: " << referencia << endl;
+        cout << "Nombre completo: " << nombre_completo << endl;
+        cout << "Nacionalidad: " << nacionalidad << endl;
+        cout << "Año nacimiento: " << anio_nacimiento << endl;
+        cout << "Año fallecimiento: " << anio_fallecimiento << endl;
+        cout << "\n";
+}

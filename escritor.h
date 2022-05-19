@@ -11,9 +11,10 @@ private:
     int anio_fallecimiento;
     string referencia;
 public:
-    Escritor(){};
-    //Escritor(string nombre_completo, string nacionalidad, int anio_nacimiento, int anio_fallecimiento, int referencia);
     
+    Escritor(string nombre_completo, string nacionalidad, int anio_nacimiento, int anio_fallecimiento, string referencia);
+    mostrar_atributos(string nombre_completo, string nacionalidad, int anio_nacimiento, int anio_fallecimiento, string referencia)
+    Escritor(){};
     void obtener_nombre_completo(string nombre_completo);
     void obtener_nacionalidad(string nacionalidad);
     void obtener_anio_nacimiento(int anio_nacimiento);
