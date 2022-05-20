@@ -22,7 +22,7 @@ public:
     Parser(string nombre_completo, string nacionalidad, int anio_nacimiento, int anio_fallecimiento, string referencia);
     ~Parser(){};
     void procesar_escritores();
-    void procesar_lectura(Lectura* lectura);
+    void procesar_lectura();
 };
 
 

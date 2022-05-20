@@ -4,9 +4,9 @@
 
 class Historica : public Novela{
 private:
-    char* tema;
+    std::string tema;
 public:
-    Historica(char tipo_lectura, std::string titulo,int minutos, int anio_publicacion,int referencia, int genero, char* tema);
+    Historica(char tipo_lectura, std::string titulo,int minutos, int anio_publicacion, std::string referencia, std::string genero, std::string tema);
     ~Historica(){};
     void mostrar();
 };

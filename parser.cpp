@@ -61,13 +61,14 @@ void Parser::procesar_escritores(){
 }
 
 
-void Parser::procesar_lectura(Lectura* lectura){
-    fstream archivo_lecturas("lecturas.txt", ios::in);  
+void Parser::procesar_lectura(){
+    // Lectura* lectura;
+    fstream archivo_lecturas("lectura.txt", ios::in);  
     if(!archivo_lecturas.is_open()){
-        cout << "No se encontro un archivo con nombre " << "lecturas.txt" << ", se va a crear el archivo" << endl;
-        archivo_lecturas.open("lecturas.txt", ios::out);
+        cout << "No se encontro un archivo con nombre " << "lectura.txt" << ", se va a crear el archivo" << endl;
+        archivo_lecturas.open("lectura.txt", ios::out);
         archivo_lecturas.close();
-        archivo_lecturas.open("lecturas.txt", ios::in);
+        archivo_lecturas.open("lectura.txt", ios::in);
     }   
     string tipo_lectura, titulo, minutos, anio_publicacion, genero, tema, cant_versos, titulo_libro, linea_espacio, referencia;
     while(getline(archivo_lecturas, tipo_lectura)){
@@ -91,19 +92,21 @@ void Parser::procesar_lectura(Lectura* lectura){
         getline(archivo_lecturas, linea_espacio); 
 
         if(tipo_lectura == "N"){
-            Novela *novela();
+            Novela novela('N', titulo, stoi(minutos), stoi(anio_publicacion), referencia, genero);
+            novela.mostrar();
             if(genero == "HISTORICA"){
-                Historica historica();
+                Historica historica('N', titulo, stoi(minutos), stoi(anio_publicacion), referencia, genero, tema);
+                historica.mostrar();
             }
         }
         else if(tipo_lectura == "C"){
-            Cuento cuento(tipo_lectura, titulo, stoi(minutos), stoi(anio_publicacion), referencia, titulo_libro);
+            Cuento cuento('C', titulo, stoi(minutos), stoi(anio_publicacion), referencia, titulo_libro);
+            cuento.mostrar();
         }
         else{
-            Poema poema();
+            Poema poema('P', titulo, stoi(minutos), stoi(anio_publicacion), referencia, stoi(cant_versos));
+            poema.mostrar();
         }
-        
-       
     }   
     archivo_lecturas.close();
 }

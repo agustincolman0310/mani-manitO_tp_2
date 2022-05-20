@@ -47,13 +47,3 @@ Una columna de fuego
 HISTORICA
 Guerra de religiones en Europa en la segunda mitad del siglo XVI
 (5)
-
-N (novela), C (cuento) o P (poema)
-título
-minutos (estimados para su lectura)
-año (de su publicación)
-Si es novela, va el género
-Si es novela histórica, va el tema
-Si es cuento, va el título del libro en donde está publicado
-Si es un poema, va la cantidad de versos
-Referencia al autor (puede ser ANONIMO) 

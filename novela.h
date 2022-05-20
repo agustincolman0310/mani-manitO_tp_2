@@ -4,9 +4,9 @@
 
 class Novela : public Lectura{
 protected:
-    int genero;
+    std::string genero;
 public:
-    Novela(char tipo_lectura, std::string titulo,int minutos, int anio_publicacion,int referencia, int genero);
+    Novela(char tipo_lectura, std::string titulo,int minutos, int anio_publicacion, std::string referencia, std::string genero);
     ~Novela(){};
     void mostrar();
 };
