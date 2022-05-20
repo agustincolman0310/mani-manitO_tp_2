@@ -1,7 +1,7 @@
 #include <iostream>
 #include "archivos.h"
 #include <fstream>
-#include <string>
+/*#include <string>
 using namespace std;
 
 const int MOSTRAR_ESCRITORES = 1;
@@ -71,3 +71,4 @@ void cargar_escritores(Escritor escritor){
     archivo_escritores.close();
 }
 
+*/

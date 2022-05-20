@@ -3,8 +3,9 @@
 
 #include "lectura.h"
 #include "escritor.h"
-#include <string>
 #include <iostream>
+#include <string>
+using namespace std;
 
 class Parser {
 private:
@@ -18,10 +19,10 @@ private:
 
 
 public:
-    Parser(int numero_seleccionado);
+    Parser(string nombre_completo, string nacionalidad, int anio_nacimiento, int anio_fallecimiento, string referencia);
     ~Parser(){};
-    void procesar_escritores(Escritor escritor);
-    void procesar_lectura(Lectura lectura);
+    void procesar_escritores();
+    void procesar_lectura(Lectura* lectura);
 };
 
 

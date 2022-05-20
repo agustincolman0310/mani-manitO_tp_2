@@ -1,8 +1,6 @@
-
+/*
 #include "parser.h"
-#include "camion.h"
-#include "auto.h"
-#include "camioneta.h"
+
 #include "poema.h"
 #include "novela.h"
 #include "cuento.h"
@@ -45,3 +43,4 @@ float Parser::combustible() const {
 }
 
 
+*/

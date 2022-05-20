@@ -1,4 +1,4 @@
-#ifndef ARCHIVOS_H_INCLUDED
+/*#ifndef ARCHIVOS_H_INCLUDED
 #define ARCHIVOS_H_INCLUDED
 #include "escritor.h"
 #include "lectura.h"
@@ -27,3 +27,4 @@ int pedir_opcion();
 // void cargar_lecturas(Lectura* Lectura);
 
 #endif
+*/

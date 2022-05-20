@@ -2,7 +2,7 @@
 #include "historica.h"
 #include "string.h"
 
-Historica::Historica(std::string titulo,int minutos, int anio_publicacion,int referencia, char tipo_lectura, int genero, char* tema) : Novela(titulo, minutos, anio_publicacion, referencia, tipo_lectura, genero){
+Historica::Historica(char tipo_lectura, std::string titulo,int minutos, int anio_publicacion,int referencia, int genero, char* tema) : Novela( tipo_lectura, titulo, minutos, anio_publicacion, referencia, genero){
         this->tema= tema;
 }
 

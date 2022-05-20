@@ -1,7 +1,7 @@
 #include <iostream>
 #include "lectura.h"
 
-Lectura::Lectura(std::string titulo,int minutos, int anio_publicacion, int referencia, char tipo_lectura){
+Lectura::Lectura( char tipo_lectura, std::string titulo,int minutos, int anio_publicacion, int referencia){
         this->titulo = titulo;
         this->minutos = minutos;
         this->anio_publicacion = anio_publicacion;
