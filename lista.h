@@ -2,14 +2,14 @@
 #define LISTA_H_INCLUDED
 
 #include "nodo.h"
-template <typename dato>
+template <typename T>
 
 class Lista {
     // Atributos
 private:
-    Nodo<dato>* primero;
+    Nodo<T>* primero;
     int cantidad;
-    Nodo<dato>* cursor;
+    Nodo<T>* cursor;
 
     // Metodos
 public:
@@ -25,7 +25,7 @@ public:
     PRE: e es un Dato valido y 1 <= pos <= obtener_cantidad() + 1
     POS: agrega el elemento en la posicion pos (se empieza por 1)
     */
-    void alta(dato e, int pos);
+    void alta(T dato, int pos);
 
     /*
     Baja
@@ -39,7 +39,7 @@ public:
     PRE: 1 <= pos <= obtener_cantidad()
     POS: devuelve el elemento que esta en pos, se empieza por 1
     */
-    dato consulta(int pos);
+    T consulta(int pos);
 
     /*
     Vacia
@@ -55,7 +55,77 @@ public:
 
 private:
 
-    Nodo<dato>* obtener_nodo(int pos);
+    Nodo<T>* obtener_nodo(int pos);
 };
 
 #endif
+
+template <typename T>
+int Lista<T>::obtener_cantidad(){
+    return cantidad;
+}
+
+template <typename T>
+bool Lista<T>::vacia(){
+    return (cantidad == 0);
+}
+
+template <typename T>
+Lista<T>::Lista(){
+    primero = 0;
+    cantidad = 0;
+}
+
+template <typename T>
+void Lista<T>::alta(T dato, int pos){
+    Nodo<T>* nuevo = new Nodo<T>(dato);
+    if (pos == 1) {
+        nuevo->cambiar_siguiente(primero);
+        primero = nuevo;
+    }
+    else {
+        Nodo<T>* anterior = obtener_nodo(pos - 1);
+        nuevo->cambiar_siguiente(anterior->obtener_siguiente());
+        anterior->cambiar_siguiente(nuevo);
+    }
+    cantidad++;
+}
+
+template <typename T>
+void Lista<T>::baja(int pos) {
+    Nodo<T>* borrar = primero;
+    if (pos == 1) {
+        primero = primero->obtener_siguiente();
+    }
+    else {
+        Nodo<T>* anterior = obtener_nodo(pos - 1);
+        borrar = anterior->obtener_siguiente();
+        anterior->cambiar_siguiente(borrar->obtener_siguiente());
+    }
+    cantidad--;
+    delete borrar;
+}
+
+template <typename T>
+T Lista<T>::consulta(int pos) {
+    Nodo<T>* aux = obtener_nodo(pos);
+    return aux->obtener_dato();
+}
+
+template <typename T>
+Nodo<T>* Lista<T>::obtener_nodo(int pos) {
+    Nodo<T>* aux = primero;
+    int contador = 1;
+    while (contador < pos) {
+        aux = aux->obtener_siguiente();
+        contador++;
+    }
+    return aux;
+}
+
+template <typename T>
+Lista<T>::~Lista(){
+    while(!vacia()){
+        baja(1);
+    }
+}
