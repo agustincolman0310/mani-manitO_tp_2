@@ -7,10 +7,10 @@ int main() {
     Parser* parser;
     parser = nullptr;
     parser->procesar_lectura();
-    // Escritor* escritor = parser->procesar_escritores();
+    // parser->procesar_escritores();
     //escritor = new Escritor;
     // mostrar_menu();
-    //cargar_escritores(escritor);
+    // cargar_escritores(escritor);
     
 
     return 0;

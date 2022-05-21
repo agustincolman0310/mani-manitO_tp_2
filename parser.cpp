@@ -1,5 +1,5 @@
-#include <string>
 #include <iostream>
+#include <string>
 #include "parser.h"
 #include <fstream>
 #include "lista.h"
@@ -9,10 +9,11 @@
 #include "cuento.h"
 #include "novela.h"
 #include "poema.h"
+#include "constantes.h"
 
 using namespace std;
 
-// Lista <Escritor> escritores;
+Lista <Escritor> lista_escritores;
 
 Parser::Parser(std::string nombre_completo, std::string nacionalidad, int anio_nacimiento, int anio_fallecimiento, string referencia) {
     
@@ -27,12 +28,12 @@ Parser::Parser(std::string nombre_completo, std::string nacionalidad, int anio_n
 
 void Parser::procesar_escritores(){
     // Escritor escritor;
-    fstream archivo_escritores("escritores.txt", ios::in);  
+    fstream archivo_escritores(RUTA_ARCHIVO_ESCRITORES, ios::in);  
     if(!archivo_escritores.is_open()){
-        cout << "No se encontro un archivo con nombre " << "escritores.txt" << ", se va a crear el archivo" << endl;
-        archivo_escritores.open("escritores.txt", ios::out);
+        cout << "No se encontro un archivo con nombre " << RUTA_ARCHIVO_ESCRITORES << ", se va a crear el archivo" << endl;
+        archivo_escritores.open(RUTA_ARCHIVO_ESCRITORES, ios::out);
         archivo_escritores.close();
-        archivo_escritores.open("escritores.txt", ios::in);
+        archivo_escritores.open(RUTA_ARCHIVO_ESCRITORES, ios::in);
     }   
     string referencia, nombre_completo, nacionalidad, anio_nacimiento, anio_fallecimiento, linea_espacio;
     while(getline(archivo_escritores, referencia)){
@@ -51,24 +52,24 @@ void Parser::procesar_escritores(){
         else{
             getline(archivo_escritores,linea_espacio);
         }
-        // escritores.alta(escritor);
         // escritor.
         Escritor escritor(nombre_completo, nacionalidad, stoi(anio_nacimiento), stoi(anio_fallecimiento), referencia);
-        escritor.mostrar_atributos();
+        lista_escritores.alta(escritor,1);
+        // escritor.mostrar_atributos();
     }   
     archivo_escritores.close();
-
+    lista_escritores.consulta(5).mostrar_atributos();
 }
 
 
 void Parser::procesar_lectura(){
     // Lectura* lectura;
-    fstream archivo_lecturas("lectura.txt", ios::in);  
+    fstream archivo_lecturas(RUTA_ARCHIVO_LECTURAS, ios::in);  
     if(!archivo_lecturas.is_open()){
-        cout << "No se encontro un archivo con nombre " << "lectura.txt" << ", se va a crear el archivo" << endl;
-        archivo_lecturas.open("lectura.txt", ios::out);
+        cout << "No se encontro un archivo con nombre " << RUTA_ARCHIVO_LECTURAS << ", se va a crear el archivo" << endl;
+        archivo_lecturas.open(RUTA_ARCHIVO_LECTURAS, ios::out);
         archivo_lecturas.close();
-        archivo_lecturas.open("lectura.txt", ios::in);
+        archivo_lecturas.open(RUTA_ARCHIVO_LECTURAS, ios::in);
     }   
     string tipo_lectura, titulo, minutos, anio_publicacion, genero, tema, cant_versos, titulo_libro, linea_espacio, referencia;
     while(getline(archivo_lecturas, tipo_lectura)){
@@ -92,19 +93,19 @@ void Parser::procesar_lectura(){
         getline(archivo_lecturas, linea_espacio); 
 
         if(tipo_lectura == "N"){
-            Novela novela('N', titulo, stoi(minutos), stoi(anio_publicacion), referencia, genero);
+            Novela novela(tipo_lectura[0], titulo, stoi(minutos), stoi(anio_publicacion), referencia, genero);
             novela.mostrar();
             if(genero == "HISTORICA"){
-                Historica historica('N', titulo, stoi(minutos), stoi(anio_publicacion), referencia, genero, tema);
+                Historica historica(tipo_lectura[0], titulo, stoi(minutos), stoi(anio_publicacion), referencia, genero, tema);
                 historica.mostrar();
             }
         }
         else if(tipo_lectura == "C"){
-            Cuento cuento('C', titulo, stoi(minutos), stoi(anio_publicacion), referencia, titulo_libro);
+            Cuento cuento(tipo_lectura[0], titulo, stoi(minutos), stoi(anio_publicacion), referencia, titulo_libro);
             cuento.mostrar();
         }
         else{
-            Poema poema('P', titulo, stoi(minutos), stoi(anio_publicacion), referencia, stoi(cant_versos));
+            Poema poema(tipo_lectura[0], titulo, stoi(minutos), stoi(anio_publicacion), referencia, stoi(cant_versos));
             poema.mostrar();
         }
     }   
