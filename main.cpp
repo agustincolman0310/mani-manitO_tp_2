@@ -6,8 +6,8 @@ int main() {
 
     Parser* parser;
     parser = nullptr;
-    parser->procesar_lectura();
-    // parser->procesar_escritores();
+   // parser->procesar_lectura();
+    parser->procesar_escritores();
     //escritor = new Escritor;
     // mostrar_menu();
     // cargar_escritores(escritor);

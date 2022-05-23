@@ -14,6 +14,7 @@
 using namespace std;
 
 Lista <Escritor> lista_escritores;
+Lista <Lectura> lista_lectura;
 
 Parser::Parser(std::string nombre_completo, std::string nacionalidad, int anio_nacimiento, int anio_fallecimiento, string referencia) {
     
@@ -36,6 +37,7 @@ void Parser::procesar_escritores(){
         archivo_escritores.open(RUTA_ARCHIVO_ESCRITORES, ios::in);
     }   
     string referencia, nombre_completo, nacionalidad, anio_nacimiento, anio_fallecimiento, linea_espacio;
+    int n = 1;
     while(getline(archivo_escritores, referencia)){
         getline(archivo_escritores,nombre_completo);
         getline(archivo_escritores,nacionalidad);
@@ -54,7 +56,8 @@ void Parser::procesar_escritores(){
         }
         // escritor.
         Escritor escritor(nombre_completo, nacionalidad, stoi(anio_nacimiento), stoi(anio_fallecimiento), referencia);
-        lista_escritores.alta(escritor,1);
+        lista_escritores.alta(escritor,n);
+        n++;
         // escritor.mostrar_atributos();
     }   
     archivo_escritores.close();
@@ -72,6 +75,7 @@ void Parser::procesar_lectura(){
         archivo_lecturas.open(RUTA_ARCHIVO_LECTURAS, ios::in);
     }   
     string tipo_lectura, titulo, minutos, anio_publicacion, genero, tema, cant_versos, titulo_libro, linea_espacio, referencia;
+    int n = 1;
     while(getline(archivo_lecturas, tipo_lectura)){
         getline(archivo_lecturas, titulo);
         getline(archivo_lecturas, minutos);
@@ -94,20 +98,21 @@ void Parser::procesar_lectura(){
 
         if(tipo_lectura == "N"){
             Novela novela(tipo_lectura[0], titulo, stoi(minutos), stoi(anio_publicacion), referencia, genero);
-            novela.mostrar();
+            //novela.mostrar();
             if(genero == "HISTORICA"){
                 Historica historica(tipo_lectura[0], titulo, stoi(minutos), stoi(anio_publicacion), referencia, genero, tema);
-                historica.mostrar();
+                //historica.mostrar();
             }
         }
         else if(tipo_lectura == "C"){
             Cuento cuento(tipo_lectura[0], titulo, stoi(minutos), stoi(anio_publicacion), referencia, titulo_libro);
-            cuento.mostrar();
+            //cuento.mostrar();
         }
         else{
             Poema poema(tipo_lectura[0], titulo, stoi(minutos), stoi(anio_publicacion), referencia, stoi(cant_versos));
-            poema.mostrar();
+            //poema.mostrar();
         }
+        
     }   
     archivo_lecturas.close();
 }
