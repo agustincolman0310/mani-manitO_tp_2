@@ -16,3 +16,11 @@ void Lectura::mostrar(){
         // std::cout<< "El escritor es: " << escritor<< std::endl;
         std::cout<< "El tipo de lectura es: "<< tipo_lectura<< std::endl;
 }
+
+int Lectura::obtener_anio_publicacion(){
+            return this->anio_publicacion;
+}
+
+string Lectura::obtener_titulo(){
+        return titulo;
+}

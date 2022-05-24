@@ -8,34 +8,32 @@ class Nodo{
     //Atributos
 private:
     T dato;
-    Nodo* siguiente;
+    Nodo<T>* siguiente;
 
     //Metodos
 public:
     //PRE: -
     //POST: construye un nodo con d como T anterior en nullptr
-    Nodo(T d);
+    Nodo(T dato);
 
     // void cambiar_dato(T d);
 
-    void cambiar_siguiente(Nodo* n);
+    void cambiar_siguiente(Nodo* nueva_posicion);
 
     T obtener_dato();
 
-    Nodo* obtener_siguiente();
-};
-
-#endif
-
-template < typename T >
-Nodo<T>::Nodo(T d){
-    dato = d;
-    siguiente = 0;
+    Nodo<T>* obtener_siguiente();
 };
 
 template < typename T >
-void Nodo<T>::cambiar_siguiente(Nodo<T>* n){
-    siguiente = n;
+Nodo<T>::Nodo(T dato){
+    this->dato = dato;
+    this->siguiente = nullptr;
+};
+
+template < typename T >
+void Nodo<T>::cambiar_siguiente(Nodo<T>* nueva_posicion){
+    this->siguiente = nueva_posicion;
 };
 
 template < typename T >
@@ -45,5 +43,7 @@ T Nodo<T>::obtener_dato(){
 
 template < typename T >
 Nodo<T> *Nodo<T>::obtener_siguiente(){
-    return siguiente;
+    return this->siguiente;
 };
+
+#endif

@@ -9,8 +9,9 @@ class Lista {
 private:
     Nodo<T>* primero;
     int cantidad;
-    Nodo<T>* cursor;
-
+    Nodo<T>* actual;
+    // Nodo<T>* ultimo;
+    Nodo<T>* obtener_nodo(int pos);
     // Metodos
 public:
     /*
@@ -50,19 +51,62 @@ public:
 
     int obtener_cantidad();
 
+    // void insertar_ordenadamente(T dat);
+
+    void insertar_principio(T dat);
+
+    void add_head(T data_);
+
+    // void insertar_final(T dat);
+
+    void insertar_ordenadamente(T data_);
+
+    void insertar_en_final(T data_);
+
+
+    Nodo<T>* obtener_primero();
     // Destructor
     ~Lista();
-
-private:
-
-    Nodo<T>* obtener_nodo(int pos);
 };
 
-#endif
 
 template <typename T>
 int Lista<T>::obtener_cantidad(){
     return cantidad;
+}
+
+template <typename T>
+Lista<T>::~Lista(){
+    while(!vacia()){
+        actual = primero;
+        primero = primero->obtener_siguiente();
+        delete actual;
+    }
+}
+
+template <typename T>
+Nodo<T>* Lista<T>::obtener_nodo(int pos){
+    Nodo<T>* aux = primero;
+    int contador = 1;
+    while(contador < pos){
+        aux = aux->obtener_siguiente();
+        contador++;
+    }
+    return aux;
+}
+
+template <typename T>
+T Lista<T>::consulta(int pos){
+    // Nodo<T>* aux = obtener_nodo(pos);
+    // return aux->obtener_dato();
+    Nodo<T>* aux = primero;
+    int contador = 1;
+    while(contador < pos){
+        aux->cambiar_siguiente(aux);
+        // aux->obtener_dato();
+        contador++;
+    }
+    return aux->obtener_dato();
 }
 
 template <typename T>
@@ -72,60 +116,82 @@ bool Lista<T>::vacia(){
 
 template <typename T>
 Lista<T>::Lista(){
-    primero = 0;
+    primero = nullptr;
     cantidad = 0;
+    actual = nullptr;
+    // ultimo = nullptr;
 }
 
+// template <typename T>
+// void Lista<T>::insertar_final(T dat){
+//     Nodo<T>* nuevo = new Nodo<T>(dat);
+
+//     if(primero == nullptr){
+//         nuevo->cambiar_siguiente(primero);
+//         primero = nuevo;
+//         std::cout<<"Apunta a: "<< primero->obtener_siguiente();
+//         std::cout<<"INSERTADO PRIMERO"<<std::endl;
+
+//     }else{
+//         nuevo->cambiar_siguiente(ultimo);
+//         ultimo = nuevo;
+//         std::cout<<"Apunta a2: "<< primero->obtener_siguiente();
+//         std::cout<<"INSERTADO"<<std::endl;
+//     }
+//     // cantidad++;
+// }
+// template <typename T>
+// void Lista<T>::insertar_principio(T dat){
+//     this->primero = new Nodo<T>(dat);
+//     cantidad++;
+// }
+
 template <typename T>
-void Lista<T>::alta(T dato, int pos){
-    Nodo<T>* nuevo = new Nodo<T>(dato);
-    if (pos == 1) {
-        nuevo->cambiar_siguiente(primero);
-        primero = nuevo;
+void Lista<T>::add_head(T data_)
+{
+    Nodo<T> *new_node = new Nodo<T> (data_);
+    Nodo<T> *temp = primero;
+
+    if (vacia()) {
+        primero = new_node;
+    } else {
+        new_node->cambiar_siguiente(primero);
+        // temp->cambiar_siguiente(new_node);
+        primero = new_node;
+
+        while (temp != NULL) {
+            temp->cambiar_siguiente(temp);
+        }
     }
-    else {
-        Nodo<T>* anterior = obtener_nodo(pos - 1);
-        nuevo->cambiar_siguiente(anterior->obtener_siguiente());
-        anterior->cambiar_siguiente(nuevo);
+    // cantidad++;
+    // cout<<"La cantidad total es: "<< cantidad <<endl;
+}
+
+// typedef Lectura* T;
+
+template <typename T>
+void Lista<T>::insertar_en_final(T data_)
+{
+    Nodo<T> *nuevo_nodo = new Nodo<T>(data_);
+    Nodo<T> *temp = primero;
+
+    if (vacia()) {
+        primero = nuevo_nodo;
+            cout<<"Insertado en el primer if"<<endl;
+        
+    } else {
+        while (temp->obtener_siguiente() != NULL) {
+            temp = temp->obtener_siguiente();
+            cout<<"Insertado en el while"<<endl;
+        }
+        temp->cambiar_siguiente(nuevo_nodo);
     }
     cantidad++;
+    // cout<<"La cantidad total es: "<< cantidad <<endl;
 }
 
-template <typename T>
-void Lista<T>::baja(int pos) {
-    Nodo<T>* borrar = primero;
-    if (pos == 1) {
-        primero = primero->obtener_siguiente();
-    }
-    else {
-        Nodo<T>* anterior = obtener_nodo(pos - 1);
-        borrar = anterior->obtener_siguiente();
-        anterior->cambiar_siguiente(borrar->obtener_siguiente());
-    }
-    cantidad--;
-    delete borrar;
-}
 
-template <typename T>
-T Lista<T>::consulta(int pos) {
-    Nodo<T>* aux = obtener_nodo(pos);
-    return aux->obtener_dato();
-}
 
-template <typename T>
-Nodo<T>* Lista<T>::obtener_nodo(int pos) {
-    Nodo<T>* aux = primero;
-    int contador = 1;
-    while (contador < pos) {
-        aux = aux->obtener_siguiente();
-        contador++;
-    }
-    return aux;
-}
 
-template <typename T>
-Lista<T>::~Lista(){
-    while(!vacia()){
-        baja(1);
-    }
-}
+
+#endif
