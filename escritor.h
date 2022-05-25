@@ -14,7 +14,10 @@ public:
     
     Escritor(string nombre_completo, string nacionalidad, int anio_nacimiento, int anio_fallecimiento, string referencia);
     void mostrar_atributos();
+    int obtener_anio_nacimiento();
     Escritor(){};
+    string obtener_nombre_completo();
+    void modificar_anio_fallecimiento(int anio_nuevo);
     // void obtener_nombre_completo(string nombre_completo);
     // void obtener_nacionalidad(string nacionalidad);
     // void obtener_anio_nacimiento(int anio_nacimiento);

@@ -16,6 +16,8 @@ public:
     //POST: construye un nodo con d como T anterior en nullptr
     Nodo(T dato);
 
+    void imprimir();
+
     // void cambiar_dato(T d);
 
     void cambiar_siguiente(Nodo* nueva_posicion);
@@ -41,6 +43,10 @@ T Nodo<T>::obtener_dato(){
     return dato;
 };
 
+template < typename T >
+void Nodo<T>::imprimir(){
+    cout << dato << endl;
+}
 template < typename T >
 Nodo<T> *Nodo<T>::obtener_siguiente(){
     return this->siguiente;

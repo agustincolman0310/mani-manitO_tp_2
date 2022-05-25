@@ -5,12 +5,15 @@
 using namespace std;
 int main() {
 
-    // Parser* parser;
-    // parser = nullptr;
-    // parser->procesar_lectura();
+    Parser* parser;
+    // int opcion_recibida;
+    parser = nullptr;
+    parser->procesar_lectura();
     // parser->procesar_escritores();
     //escritor = new Escritor;
-    // mostrar_menu();
+   
+    // opcion_recibida = parser->mostrar_menu();
+    // parser->procesar_opciones(opcion_recibida);
     // cargar_escritores(escritor);
     
 }

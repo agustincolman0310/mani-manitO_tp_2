@@ -49,3 +49,14 @@ void Escritor::mostrar_atributos(){
         cout << "Año fallecimiento: " << this->anio_fallecimiento << endl;
         cout << "\n";
 }
+
+int Escritor::obtener_anio_nacimiento(){
+    return anio_nacimiento;
+}
+
+string Escritor::obtener_nombre_completo(){
+    return nombre_completo;
+}
+void Escritor::modificar_anio_fallecimiento(int anio_nuevo){
+    anio_fallecimiento = anio_nuevo;
+}

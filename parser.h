@@ -24,6 +24,7 @@ public:
     void procesar_escritores();
     void procesar_lectura();
     void procesar_opciones(int opcion);
+    int mostrar_menu();
 };
 
 

@@ -1,0 +1,19 @@
+# ninja log v5
+0	178	1653498242595821909	CMakeFiles/mani_manitO_tp_2.dir/cola.cpp.o	5c193e1c19b7b89
+0	477	1653498242839818184	CMakeFiles/mani_manitO_tp_2.dir/archivos.cpp.o	3b2416d82d74534d
+1	478	1653498242851818000	CMakeFiles/mani_manitO_tp_2.dir/cuento.cpp.o	3c3d5103ac7f0ea
+178	858	1653498243275811526	CMakeFiles/mani_manitO_tp_2.dir/escritor.cpp.o	8d717db3fcb8e7ee
+478	953	1653498243371810060	CMakeFiles/mani_manitO_tp_2.dir/lectura.cpp.o	4789018656018523
+953	987	1653498243387809816	CMakeFiles/mani_manitO_tp_2.dir/menu.cpp.o	48787698efa196a6
+477	1053	1653498243463808655	CMakeFiles/mani_manitO_tp_2.dir/historica.cpp.o	5e02c221ee8a09b5
+988	1497	1653498243915801753	CMakeFiles/mani_manitO_tp_2.dir/novela.cpp.o	729094cdc1ac1416
+858	1590	1653498244003800409	CMakeFiles/mani_manitO_tp_2.dir/main.cpp.o	5c63680eeda9fefb
+1590	1633	1653498244047799736	CMakeFiles/mani_manitO_tp_2.dir/parser_ejemplo.cpp.o	7d28ba3f72d0a7a8
+1633	1669	1653498244083799186	CMakeFiles/mani_manitO_tp_2.dir/utiles.cpp.o	4415564302bdd24c
+1053	1801	1653498244219797109	CMakeFiles/mani_manitO_tp_2.dir/parser.cpp.o	9a0fb763de041535
+1497	1929	1653498244347795154	CMakeFiles/mani_manitO_tp_2.dir/poema.cpp.o	f016a2763d1c604c
+1929	2117	1653498244535792282	mani_manitO_tp_2	16bed1b68f931365
+1242	6119	1653498829534346236	CMakeFiles/mani_manitO_tp_2.dir/historica.cpp.o	5e02c221ee8a09b5
+1277	6209	1653498829534346236	CMakeFiles/mani_manitO_tp_2.dir/novela.cpp.o	729094cdc1ac1416
+1278	6210	1653498829534346236	CMakeFiles/mani_manitO_tp_2.dir/parser.cpp.o	9a0fb763de041535
+6210	9429	1653498832934289299	mani_manitO_tp_2	16bed1b68f931365

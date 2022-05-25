@@ -175,7 +175,7 @@ void Lista<T>::insertar_en_final(T data_)
     Nodo<T> *nuevo_nodo = new Nodo<T>(data_);
     Nodo<T> *temp = primero;
 
-    if (vacia()) {
+    if (!primero) {
         primero = nuevo_nodo;
             cout<<"Insertado en el primer if"<<endl;
         

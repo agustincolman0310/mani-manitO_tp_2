@@ -15,7 +15,7 @@ public:
     char obtener_tipo_lectura();
     ~Lectura(){};
     int obtener_anio_publicacion();
-    string Lectura::obtener_titulo();
+    string obtener_titulo();
     virtual void mostrar() = 0;
 };
 

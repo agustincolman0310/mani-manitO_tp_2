@@ -7,7 +7,7 @@ protected:
     std::string genero;
 public:
     Novela(char tipo_lectura, std::string titulo,int minutos, int anio_publicacion, std::string referencia, std::string genero);
-    ~Novela(){};
+    //~Novela(){};
     void mostrar();
 };
 
