@@ -17,6 +17,7 @@ public:
     int obtener_anio_nacimiento();
     Escritor(){};
     string obtener_nombre_completo();
+    string obtener_referencia();
     void modificar_anio_fallecimiento(int anio_nuevo);
     // void obtener_nombre_completo(string nombre_completo);
     // void obtener_nacionalidad(string nacionalidad);

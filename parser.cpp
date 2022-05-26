@@ -13,21 +13,24 @@
 #include "constantes.h"
 #include "lista_lecturas.h"
 #include "lista_escritores.h"
+#include <cstdlib>
+#include "time.h"
+// srand(time(NULL));
 
 using namespace std;
 
-Lista_Lecturas lista_lecturas;
-// Lista <Escritor> lista_escritores;
-Lista_Escritores lista_escritores;
+Lista_Escritores escritores;
+Lista_Lecturas lecturas;
 
-
-Parser::Parser(std::string nombre_completo, std::string nacionalidad, int anio_nacimiento, int anio_fallecimiento, string referencia) {
+Parser::Parser( std::string nombre_completo, std::string nacionalidad, int anio_nacimiento, int anio_fallecimiento, string referencia) {
     
     this->nombre_completo = nombre_completo;
     this->nacionalidad = nacionalidad;
     this->anio_nacimiento = anio_nacimiento;
     this->anio_fallecimiento = anio_fallecimiento;
     this->referencia = referencia;
+    // this->escritores = escritores;
+    // this->lecturas = lecturas;
 
 }
 
@@ -61,7 +64,7 @@ void Parser::procesar_escritores(){
         }
         // escritor.
         Escritor* escritor = new Escritor(nombre_completo, nacionalidad, stoi(anio_nacimiento), stoi(anio_fallecimiento), referencia);
-        lista_escritores.agregar_final(escritor);
+        escritores.agregar_final(escritor);
         // lista_escritores.insertar_ordenadamente(escritor);
         
         // escritor.mostrar_atributos();
@@ -74,7 +77,8 @@ void Parser::procesar_escritores(){
 
 
 void Parser::procesar_lectura(){
-    // Lectura* lectura;
+    // Lectura* lectura
+    // Escritor* escritor;
     fstream archivo_lecturas(RUTA_ARCHIVO_LECTURAS, ios::in);  
     if(!archivo_lecturas.is_open()){
         cout << "No se encontro un archivo con nombre " << RUTA_ARCHIVO_LECTURAS << ", se va a crear el archivo" << endl;
@@ -107,29 +111,28 @@ void Parser::procesar_lectura(){
            // novela->mostrar();
            Lectura* nueva_novela; 
             if(genero == "HISTORICA"){
-                nueva_novela = new Historica(tipo_lectura[0], titulo, stoi(minutos), stoi(anio_publicacion), referencia, genero, tema);
+                nueva_novela = new Historica(tipo_lectura[0], titulo, stoi(minutos), stoi(anio_publicacion), escritores.consulta(referencia), genero, tema);
             //    lista_lecturas.insertar_ordenadamente(nueva_novela_historica);
                 // lista_lecturas.alta(nueva_novela);
-                cout<<"La novela historica es: " <<nueva_novela->obtener_titulo()<<endl;
                // novela_historica->mostrar();
             }
             else{
-                nueva_novela = new Novela(tipo_lectura[0], titulo, stoi(minutos), stoi(anio_publicacion), referencia, genero);
+                nueva_novela = new Novela(tipo_lectura[0], titulo, stoi(minutos), stoi(anio_publicacion), escritores.consulta(referencia), genero);
                 // lista_lecturas.insertar_ordenadamente(novela_nueva);
                 // lista_lecturas.alta(nueva_novela);
             }
-        lista_lecturas.alta(nueva_novela);
+        lecturas.alta(nueva_novela);
         }
         else if(tipo_lectura == "C"){
-            Lectura* nuevo_cuento = new Cuento(tipo_lectura[0], titulo, stoi(minutos), stoi(anio_publicacion), referencia, titulo_libro);
+            Lectura* nuevo_cuento = new Cuento(tipo_lectura[0], titulo, stoi(minutos), stoi(anio_publicacion), escritores.consulta(referencia), titulo_libro);
             // lista_lecturas.insertar_ordenadamente(nuevo_cuento);
-            lista_lecturas.alta(nuevo_cuento);
+            lecturas.alta(nuevo_cuento);
             //cuento->mostrar();
         }
         else{
-            Lectura *nuevo_poema = new Poema(tipo_lectura[0], titulo, stoi(minutos), stoi(anio_publicacion), referencia, stoi(cant_versos));
+            Lectura *nuevo_poema = new Poema(tipo_lectura[0], titulo, stoi(minutos), stoi(anio_publicacion),escritores.consulta(referencia) , stoi(cant_versos));
             // lista_lecturas.insertar_ordenadamente(nuevo_poema);
-            lista_lecturas.alta(nuevo_poema);
+            lecturas.alta(nuevo_poema);
             //poema->mostrar();
         }
         // lista_lecturas.insertar_ordenadamente(lectura);
@@ -138,9 +141,9 @@ void Parser::procesar_lectura(){
         // lista_lecturas.mostrar_lectura(lectura);
         
     // lista_lecturas.~Lista_Lecturas();
-    lista_lecturas.listar_lecturas();
+    // lecturas.listar_lecturas();
     archivo_lecturas.close();
-    cout<<lista_lecturas.obtener_cantidad()<<endl;
+    // cout<<lecturas.obtener_cantidad()<<endl;
 }
 
 
@@ -169,10 +172,11 @@ int Parser::mostrar_menu(){
 
 
 void Parser::procesar_opciones(int opcion){
+
     // opcion = mostrar_menu(opcion);
     string titulo, tema, genero, titulo_libro, nombre_completo, referencia, nacionalidad,pasar_total;
     char tipo_lectura;
-    int minutos, anio_publicacion, cant_versos, cant_total,anio_nacimiento,anio_fallecimiento;
+    int minutos, anio_publicacion, cant_versos, cant_total,anio_nacimiento,anio_fallecimiento, valor;
     Lectura* lectura;
     Escritor* escritor;
     // int posicion;
@@ -192,29 +196,29 @@ void Parser::procesar_opciones(int opcion){
             if (tipo_lectura == 'N'){
                 cout<< "Ingrese el genero: \n";
                 cin>>genero;
-                lectura = new Novela(tipo_lectura, titulo, minutos, anio_publicacion, referencia, genero);
+                lectura = new Novela(tipo_lectura, titulo, minutos, anio_publicacion, escritores.consulta(referencia), genero);
 
                  if(genero == "HISTORICA"){
                     cout<< "Ingrese el tema: \n";
                     cin>>tema;  
-                    lectura = new Historica(tipo_lectura, titulo, minutos, anio_publicacion, referencia, genero, tema);
+                    lectura = new Historica(tipo_lectura, titulo, minutos, anio_publicacion, escritores.consulta(referencia), genero, tema);
 
                  }
             }
             else if(tipo_lectura == 'C'){
                 cout<< "Ingrese el titulo del ibro : \n";
                 cin>>titulo_libro;
-                lectura = new Cuento(tipo_lectura, titulo, minutos, anio_publicacion, referencia, titulo_libro);
+                lectura = new Cuento(tipo_lectura, titulo, minutos, anio_publicacion,escritores.consulta(referencia), titulo_libro);
 
             }
             else{
                 cout<< "Ingrese la cantidad de versos : \n";
                 cin>>cant_versos;
-                lectura = new Poema(tipo_lectura, titulo, minutos, anio_publicacion, referencia, cant_versos);
-                // lista_lecturas.insertar_ordenadamente(lectura);
+                lectura = new Poema(tipo_lectura, titulo, minutos, anio_publicacion, escritores.consulta(referencia), cant_versos);
+                // lecturas.insertar_ordenadamente(lectura);
 
             } 
-            lista_lecturas.insertar_ordenadamente(lectura);
+            lecturas.insertar_ordenadamente(lectura);
             break;
 
         case 2:
@@ -235,15 +239,15 @@ void Parser::procesar_opciones(int opcion){
             cout<<"Ingresa el año de fallecimiento del escritor : \n";
             cin>>anio_fallecimiento;
 
-            cant_total = lista_escritores.obtener_cantidad() + 1;
+            cant_total = escritores.obtener_cantidad() + 1;
             
             pasar_total = to_string(cant_total);
             referencia = "(" + pasar_total + ")";
             escritor = new Escritor(nombre_completo, nacionalidad, anio_nacimiento, anio_fallecimiento, referencia);
-            lista_escritores.agregar_final(escritor);
-            lista_escritores.listar_escritores();
+            escritores.agregar_final(escritor);
+            escritores.listar_escritores();
             break;
-        
+
         case 4:
             cout<<"Ingresa el nombre del escritor que queres modificar : \n";   
             cin.ignore();
@@ -251,11 +255,19 @@ void Parser::procesar_opciones(int opcion){
             
             cout<<"Ingrese la fecha de fallecimiento nueva : \n";
             cin>>anio_fallecimiento;
-            lista_escritores.modificar_anio_fallecimiento(nombre_completo,anio_fallecimiento);
-            lista_escritores.listar_escritores();
+            escritores.modificar_anio_fallecimiento(nombre_completo,anio_fallecimiento);
+            escritores.listar_escritores();
             break;
         
         case 5: 
-            lista_escritores.listar_escritores();
+            escritores.listar_escritores();
+            break;
+        
+        case 6:
+            valor = rand() % lecturas.obtener_cantidad();
+            cout<<lecturas.obtener_cantidad()<<endl;
+            cout<<"El numero random es: "<< valor<<endl;
+            // lecturas.sortear_lectura(valor);
+            break;
     }
 }

@@ -45,7 +45,7 @@ T Nodo<T>::obtener_dato(){
 
 template < typename T >
 void Nodo<T>::imprimir(){
-    cout << dato << endl;
+    std::cout << dato << std::endl;
 }
 template < typename T >
 Nodo<T> *Nodo<T>::obtener_siguiente(){

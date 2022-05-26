@@ -8,10 +8,10 @@ protected:
     std::string titulo;
     int minutos;
     int anio_publicacion;
-    std::string referencia;
+    Escritor* escritor;
     char tipo_lectura;
 public:
-    Lectura(char tipo_lectura, std::string titulo, int minutos, int anio_publicacion, std::string referencia);
+    Lectura(char tipo_lectura, std::string titulo, int minutos, int anio_publicacion, Escritor* escritor);
     char obtener_tipo_lectura();
     ~Lectura(){};
     int obtener_anio_publicacion();

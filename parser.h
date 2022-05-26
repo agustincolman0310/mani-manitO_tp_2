@@ -3,6 +3,8 @@
 
 #include "lectura.h"
 #include "escritor.h"
+// #include "lista_escritores.h"
+// #include "lista_lecturas.h"
 #include <iostream>
 #include <string>
 using namespace std;
@@ -15,7 +17,8 @@ private:
     string referencia;
     int anio_nacimiento;
     int anio_fallecimiento;
-    
+    // Lista_Escritores escritores;
+    // Lista_Lecturas lecturas;
 
 
 public:
@@ -26,8 +29,6 @@ public:
     void procesar_opciones(int opcion);
     int mostrar_menu();
 };
-
-
 
 
 

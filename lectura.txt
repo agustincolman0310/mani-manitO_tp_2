@@ -8,31 +8,16 @@ Bestiario
 N
 Rayuela
 2900
-1963
+2001
 FICCION
 (1)
 
 N
 Misery
 2100
-1987
+1995
 TERROR
 (3)
-
-N
-Una columna de fuego
-4800
-2017
-HISTORICA
-Guerra de religiones en Europa en la segunda mitad del siglo XVI
-(5)
-
-P
-Voy a dormir
-1
-1938
-14
-(4)
 
 P
 El Poema del Mío Cid
@@ -47,3 +32,19 @@ Frankestein
 1818
 TERROR
 (2)
+
+N
+Una columna de fuego
+4800
+2017
+HISTORICA
+Guerra de religiones en Europa en la segunda mitad del siglo XVI
+(5)
+
+P
+Voy a dormir
+1
+2020
+14
+(4)
+

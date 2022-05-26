@@ -7,7 +7,7 @@
 typedef Lectura* T;
 
 
-class Lista_Lecturas {
+class Lista_Lecturas{
     // Atributos
 private:
     Nodo<T>* primero;
@@ -52,9 +52,9 @@ public:
     int obtener_cantidad();
 
     void insertar_ordenadamente(T data_);
-    void insertar_ordenadamente2(T data_, Nodo<T> *nuevo_nodo);
     int buscar_titulo(string titulo_buscado);
     Nodo<T>* obtener_primero();
+    void sortear_lectura(int numero);
     void alta(T dato);
     // Destructor
     void agregar_final(T dato);
@@ -102,8 +102,7 @@ void Lista_Lecturas::insertar_ordenadamente(T data_){
     } 
     else {
         if ((primero->obtener_dato()->obtener_anio_publicacion()) > (data_->obtener_anio_publicacion())) {
-            nuevo_nodo->cambiar_siguiente(primero); 
-            // primero->obtener_siguiente();           
+            nuevo_nodo->cambiar_siguiente(primero);         
         } 
         else {
             while((temp->obtener_siguiente() != NULL) && ((temp->obtener_siguiente()->obtener_dato()->obtener_anio_publicacion()) < (data_->obtener_anio_publicacion()))) {
@@ -113,49 +112,20 @@ void Lista_Lecturas::insertar_ordenadamente(T data_){
             temp->cambiar_siguiente(nuevo_nodo);
         }        
     }
-    // cantidad++; 
 }
 
-void Lista_Lecturas::insertar_ordenadamente2(T data_, Nodo<T> *nuevo_nodo){
+
+void Lista_Lecturas::listar_lecturas(){
+    Nodo<T> *temp = primero;
     
-    Nodo<T> *temp = primero;
-    if (!primero) {
-        primero = nuevo_nodo;
-        // cout<<"Primero insertado, año: "<<primero->obtener_dato()->obtener_anio_publicacion()<<endl;
-    } 
-    else {
-        if ((primero->obtener_dato()->obtener_anio_publicacion()) > (data_->obtener_anio_publicacion())) {
-            nuevo_nodo->cambiar_siguiente(primero);
-            //cout<<"Insertado en el primer if del else, año: "<<nuevo_nodo->obtener_dato()->obtener_anio_publicacion()<<endl;
-            
-        } 
-        else {
-            while((temp->obtener_siguiente() != NULL) && ((temp->obtener_siguiente()->obtener_dato()->obtener_anio_publicacion()) < (data_->obtener_anio_publicacion()))) {
-                temp = temp->obtener_siguiente();
-                //cout<<"Insertado en el while, año: "<<temp->obtener_dato()->obtener_anio_publicacion()<<endl;
-            }
-            nuevo_nodo->cambiar_siguiente(temp->obtener_siguiente());
-            temp->cambiar_siguiente(nuevo_nodo);
-            //cout<<"Insertado en el else, año: "<< nuevo_nodo->obtener_dato()->obtener_anio_publicacion()<<endl;   
-        }        
-    }
-}
-
-void Lista_Lecturas::listar_lecturas()
-{
-    Nodo<T> *temp = primero;
-    cout<<"El primero es: "<< primero->obtener_dato()->obtener_titulo()<<endl;
     if (!primero) {
         cout << "La Lista está vacía " << endl;
     } else {
         while (temp) {
             temp->obtener_dato()->mostrar();
-            // if (!temp->next) cout << "NULL";
             temp = temp->obtener_siguiente();
         }
   }
-
-//   cout << endl << endl;
 }
 
 void Lista_Lecturas::alta(T dato){
@@ -186,6 +156,36 @@ int Lista_Lecturas::buscar_titulo(string titulo_buscado)
 
     return cont;
 }
+
+void Lista_Lecturas::sortear_lectura(int numero){
+    int i = 0;
+    Nodo<T> *temp = primero;
+    T lectura_sorteada = NULL;
+
+    while(temp){
+        if(i == numero){
+            lectura_sorteada = temp->obtener_dato();
+        }
+        temp = temp->obtener_siguiente();
+        i++;
+    }
+    lectura_sorteada->mostrar();
+}
+
+//  D Lista_Escritores::consulta(string nombre_completo){
+//     Nodo<D> *temp = primero;
+//     D escritor = NULL;
+//     while (temp) {
+//         if ((temp->obtener_dato()->obtener_nombre_completo() == nombre_completo) || (temp->obtener_dato()->obtener_referencia() == nombre_completo)) {
+//             escritor = temp->obtener_dato();
+//         }
+//         temp = temp->obtener_siguiente();
+//     }
+//     return escritor;
+//     // if(temp == nullptr){
+//     //     cout<<"El escritor ingresado no se encuentra en la lista!"<<endl;
+//     // }
+// }
 
 void Lista_Lecturas::agregar_final(T dato){
     Nodo<T> *new_node = new Nodo<T> (dato);

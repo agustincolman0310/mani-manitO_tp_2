@@ -6,7 +6,7 @@ class Poema : public Lectura{
 private:
     int cant_versos;
 public:
-    Poema(char tipo_lectura, std::string titulo,int minutos, int anio_publicacion, std::string referencia, int cant_versos);
+    Poema(char tipo_lectura, std::string titulo,int minutos, int anio_publicacion, Escritor* escritor, int cant_versos);
     ~Poema(){};
     void mostrar();
 };

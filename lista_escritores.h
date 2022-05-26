@@ -7,8 +7,7 @@
 using namespace std;
 typedef Escritor* D;
 
-class Lista_Escritores
-{
+class Lista_Escritores{
     public:
         Lista_Escritores();
         ~Lista_Escritores();
@@ -86,7 +85,7 @@ void Lista_Escritores::listar_escritores()
     Nodo<D> *temp = primero;
     D escritor = NULL;
     while (temp) {
-        if (temp->obtener_dato()->obtener_nombre_completo() == nombre_completo) {
+        if ((temp->obtener_dato()->obtener_nombre_completo() == nombre_completo) || (temp->obtener_dato()->obtener_referencia() == nombre_completo)) {
             escritor = temp->obtener_dato();
         }
         temp = temp->obtener_siguiente();
