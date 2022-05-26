@@ -6,18 +6,18 @@ Bestiario
 (1)
 
 N
-Misery
-2100
-1987
-TERROR
-(3)
-
-N
 Rayuela
 2900
 1963
 FICCION
 (1)
+
+N
+Misery
+2100
+1987
+TERROR
+(3)
 
 N
 Una columna de fuego

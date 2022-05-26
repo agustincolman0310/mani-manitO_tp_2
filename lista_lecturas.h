@@ -68,7 +68,7 @@ public:
 // template <typename T>
 
 bool Lista_Lecturas::vacia(){
-    return (cantidad == 0);
+    return cantidad == 0;
 }
 
 int Lista_Lecturas::obtener_cantidad(){
@@ -82,12 +82,15 @@ Lista_Lecturas::Lista_Lecturas(){
     ultimo = nullptr;
 }
 
-Lista_Lecturas::~Lista_Lecturas(){
-    while(!vacia()){
-        actual = primero;
-        primero = primero->obtener_siguiente();
-        delete actual;
-    }
+// Lista_Lecturas::~Lista_Lecturas(){
+//     while(!vacia()){
+//         actual = primero;
+//         primero = primero->obtener_siguiente();
+//         delete actual;
+//     }
+// }
+Lista_Lecturas::~Lista_Lecturas() {
+
 }
 
 
@@ -96,26 +99,21 @@ void Lista_Lecturas::insertar_ordenadamente(T data_){
     Nodo<T> *temp = primero;
     if (!primero) {
         primero = nuevo_nodo;
-        // cout<<"Primero insertado, año: "<<primero->obtener_dato()->obtener_anio_publicacion()<<endl;
     } 
     else {
         if ((primero->obtener_dato()->obtener_anio_publicacion()) > (data_->obtener_anio_publicacion())) {
-            nuevo_nodo->cambiar_siguiente(primero);
-            //cout<<"Insertado en el primer if del else, año: "<<nuevo_nodo->obtener_dato()->obtener_anio_publicacion()<<endl;
-            
+            nuevo_nodo->cambiar_siguiente(primero); 
+            // primero->obtener_siguiente();           
         } 
         else {
             while((temp->obtener_siguiente() != NULL) && ((temp->obtener_siguiente()->obtener_dato()->obtener_anio_publicacion()) < (data_->obtener_anio_publicacion()))) {
                 temp = temp->obtener_siguiente();
-                //cout<<"Insertado en el while, año: "<<temp->obtener_dato()->obtener_anio_publicacion()<<endl;
             }
             nuevo_nodo->cambiar_siguiente(temp->obtener_siguiente());
             temp->cambiar_siguiente(nuevo_nodo);
-            //cout<<"Insertado en el else, año: "<< nuevo_nodo->obtener_dato()->obtener_anio_publicacion()<<endl;   
         }        
     }
     // cantidad++; 
-    // cout<<obtener_cantidad()<<endl;
 }
 
 void Lista_Lecturas::insertar_ordenadamente2(T data_, Nodo<T> *nuevo_nodo){
@@ -146,21 +144,23 @@ void Lista_Lecturas::insertar_ordenadamente2(T data_, Nodo<T> *nuevo_nodo){
 void Lista_Lecturas::listar_lecturas()
 {
     Nodo<T> *temp = primero;
+    cout<<"El primero es: "<< primero->obtener_dato()->obtener_titulo()<<endl;
     if (!primero) {
         cout << "La Lista está vacía " << endl;
     } else {
         while (temp) {
             temp->obtener_dato()->mostrar();
             // if (!temp->next) cout << "NULL";
-                temp = temp->obtener_siguiente();
+            temp = temp->obtener_siguiente();
         }
   }
+
 //   cout << endl << endl;
 }
 
 void Lista_Lecturas::alta(T dato){
-    Nodo<T> *nuevo_nodo = new Nodo<T> (dato);
-    insertar_ordenadamente2(dato, nuevo_nodo);
+    // Nodo<T> *nuevo_nodo = new Nodo<T> (dato);
+    insertar_ordenadamente(dato);
     cantidad++;
 }
 

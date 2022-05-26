@@ -67,7 +67,7 @@ void Parser::procesar_escritores(){
         // escritor.mostrar_atributos();
     }   
     archivo_escritores.close();
-    //lista_escritores.listar_escritores();
+    // lista_escritores.listar_escritores();
     // lista_escritores.consulta(5).mostrar_atributos();
     
 }
@@ -105,17 +105,20 @@ void Parser::procesar_lectura(){
 
         if(tipo_lectura == "N"){
            // novela->mostrar();
+           Lectura* nueva_novela; 
             if(genero == "HISTORICA"){
-                Lectura* nueva_novela_historica = new Historica(tipo_lectura[0], titulo, stoi(minutos), stoi(anio_publicacion), referencia, genero, tema);
+                nueva_novela = new Historica(tipo_lectura[0], titulo, stoi(minutos), stoi(anio_publicacion), referencia, genero, tema);
             //    lista_lecturas.insertar_ordenadamente(nueva_novela_historica);
-            lista_lecturas.alta(nueva_novela_historica);
+                // lista_lecturas.alta(nueva_novela);
+                cout<<"La novela historica es: " <<nueva_novela->obtener_titulo()<<endl;
                // novela_historica->mostrar();
             }
             else{
-                Lectura* novela_nueva = new Novela(tipo_lectura[0], titulo, stoi(minutos), stoi(anio_publicacion), referencia, genero);
+                nueva_novela = new Novela(tipo_lectura[0], titulo, stoi(minutos), stoi(anio_publicacion), referencia, genero);
                 // lista_lecturas.insertar_ordenadamente(novela_nueva);
-                lista_lecturas.alta(novela_nueva);
+                // lista_lecturas.alta(nueva_novela);
             }
+        lista_lecturas.alta(nueva_novela);
         }
         else if(tipo_lectura == "C"){
             Lectura* nuevo_cuento = new Cuento(tipo_lectura[0], titulo, stoi(minutos), stoi(anio_publicacion), referencia, titulo_libro);
@@ -135,9 +138,9 @@ void Parser::procesar_lectura(){
         // lista_lecturas.mostrar_lectura(lectura);
         
     // lista_lecturas.~Lista_Lecturas();
+    lista_lecturas.listar_lecturas();
     archivo_lecturas.close();
     cout<<lista_lecturas.obtener_cantidad()<<endl;
-    // lista_lecturas.listar_lecturas();
 }
 
 
