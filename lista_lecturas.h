@@ -56,6 +56,8 @@ public:
     Nodo<T>* obtener_primero();
     void sortear_lectura(int numero);
     void alta(T dato);
+    void listar_por_escritor(string nombre_completo);
+    void listar_entre_anios(int desde, int hasta);
     // Destructor
     void agregar_final(T dato);
     ~Lista_Lecturas();
@@ -93,6 +95,40 @@ Lista_Lecturas::~Lista_Lecturas() {
 
 }
 
+//  D Lista_Escritores::consulta(string nombre_completo){
+//     Nodo<D> *temp = primero;
+//     D escritor = NULL;
+//     while (temp) {
+//         if ((temp->obtener_dato()->obtener_nombre_completo() == nombre_completo) || (temp->obtener_dato()->obtener_referencia() == nombre_completo)) {
+//             escritor = temp->obtener_dato();
+//         }
+//         temp = temp->obtener_siguiente();
+//     }
+//     return escritor;
+//     // if(temp == nullptr){
+//     //     cout<<"El escritor ingresado no se encuentra en la lista!"<<endl;
+//     // }
+// }
+void Lista_Lecturas::listar_por_escritor(string nombre_completo){
+    Nodo<T> *temp = primero;
+
+    while(temp){
+        if(temp->obtener_dato()->obtener_escritor()->obtener_nombre_completo() == nombre_completo){
+            temp->obtener_dato()->mostrar();
+        }
+        temp = temp->obtener_siguiente();
+    }
+}
+
+void Lista_Lecturas::listar_entre_anios(int desde, int hasta){
+    Nodo<T> *temp = primero;
+    while(temp){
+        if((temp->obtener_dato()->obtener_anio_publicacion()) >= desde && (temp->obtener_dato()->obtener_anio_publicacion()) <= hasta ){
+            temp->obtener_dato()->mostrar();
+        }
+        temp = temp->obtener_siguiente();
+    }
+}
 
 void Lista_Lecturas::insertar_ordenadamente(T data_){
     Nodo<T> *nuevo_nodo = new Nodo<T> (data_);
@@ -122,7 +158,9 @@ void Lista_Lecturas::listar_lecturas(){
         cout << "La Lista está vacía " << endl;
     } else {
         while (temp) {
-            temp->obtener_dato()->mostrar();
+            if(temp != NULL){
+                temp->obtener_dato()->mostrar();
+            }
             temp = temp->obtener_siguiente();
         }
   }

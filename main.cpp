@@ -6,17 +6,17 @@
 using namespace std;
 int main() {
     // srand(time(NULL));
-    int random = rand() % 20;
-    cout<<"El numero sorteado es... "<<random<<endl;
+    // int random = rand() % 20;
+    // cout<<"El numero sorteado es... "<<random<<endl;
     Parser* parser;
-    int opcion_recibida;
+    // int opcion_recibida;
     parser = nullptr;
     parser->procesar_escritores();
     parser->procesar_lectura();
     //escritor = new Escritor;
    
-    opcion_recibida = parser->mostrar_menu();
-    parser->procesar_opciones(opcion_recibida);
+    //opcion_recibida = parser->mostrar_menu();
+    // parser->procesar_opciones(opcion_recibida);
     // cargar_escritores(escritor);
     
 }

@@ -81,6 +81,7 @@ void Lista_Escritores::listar_escritores()
 //         actual = actual->obtener_siguiente();
 //     }
 // }
+
  D Lista_Escritores::consulta(string nombre_completo){
     Nodo<D> *temp = primero;
     D escritor = NULL;

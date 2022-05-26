@@ -14,7 +14,7 @@
 #include "lista_lecturas.h"
 #include "lista_escritores.h"
 #include <cstdlib>
-#include "time.h"
+//#include <time.h>
 // srand(time(NULL));
 
 using namespace std;
@@ -141,7 +141,7 @@ void Parser::procesar_lectura(){
         // lista_lecturas.mostrar_lectura(lectura);
         
     // lista_lecturas.~Lista_Lecturas();
-    // lecturas.listar_lecturas();
+    lecturas.listar_lecturas();
     archivo_lecturas.close();
     // cout<<lecturas.obtener_cantidad()<<endl;
 }
@@ -176,7 +176,7 @@ void Parser::procesar_opciones(int opcion){
     // opcion = mostrar_menu(opcion);
     string titulo, tema, genero, titulo_libro, nombre_completo, referencia, nacionalidad,pasar_total;
     char tipo_lectura;
-    int minutos, anio_publicacion, cant_versos, cant_total,anio_nacimiento,anio_fallecimiento, valor;
+    int minutos, anio_publicacion, cant_versos, cant_total,anio_nacimiento,anio_fallecimiento, valor, anio_1, anio_2;
     Lectura* lectura;
     Escritor* escritor;
     // int posicion;
@@ -269,5 +269,19 @@ void Parser::procesar_opciones(int opcion){
             cout<<"El numero random es: "<< valor<<endl;
             // lecturas.sortear_lectura(valor);
             break;
-    }
+        case 8:
+            cout<<"Ingresa desde : ";
+            cin>>anio_1;
+            cout<<"Hasta : ";
+            cin>>anio_2;
+            lecturas.listar_entre_anios(anio_1,anio_2);
+            break;
+        case 9: 
+            cout<<"Ingresa el nombre del escritor : \n";
+            cin.ignore();
+            getline(cin, nombre_completo);
+            lecturas.listar_por_escritor(nombre_completo);
+            break;
+    }    
+
 }

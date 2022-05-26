@@ -14,6 +14,7 @@ public:
     Lectura(char tipo_lectura, std::string titulo, int minutos, int anio_publicacion, Escritor* escritor);
     char obtener_tipo_lectura();
     ~Lectura(){};
+    Escritor* obtener_escritor();
     int obtener_anio_publicacion();
     string obtener_titulo();
     virtual void mostrar() = 0;

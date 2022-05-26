@@ -25,3 +25,7 @@ int Lectura::obtener_anio_publicacion(){
 string Lectura::obtener_titulo(){
         return titulo;
 }
+
+Escritor* Lectura::obtener_escritor(){
+        return escritor;
+}
