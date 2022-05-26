@@ -204,35 +204,7 @@ void Lista_Lecturas::agregar_final(T dato){
     // cout<<"Cantidad total: "<<obtener_cantidad()<<endl;
     // cout<<"Año de nacimiento: "<<dato->obtener_anio_nacimiento()<<endl;
 }
-// void List<T>::add_sort(T data_){
-//     Node<T> *new_node = new Node<T> (data_);
-//     Node<T> *temp = m_head;
 
-//     if (!m_head) {
-//         m_head = new_node;
-//     } else {
-//         if (m_head->obtener_dato() > data_) {
-//             // new_node->next = m_head;
-//             new_node->cambiar_siguiente(m_head);
-//             // m_head = new_node;
-//         } else {
-//             while ((temp->obtener_siguiente() != NULL) && (temp->obtener_siguiente()->obtener_dato() < data_)) {
-//                 // temp = temp->next;
-//                     temp = temp->obtener_siguiente();
-//             }
-//             // new_node->next = temp->next;
-//             // new_node->obtener_siguiente()->cambiar_siguiente(temp->obtener_siguiente());
-//             new_node->cambiar_siguiente(temp->obtener_siguiente());
-//             // temp->obtener_siguiente()->cambiar_siguiente(new_node);
-//             temp->cambiar_siguiente(new_node);
-//             // temp->next = new_node;
-//         }
-//     }
-//     m_num_nodes++;
-// }
-// void Lista_Lecturas::mostrar_lectura(T lectura){
-//     lectura->mostrar();
-// }
 
 // void Lista_Lecturas::baja(int pos) {
 //     Nodo<T>* borrar = primero;
