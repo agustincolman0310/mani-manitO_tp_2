@@ -20,6 +20,7 @@ class Lista_Escritores{
         D consulta(string nombre_completo);
         void desplazar_actual(string referencia);
         void modificar_anio_fallecimiento(string nombre_escritor, int nueva_fecha);
+        string devolver_nombre_escritor(string nombre_completo);
 
     private:
         Nodo<D> *primero;
@@ -85,6 +86,7 @@ void Lista_Escritores::listar_escritores()
  D Lista_Escritores::consulta(string nombre_completo){
     Nodo<D> *temp = primero;
     D escritor = NULL;
+   
     while (temp) {
         if ((temp->obtener_dato()->obtener_nombre_completo() == nombre_completo) || (temp->obtener_dato()->obtener_referencia() == nombre_completo)) {
             escritor = temp->obtener_dato();
@@ -92,9 +94,11 @@ void Lista_Escritores::listar_escritores()
         temp = temp->obtener_siguiente();
     }
     return escritor;
-    // if(temp == nullptr){
-    //     cout<<"El escritor ingresado no se encuentra en la lista!"<<endl;
-    // }
+}
+
+string Lista_Escritores::devolver_nombre_escritor(string nombre_completo){
+    Escritor* escritor = consulta(nombre_completo);
+    return escritor->obtener_nombre_completo();
 }
 
 void Lista_Escritores::modificar_anio_fallecimiento(string nombre_escritor, int nuevo_anio){
