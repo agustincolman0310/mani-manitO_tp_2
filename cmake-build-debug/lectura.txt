@@ -1,0 +1,49 @@
+C
+Casa Tomada
+20
+1990
+Bestiario
+(1)
+
+N
+Rayuela
+2900
+2001
+FICCION
+(1)
+
+N
+Misery
+2100
+1995
+TERROR
+(3)
+
+P
+El Poema del Mío Cid
+480
+1140
+3733
+(1)
+
+N
+Frankestein
+1600
+1818
+TERROR
+(2)
+
+N
+Una columna de fuego
+4800
+2017
+HISTORICA
+Guerra de religiones en Europa en la segunda mitad del siglo XVI
+(5)
+
+P
+Voy a dormir
+1
+2020
+14
+(4)

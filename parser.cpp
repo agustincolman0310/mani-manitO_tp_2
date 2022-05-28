@@ -14,7 +14,7 @@
 #include "lista_lecturas.h"
 #include "lista_escritores.h"
 #include <cstdlib>
-//#include <time.h>
+#include "time.h"
 // srand(time(NULL));
 
 using namespace std;
@@ -103,7 +103,7 @@ void Parser::procesar_lectura(){
         else{
             getline(archivo_lecturas, cant_versos);
         }
-
+        
         getline(archivo_lecturas, referencia);
         getline(archivo_lecturas, linea_espacio); 
 
@@ -264,10 +264,11 @@ void Parser::procesar_opciones(int opcion){
             break;
         
         case 6:
-            valor = rand() % lecturas.obtener_cantidad();
+            srand((unsigned int)time(NULL));
+            valor = 1 + rand() % lecturas.obtener_cantidad();
             cout<<lecturas.obtener_cantidad()<<endl;
             cout<<"El numero random es: "<< valor<<endl;
-            // lecturas.sortear_lectura(valor);
+            lecturas.sortear_lectura(valor);
             break;
         case 8:
             cout<<"Ingresa desde : ";

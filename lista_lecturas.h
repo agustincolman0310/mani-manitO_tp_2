@@ -91,9 +91,7 @@ Lista_Lecturas::Lista_Lecturas(){
 //         delete actual;
 //     }
 // }
-Lista_Lecturas::~Lista_Lecturas() {
-
-}
+Lista_Lecturas::~Lista_Lecturas() {}
 
 //  D Lista_Escritores::consulta(string nombre_completo){
 //     Nodo<D> *temp = primero;
@@ -133,21 +131,19 @@ void Lista_Lecturas::listar_entre_anios(int desde, int hasta){
 void Lista_Lecturas::insertar_ordenadamente(T data_){
     Nodo<T> *nuevo_nodo = new Nodo<T> (data_);
     Nodo<T> *temp = primero;
-    if (!primero) {
+    if (!primero || (primero->obtener_dato()->obtener_anio_publicacion()) > (data_->obtener_anio_publicacion())) {
+        
+        nuevo_nodo->cambiar_siguiente(primero);
         primero = nuevo_nodo;
-    } 
+    }
     else {
-        if ((primero->obtener_dato()->obtener_anio_publicacion()) > (data_->obtener_anio_publicacion())) {
-            nuevo_nodo->cambiar_siguiente(primero);         
-        } 
-        else {
             while((temp->obtener_siguiente() != NULL) && ((temp->obtener_siguiente()->obtener_dato()->obtener_anio_publicacion()) < (data_->obtener_anio_publicacion()))) {
                 temp = temp->obtener_siguiente();
             }
             nuevo_nodo->cambiar_siguiente(temp->obtener_siguiente());
             temp->cambiar_siguiente(nuevo_nodo);
         }        
-    }
+    cantidad++; 
 }
 
 
@@ -196,7 +192,7 @@ int Lista_Lecturas::buscar_titulo(string titulo_buscado)
 }
 
 void Lista_Lecturas::sortear_lectura(int numero){
-    int i = 0;
+    int i = 1;
     Nodo<T> *temp = primero;
     T lectura_sorteada = NULL;
 

@@ -2,10 +2,10 @@
 #include "escritor.h"
 #include "parser.h"
 #include <cstdlib>
-#include  <time.h>
+#include "time.h"
 using namespace std;
 int main() {
-    // srand(time(NULL));
+    // srand((unsigned int)time(NULL));
     // int random = rand() % 20;
     // cout<<"El numero sorteado es... "<<random<<endl;
     Parser* parser;
@@ -15,7 +15,7 @@ int main() {
     parser->procesar_lectura();
     //escritor = new Escritor;
    
-    //opcion_recibida = parser->mostrar_menu();
+    // opcion_recibida = parser->mostrar_menu();
     // parser->procesar_opciones(opcion_recibida);
     // cargar_escritores(escritor);
     
