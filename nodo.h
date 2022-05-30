@@ -1,6 +1,6 @@
 #ifndef NODO_H
 #define NODO_H
-
+#include <iostream>
 // typedef char Dato;
 template <typename T>
 

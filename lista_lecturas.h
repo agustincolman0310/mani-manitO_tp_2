@@ -3,7 +3,8 @@
 
 #include "lectura.h"
 #include "nodo.h"
-// template <typename T>
+
+
 typedef Lectura* T;
 
 
@@ -62,6 +63,7 @@ public:
     // Destructor
     void listar_por_genero(string genero_recibido);
     void agregar_final(T dato);
+    T encontrar_lectura_menor(int &minimo);
     ~Lista_Lecturas();
 
     
@@ -242,6 +244,29 @@ int Lista_Lecturas::buscar_titulo(string titulo_buscado)
 
     return cont;
 }
+
+
+T Lista_Lecturas::encontrar_lectura_menor(int &minimo){
+    Nodo<T> *temp = primero;
+    T lectura = NULL;
+    int minimo_maximo = 0;
+    while(temp){
+        
+        if(minimo < temp->obtener_dato()->obtener_tiempo_lectura() && temp->obtener_dato()->obtener_tiempo_lectura() < minimo_maximo){ 
+            minimo_maximo = temp->obtener_dato()->obtener_tiempo_lectura();
+            lectura = temp->obtener_dato();
+        }
+        else if(minimo_maximo == 0 && minimo < temp->obtener_dato()->obtener_tiempo_lectura()){
+            minimo_maximo = temp->obtener_dato()->obtener_tiempo_lectura();
+            lectura = temp->obtener_dato();
+        }
+
+        temp = temp->obtener_siguiente(); 
+    }
+    minimo = minimo_maximo;
+    return lectura;
+}
+
 
 void Lista_Lecturas::sortear_lectura(int numero){
     int i = 1;

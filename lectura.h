@@ -17,6 +17,7 @@ public:
     string obtener_escritor();
     int obtener_anio_publicacion();
     string obtener_titulo();
+    int obtener_tiempo_lectura();
     virtual void mostrar() = 0;
     virtual string obtener_genero() = 0;
 };

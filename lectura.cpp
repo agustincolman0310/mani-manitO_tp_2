@@ -33,3 +33,7 @@ string Lectura::obtener_escritor(){
 char Lectura::obtener_tipo_lectura(){
         return tipo_lectura;
 }
+
+int Lectura::obtener_tiempo_lectura(){
+        return minutos;
+}

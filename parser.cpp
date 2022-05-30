@@ -15,12 +15,14 @@
 #include "lista_escritores.h"
 #include <cstdlib>
 #include "time.h"
+#include "cola.h"
 // srand(time(NULL));
 
 using namespace std;
 
 Lista_Escritores escritores;
 Lista_Lecturas lecturas;
+Cola cola;
 
 Parser::Parser( std::string nombre_completo, std::string nacionalidad, int anio_nacimiento, int anio_fallecimiento, string referencia) {
     
@@ -176,7 +178,7 @@ void Parser::procesar_opciones(int opcion){
     // opcion = mostrar_menu(opcion);
     string titulo, tema, genero, titulo_libro, nombre_completo, referencia, nacionalidad,pasar_total;
     char tipo_lectura;
-    int minutos, anio_publicacion, cant_versos, cant_total,anio_nacimiento,anio_fallecimiento, valor, anio_1, anio_2;
+    int minutos, anio_publicacion, cant_versos, cant_total,anio_nacimiento,anio_fallecimiento, valor, anio_1, anio_2,minimo;
     Lectura* lectura;
     Escritor* escritor;
     // int posicion;
@@ -298,7 +300,23 @@ void Parser::procesar_opciones(int opcion){
             lecturas.listar_por_genero(genero);
             break;
     
-    
+        case 11:
+            minimo = 0;
+            for(int i = 0; i < lecturas.obtener_cantidad(); i++){
+                cola.alta(lecturas.encontrar_lectura_menor(minimo));
+            
+            }   
+            cola.consulta()->mostrar();
+            cola.baja();
+            cout<<"Primera baja"<<endl;
+            cola.consulta()->mostrar();
+            cola.baja();
+            cout<<"Segunda baja"<<endl;
+            cola.consulta()->mostrar();
+            cola.baja();
+            cout<<"Tercera baja"<<endl;
+
+            break;
     }
 
 

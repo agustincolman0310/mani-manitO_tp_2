@@ -1,13 +1,14 @@
 #ifndef COLA_H_INCLUDED
 #define COLA_H_INCLUDED
-
+#include "lectura.h"
 #include "nodo.h"
 
+typedef Lectura* Dato;
 class Cola {
     // Atributos
 private:
-    Nodo* primero;
-    Nodo* ultimo;
+    Nodo<Dato>* primero;
+    Nodo<Dato>* ultimo;
 
     // Metodos
 public:
