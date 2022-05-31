@@ -230,8 +230,9 @@ void Parser::procesar_opciones(int opcion){
 
         case 2:
             cout<< "Ingrese el titulo: \n";
-            cin>>titulo;
-            lecturas.eliminar_por_titulo(titulo);
+            cin.ignore();
+            getline(cin, titulo);
+            lecturas.baja(titulo);
             lecturas.listar_lecturas();
             break;
         
@@ -276,7 +277,7 @@ void Parser::procesar_opciones(int opcion){
             cout<<"El numero random es: "<< valor<<endl;
             lecturas.sortear_lectura(valor);
             break;
-            case 7:
+        case 7:
             lecturas.listar_lecturas();
             break;
             
@@ -305,7 +306,8 @@ void Parser::procesar_opciones(int opcion){
             for(int i = 0; i < lecturas.obtener_cantidad(); i++){
                 cola.alta(lecturas.encontrar_lectura_menor(minimo));
             
-            }   
+            }
+
             cola.consulta()->mostrar();
             cola.baja();
             cout<<"Primera baja"<<endl;
