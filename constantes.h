@@ -1,3 +1,5 @@
+#ifndef CONSTANTES_H_INCLUDED
+#define CONSTANTES_H_INCLUDED
 #include<string>
 const char NOVELA = 'N';
 const char CUENTO = 'C';
@@ -21,3 +23,5 @@ enum Opciones{
     OPCION_12,
     
 };
+
+#endif

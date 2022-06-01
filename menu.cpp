@@ -1,23 +1,16 @@
-#include <iostream>
-#include "lectura.h"
-#include "cuento.h"
-#include "novela.h"
-#include "poema.h"
-#include "historica.h"
-#include "lista_lecturas.h"
-#include "lista_escritores.h"
 #include "menu.h"
-#include "cola.h"
-#include "constantes.h"
 using namespace std;
 
 
-Lista_Escritores escritores;
-Lista_Lecturas lecturas;
+// Lista_Escritores escritores;
+// Lista_Lecturas lecturas;
 Cola cola;
 
-Menu::Menu(){
-    seguir_jugando = true;
+Menu::Menu(Lista_Lecturas lecturas, Lista_Escritores escritores){
+    this->lecturas = lecturas;
+    this->escritores = escritores;
+    // seguir_jugando = true;
+    
 }
 
 int Menu::mostrar_menu(){
@@ -34,7 +27,6 @@ int Menu::mostrar_menu(){
     cout<<"\t10- Listar novelas por género.\n";
     cout<<"\t11- Armar cola ordenada por tiempo de lectura.\n";
     cout<<"\t12- Salir.\n";
-    
     cout<<"Ingrese una opción: ";
     cin>>opcion;
     return opcion;
