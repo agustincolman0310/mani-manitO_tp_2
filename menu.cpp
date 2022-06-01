@@ -5,7 +5,9 @@
 #include "poema.h"
 #include "historica.h"
 #include "lista_lecturas.h"
+#include "lista_escritores.h"
 #include "menu.h"
+#include "cola.h"
 #include "constantes.h"
 using namespace std;
 
@@ -94,6 +96,9 @@ void Menu::agregar_lectura(){
     cout<<"Ingrese el nombre completo del escritor: \n";
     //cin.ignore();
     getline(cin, nombre_completo);
+    if(escritores.consulta(nombre_completo) == NULL){
+        agregar_escritor();
+    }
 
     cout<<"Ingrese la cantidad de minutos: \n";
     cin>>minutos;
@@ -104,12 +109,12 @@ void Menu::agregar_lectura(){
     if (tipo_lectura == NOVELA){
         cout<< "Ingrese el genero: \n";
         cin>>genero;
-        lectura = new Novela(tipo_lectura, titulo, minutos, anio_publicacion, nombre_completo, genero);
+        lectura = new Novela(tipo_lectura, titulo, minutos, anio_publicacion, escritores.consulta(nombre_completo), genero);
 
             if(genero == HISTORICA){
             cout<< "Ingrese el tema: \n";
             cin>>tema;  
-            lectura = new Historica(tipo_lectura, titulo, minutos, anio_publicacion, nombre_completo, genero, tema);
+            lectura = new Historica(tipo_lectura, titulo, minutos, anio_publicacion, escritores.consulta(nombre_completo), genero, tema);
 
             }
     }
@@ -118,13 +123,13 @@ void Menu::agregar_lectura(){
         cin.ignore();
         getline(cin, titulo_libro);
 
-        lectura = new Cuento(tipo_lectura, titulo, minutos, anio_publicacion, nombre_completo , titulo_libro);
+        lectura = new Cuento(tipo_lectura, titulo, minutos, anio_publicacion,escritores.consulta(nombre_completo) , titulo_libro);
 
     }
     else if(tipo_lectura == POEMA){
         cout<< "Ingrese la cantidad de versos: \n";
         cin>>cant_versos;
-        lectura = new Poema(tipo_lectura, titulo, minutos, anio_publicacion, nombre_completo, cant_versos);
+        lectura = new Poema(tipo_lectura, titulo, minutos, anio_publicacion, escritores.consulta(nombre_completo), cant_versos);
 
     } 
     lecturas.alta(lectura);
@@ -141,8 +146,8 @@ void Menu::eliminar_lectura(){
 }
 
 void Menu::agregar_escritor(){
-    string nombre_completo, nacionalidad;
-    int anio_nacimiento, anio_fallecimiento;
+    string nombre_completo, nacionalidad, referencia, pasar_total;
+    int anio_nacimiento, anio_fallecimiento, cant_total;
     Escritor* escritor;
     cout<<"Ingresa el nombre completo del escritor: \n";
     cin.ignore();
