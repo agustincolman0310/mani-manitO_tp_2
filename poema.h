@@ -7,7 +7,7 @@ private:
     int cant_versos;
 public:
     Poema(char tipo_lectura, std::string titulo,int minutos, int anio_publicacion, Escritor* escritor, int cant_versos);
-    ~Poema(){};
+    //~Poema(){};
     void mostrar();
     string obtener_genero();
 };

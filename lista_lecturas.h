@@ -47,7 +47,8 @@ public:
     */
     bool vacia();
     void baja(string titulo);
-
+    void baja(int pos);
+    void vaciar_lista();
     void mostrar_lectura(T lectura);
 
     int obtener_cantidad();
@@ -333,5 +334,27 @@ void Lista_Lecturas::baja(string titulo) {
     }
     cantidad--;
     delete borrar;
+}
+
+void Lista_Lecturas::baja(int pos) {
+
+
+    Nodo<T>* borrar = primero;
+    if (pos == 1){
+        primero = primero->obtener_siguiente();
+    }
+    else {
+        Nodo<T>* anterior = obtener_nodo(pos - 1);
+        borrar = anterior->obtener_siguiente();
+        anterior->cambiar_siguiente(borrar->obtener_siguiente());
+    }
+    cantidad--;
+    delete borrar;
+}
+
+void Lista_Lecturas::vaciar_lista(){
+    while(!vacia()){
+        baja(1);
+    }
 }
 #endif

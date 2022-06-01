@@ -16,14 +16,16 @@ private:
     void listar_por_escritor();
     void listar_por_genero();
     void cola_ordenada();
-    void salir();
-    void procesar_opciones(int opcion);
+    //bool salir();
+    //void procesar_opciones(int opcion);
 
     
 public:
     Menu();
+    void procesar_opciones(int opcion);
     ~Menu(){};
     int mostrar_menu();
+    bool salir();
     
 };
 

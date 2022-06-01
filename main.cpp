@@ -17,8 +17,8 @@ int main() {
     parser->procesar_lectura();
     //escritor = new Escritor;
    
-    opcion_recibida = parser->mostrar_menu();
-    
+    opcion_recibida = menu->mostrar_menu();
+
     // cargar_escritores(escritor);
     while(!menu->salir()){
         menu->procesar_opciones(opcion_recibida);

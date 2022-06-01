@@ -82,7 +82,7 @@ void Menu::procesar_opciones(int opcion){
 }
 
 void Menu::agregar_lectura(){
-    string titulo,nombre_completo,genero,tema,titulo_libro,tema;
+    string titulo,nombre_completo,genero,tema,titulo_libro;
     char tipo_lectura;
     int minutos,anio_publicacion,cant_versos;
     Lectura* lectura;
@@ -111,7 +111,7 @@ void Menu::agregar_lectura(){
         cin>>genero;
         lectura = new Novela(tipo_lectura, titulo, minutos, anio_publicacion, escritores.consulta(nombre_completo), genero);
 
-            if(genero == HISTORICA){
+            if(genero == "HISTORICA"){
             cout<< "Ingrese el tema: \n";
             cin>>tema;  
             lectura = new Historica(tipo_lectura, titulo, minutos, anio_publicacion, escritores.consulta(nombre_completo), genero, tema);
@@ -241,6 +241,6 @@ void Menu::cola_ordenada(){
 }
 
 
-void Menu::salir(){
-    sigo_jugando = false;
+bool Menu::salir(){
+    return(seguir_jugando = false);
 }
