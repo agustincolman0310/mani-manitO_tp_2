@@ -244,3 +244,8 @@ void Menu::cola_ordenada(){
 bool Menu::salir(){
     return(seguir_jugando = false);
 }
+
+void Menu::vaciar_listas(){
+    escritores.vaciar_lista();
+    lecturas.vaciar_lista();
+}

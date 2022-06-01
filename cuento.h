@@ -8,7 +8,7 @@ private:
     std::string libro;
 public:
     Cuento(char tipo_lectura, std::string titulo, int minutos, int anio_publicacion, Escritor* escritor, std::string libro);
-    ~Cuento(){};
+    // ~Cuento(){};
     void mostrar();
     string obtener_genero();
 

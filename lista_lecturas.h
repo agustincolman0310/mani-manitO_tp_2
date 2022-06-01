@@ -67,7 +67,7 @@ public:
     void listar_por_genero(string genero_recibido);
     void agregar_final(T dato);
     T encontrar_lectura_menor(int &minimo);
-    ~Lista_Lecturas();
+    // ~Lista_Lecturas();
     int comparar(T dato);
     
     
@@ -98,7 +98,7 @@ Lista_Lecturas::Lista_Lecturas(){
 //         delete actual;
 //     }
 // }
-Lista_Lecturas::~Lista_Lecturas() {}
+// Lista_Lecturas::~Lista_Lecturas() {}
 
 void Lista_Lecturas::listar_por_escritor(string nombre_completo){
     Nodo<T> *temp = primero;

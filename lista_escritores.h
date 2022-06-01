@@ -10,7 +10,7 @@ typedef Escritor* D;
 class Lista_Escritores{
     public:
         Lista_Escritores();
-        ~Lista_Escritores();
+        // ~Lista_Escritores();
 
         void agregar_final(D dato);
         void add_sort(D);
@@ -21,14 +21,27 @@ class Lista_Escritores{
         void desplazar_actual(string referencia);
         void modificar_anio_fallecimiento(string nombre_escritor, int nueva_fecha);
         string devolver_nombre_escritor(string nombre_completo);
+        void baja(int pos);
+        void vaciar_lista();
+        bool vacia();
+
 
     private:
         Nodo<D> *primero;
+        Nodo<D>* obtener_nodo(int pos);
         
         int cantidad;
 };
 
-
+Nodo<D>* Lista_Escritores::obtener_nodo(int pos) {
+    Nodo<D>* aux = primero;
+    int contador = 1;
+    while (contador < pos) {
+        aux = aux->obtener_siguiente();
+        contador++;
+    }
+    return aux;
+}
 Lista_Escritores::Lista_Escritores()
 {
     cantidad = 0;
@@ -37,6 +50,10 @@ Lista_Escritores::Lista_Escritores()
 
 int Lista_Escritores::obtener_cantidad() const{
     return cantidad;
+}
+
+bool Lista_Escritores::vacia(){
+    return cantidad == 0;
 }
 
 void Lista_Escritores::agregar_final(D dato){
@@ -108,5 +125,26 @@ void Lista_Escritores::modificar_anio_fallecimiento(string nombre_escritor, int 
         cout<<"El escritor no se encuentra el escritor en la lista"<<endl;
 }
 
-Lista_Escritores::~Lista_Escritores() {}
+void Lista_Escritores::baja(int pos) {
+
+
+    Nodo<D>* borrar = primero;
+    if (pos == 1){
+        primero = primero->obtener_siguiente();
+    }
+    else {
+        Nodo<D>* anterior = obtener_nodo(pos - 1);
+        borrar = anterior->obtener_siguiente();
+        anterior->cambiar_siguiente(borrar->obtener_siguiente());
+    }
+    cantidad--;
+    delete borrar;
+}
+
+void Lista_Escritores::vaciar_lista(){
+    while(!vacia()){
+        baja(1);
+    }
+}
+// Lista_Escritores::~Lista_Escritores() {}
 #endif

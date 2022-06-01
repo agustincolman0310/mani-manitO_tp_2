@@ -16,6 +16,7 @@ private:
     void listar_por_escritor();
     void listar_por_genero();
     void cola_ordenada();
+    // void vaciar_listas();
     //bool salir();
     //void procesar_opciones(int opcion);
 
@@ -23,6 +24,8 @@ private:
 public:
     Menu();
     void procesar_opciones(int opcion);
+    void vaciar_listas();
+
     ~Menu(){};
     int mostrar_menu();
     bool salir();

@@ -23,6 +23,8 @@ int main() {
     while(!menu->salir()){
         menu->procesar_opciones(opcion_recibida);
     }
+    menu->vaciar_listas();
+    return 0;
 }
 //  Parser parser = Parser(argv);
 //  Vehiculo* vehiculo = parser.procesarEntrada();
