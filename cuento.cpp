@@ -20,3 +20,5 @@ void Cuento::mostrar(){
 string Cuento::obtener_genero(){
     return libro;
 }
+
+// Cuento::~Cuento(){};

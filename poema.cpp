@@ -18,6 +18,9 @@ void Poema::mostrar(){
 
 }
 
+// Poema::~Poema(){};
+
+
 string Poema::obtener_genero(){
     return to_string(cant_versos);
 }

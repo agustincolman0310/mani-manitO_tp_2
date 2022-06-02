@@ -28,6 +28,8 @@ public:
     // POST: Devuelve el dato que se encuentra en el nodo.
     T obtener_dato();
 
+    void eliminar_dato();
+
     
     Nodo<T>* obtener_siguiente();
 };
@@ -51,10 +53,14 @@ T Nodo<T>::obtener_dato(){
 template < typename T >
 void Nodo<T>::imprimir(){
     std::cout << dato << std::endl;
-}
+};
 template < typename T >
 Nodo<T> *Nodo<T>::obtener_siguiente(){
     return siguiente;
 };
 
+template < typename T >
+void Nodo<T>::eliminar_dato(){
+    delete dato;
+};
 #endif

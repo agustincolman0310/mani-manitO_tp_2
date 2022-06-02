@@ -54,7 +54,7 @@ public:
 
     int obtener_cantidad();
 
-    void insertar_ordenadamente(T data_);
+    void insertar_ordenadamente(T dato);
     int buscar_titulo(string titulo_buscado);
     Nodo<T>* obtener_primero();
     // Nodo<T>* obtener_nodo(int pos);

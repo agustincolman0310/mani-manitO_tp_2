@@ -1,3 +1,0 @@
-/home/agustin/Escritorio/mani-manitO_tp_2/cmake-build-debug/CMakeFiles/mani_manitO_tp_2.dir
-/home/agustin/Escritorio/mani-manitO_tp_2/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/agustin/Escritorio/mani-manitO_tp_2/cmake-build-debug/CMakeFiles/rebuild_cache.dir

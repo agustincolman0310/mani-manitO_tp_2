@@ -16,7 +16,7 @@ class Lista_Escritores{
         // PRE: dato debe ser del tipo D.
         // POST: Si la lista está vacía agrega el dato en la primera posición, caso contrario
         // el dato es agregado al final de la lista. 
-        void agregar_final(D dato);
+        void agregar_final(D dato, Nodo<D> *nuevo_nodo);
        
         // PRE: -
         // POST: Devuelve la cantidad de elementos que tiene la lista.
@@ -51,8 +51,12 @@ class Lista_Escritores{
         // POST: Devuelve true si la cantidad de elementos es igual a 0.
         bool vacia();
 
+        void alta(D dato);
+        void prueba_alta(D dato);
+        void prueba_baja();
     private:
         Nodo<D> *primero;
+        Nodo<D> *ultimo;
         Nodo<D>* obtener_nodo(int pos);
         int cantidad;
 };

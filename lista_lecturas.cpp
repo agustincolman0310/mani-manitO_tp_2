@@ -50,22 +50,23 @@ int Lista_Lecturas::comparar(T dato){
 
     return valor;   
 }
-void Lista_Lecturas::insertar_ordenadamente(T data_){
-    Nodo<T> *nuevo_nodo = new Nodo<T> (data_);
+void Lista_Lecturas::insertar_ordenadamente(T dato){
+    Nodo<T> *nuevo_nodo = new Nodo<T> (dato);
     Nodo<T> *temp = primero;
-    if (!primero || (primero->obtener_dato()->obtener_anio_publicacion()) > (data_->obtener_anio_publicacion())) {
+    if (!primero || (primero->obtener_dato()->obtener_anio_publicacion()) > (dato->obtener_anio_publicacion())) {
         
         nuevo_nodo->cambiar_siguiente(primero);
         primero = nuevo_nodo;
     }
     else {
-            while((temp->obtener_siguiente() != NULL) && ((temp->obtener_siguiente()->obtener_dato()->obtener_anio_publicacion()) < (data_->obtener_anio_publicacion()))) {
+            while((temp->obtener_siguiente() != NULL) && ((temp->obtener_siguiente()->obtener_dato()->obtener_anio_publicacion()) < (dato->obtener_anio_publicacion()))) {
                 temp = temp->obtener_siguiente();
             }
             nuevo_nodo->cambiar_siguiente(temp->obtener_siguiente());
             temp->cambiar_siguiente(nuevo_nodo);
         }        
     cantidad++; 
+    // temp->eliminar_dato();
 }
 
 void Lista_Lecturas::listar_por_genero(string genero_recibido){
@@ -124,7 +125,8 @@ void Lista_Lecturas::eliminar_por_titulo(string titulo){
 void Lista_Lecturas::alta(T dato){
     // Nodo<T> *nuevo_nodo = new Nodo<T> (dato);
     insertar_ordenadamente(dato);
-    // cantidad++;
+    //nuevo_nodo->eliminar_dato();
+    // delete nuevo_nodo;
 }
 
 int Lista_Lecturas::buscar_titulo(string titulo_buscado)
@@ -250,6 +252,7 @@ void Lista_Lecturas::baja(string titulo) {
         anterior->cambiar_siguiente(borrar->obtener_siguiente());
     }
     cantidad--;
+   // borrar->eliminar_dato();
     delete borrar;
 }
 
@@ -266,6 +269,7 @@ void Lista_Lecturas::baja(int pos) {
         anterior->cambiar_siguiente(borrar->obtener_siguiente());
     }
     cantidad--;
+    borrar->eliminar_dato();
     delete borrar;
 }
 

@@ -202,7 +202,7 @@ void Menu::agregar_escritor(string &nombre_completo){
     pasar_total = to_string(cant_total);
     referencia = "(" + pasar_total + ")";
     escritor = new Escritor(nombre_completo, nacionalidad, anio_nacimiento, anio_fallecimiento, referencia);
-    escritores.agregar_final(escritor);
+    escritores.alta(escritor);
     escritores.listar_escritores();
 }
 

@@ -19,6 +19,8 @@ void Novela::mostrar(){
 
 }
 
+// Novela::~Novela(){};
+
 string Novela::convertir_genero(int genero){                                                                                                                                                                                                                                                                                                                                                                                    
     string genero_convertido;
     if(genero == DRAMA){

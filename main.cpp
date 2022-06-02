@@ -18,15 +18,15 @@ int main() {
     
     //escritor = new Escritor;
     // cout<< "2" <<endl;
-    Menu menu(parser.devolver_lecturas(),parser.devolver_escritores());
-    int opcion_recibida;
+    // Menu menu(parser.devolver_lecturas(),parser.devolver_escritores());
+    // int opcion_recibida;
 
-    // cargar_escritores(escritor);
-    //menu.procesar_opciones(opcion_recibida);
-    while(opcion_recibida != OPCION_12){
-        opcion_recibida = menu.mostrar_menu();
-        menu.procesar_opciones(opcion_recibida);
-     }
-    menu.vaciar_listas();
+    // // cargar_escritores(escritor);
+    // //menu.procesar_opciones(opcion_recibida);
+    // while(opcion_recibida != OPCION_12){
+    //     opcion_recibida = menu.mostrar_menu();
+    //     menu.procesar_opciones(opcion_recibida);
+    //  }
+    // menu.vaciar_listas();
     return 0;
 }
