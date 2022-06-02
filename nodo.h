@@ -1,7 +1,7 @@
 #ifndef NODO_H
 #define NODO_H
 #include <iostream>
-// typedef char Dato;
+
 template <typename T>
 
 class Nodo{
@@ -12,18 +12,23 @@ private:
 
     //Metodos
 public:
-    //PRE: -
-    //POST: construye un nodo con d como T anterior en nullptr
+    // PRE: -
+    // POST: Construye un nodo con dato y con siguiente apuntando a nullptr.
     Nodo(T dato);
 
+    // PRE: -
+    // POST: Imprime el dato por pantalla.
     void imprimir();
 
-    // void cambiar_dato(T d);
+    // PRE: -
+    // POST: Siguiente pasa a ser nuevo_nodo.
+    void cambiar_siguiente(Nodo* nuevo_nodo);
 
-    void cambiar_siguiente(Nodo* nueva_posicion);
-
+    // PRE: El nodo no debe estar vacío
+    // POST: Devuelve el dato que se encuentra en el nodo.
     T obtener_dato();
 
+    
     Nodo<T>* obtener_siguiente();
 };
 
@@ -34,8 +39,8 @@ Nodo<T>::Nodo(T dato){
 };
 
 template < typename T >
-void Nodo<T>::cambiar_siguiente(Nodo<T>* nueva_posicion){
-    this->siguiente = nueva_posicion;
+void Nodo<T>::cambiar_siguiente(Nodo<T>* nuevo_nodo){
+    this->siguiente = nuevo_nodo;
 };
 
 template < typename T >
@@ -49,7 +54,7 @@ void Nodo<T>::imprimir(){
 }
 template < typename T >
 Nodo<T> *Nodo<T>::obtener_siguiente(){
-    return this->siguiente;
+    return siguiente;
 };
 
 #endif

@@ -33,6 +33,7 @@ int Menu::mostrar_menu(){
 }
 
 void Menu::procesar_opciones(int opcion){ 
+    string nombre_completo;
     switch(opcion){ 
         case OPCION_1:  
             agregar_lectura();
@@ -41,7 +42,7 @@ void Menu::procesar_opciones(int opcion){
             eliminar_lectura();
             break;
         case OPCION_3:
-            agregar_escritor();
+            agregar_escritor(nombre_completo);
             break;
         case OPCION_4:
             cambiar_dato_escritor();
@@ -74,7 +75,7 @@ void Menu::procesar_opciones(int opcion){
 }
 
 void Menu::agregar_lectura(){
-    string titulo,nombre_completo,genero,tema,titulo_libro;
+    string titulo,nombre_completo,genero,tema,titulo_libro, nuevo_nombre;
     char tipo_lectura;
     int minutos,anio_publicacion,cant_versos;
     Lectura* lectura;
@@ -86,12 +87,14 @@ void Menu::agregar_lectura(){
     getline(cin, titulo);
     
     cout<<"Ingrese el nombre completo del escritor: \n";
-    //cin.ignore();
+    cin.ignore();
     getline(cin, nombre_completo);
+    
     if(escritores.consulta(nombre_completo) == NULL){
-        agregar_escritor();
+        agregar_escritor(nuevo_nombre);
     }
-
+    nombre_completo = nuevo_nombre;
+    
     cout<<"Ingrese la cantidad de minutos: \n";
     cin>>minutos;
 
@@ -133,12 +136,12 @@ void Menu::eliminar_lectura(){
     cout<< "Ingrese el titulo: \n";
     cin.ignore();
     getline(cin, titulo);
-    lecturas.eliminar_por_titulo(titulo);
+    lecturas.baja(titulo);
     lecturas.listar_lecturas();
 }
 
-void Menu::agregar_escritor(){
-    string nombre_completo, nacionalidad, referencia, pasar_total;
+void Menu::agregar_escritor(string &nombre_completo){
+    string nacionalidad, referencia, pasar_total;
     int anio_nacimiento, anio_fallecimiento, cant_total;
     Escritor* escritor;
     cout<<"Ingresa el nombre completo del escritor: \n";

@@ -22,7 +22,7 @@ private:
     Cola cola;
     void agregar_lectura();
     void eliminar_lectura();
-    void agregar_escritor();
+    void agregar_escritor(string &nombre_completo);
     void cambiar_dato_escritor();
     void imprimir_escritores();
     void lectura_random();
@@ -39,7 +39,7 @@ public:
     Menu(Lista_Lecturas lecturas, Lista_Escritores escritores);
     void procesar_opciones(int opcion);
     void vaciar_listas();
-    ~Menu(){};
+    // ~Menu(){};
     int mostrar_menu();
     bool salir();
     

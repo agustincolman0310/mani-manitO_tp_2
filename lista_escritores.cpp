@@ -39,7 +39,9 @@ void Lista_Escritores::agregar_final(D dato){
 
     }
     cantidad++;
+    // delete new_node;
 }
+
 
 void Lista_Escritores::listar_escritores()
 {

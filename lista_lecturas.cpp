@@ -200,6 +200,7 @@ void Lista_Lecturas::agregar_final(T dato){
         }
         temp->cambiar_siguiente(new_node);
     }
+    // delete new_node;
 }
 
 void Lista_Lecturas::eliminar_por_dato(string titulo)
@@ -272,4 +273,5 @@ void Lista_Lecturas::vaciar_lista(){
     while(!vacia()){
         baja(1);
     }
+    cout<<"Se vació correctamente la lista de lecturas"<<endl;
 }

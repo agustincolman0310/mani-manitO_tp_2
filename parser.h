@@ -26,7 +26,7 @@ private:
 
 public:
     Parser();
-    ~Parser(){};
+    // ~Parser(){};
     void procesar_escritores();
     void procesar_lectura();
     Lista_Escritores devolver_escritores(); 

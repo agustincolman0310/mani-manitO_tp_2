@@ -40,17 +40,18 @@ void Parser::procesar_escritores(){
         }
        
         Escritor* escritor = new Escritor(nombre_completo, nacionalidad, stoi(anio_nacimiento), stoi(anio_fallecimiento), referencia);
+        // delete escritor;
         lista_escritores_1.agregar_final(escritor);
         
     }   
     archivo_escritores.close();
-    // lista_escritores_1.listar_escritores();
-
+    lista_escritores_1.listar_escritores();
+    lista_escritores_1.vaciar_lista();
 }
 
 
 void Parser::procesar_lectura(){
-    
+    Lectura* nueva_lectura;
     fstream archivo_lecturas(RUTA_ARCHIVO_LECTURAS, ios::in);  
     if(!archivo_lecturas.is_open()){
         cout << "No se encontro un archivo con nombre " << RUTA_ARCHIVO_LECTURAS << ", se va a crear el archivo" << endl;
@@ -80,34 +81,34 @@ void Parser::procesar_lectura(){
         getline(archivo_lecturas, linea_espacio); 
         
         if(tipo_lectura == "N"){ 
-            Lectura* nueva_novela;
+            // Lectura* nueva_novela;
             if(genero == "HISTORICA"){
                 
-                nueva_novela = new Historica(tipo_lectura[0], titulo, stoi(minutos), stoi(anio_publicacion), lista_escritores_1.consulta(referencia), genero, tema);
+                nueva_lectura = new Historica(tipo_lectura[0], titulo, stoi(minutos), stoi(anio_publicacion), lista_escritores_1.consulta(referencia), genero, tema);
             
             }
             else{
-                nueva_novela = new Novela(tipo_lectura[0], titulo, stoi(minutos), stoi(anio_publicacion), lista_escritores_1.consulta(referencia), genero);
-
+                nueva_lectura = new Novela(tipo_lectura[0], titulo, stoi(minutos), stoi(anio_publicacion), lista_escritores_1.consulta(referencia), genero);
             }
 
 
-        lista_lecturas_1.alta(nueva_novela);
+        // lista_lecturas_1.alta(nueva_novela);
 
         }
         else if(tipo_lectura == "C"){
 
-            Lectura* nuevo_cuento = new Cuento(tipo_lectura[0], titulo, stoi(minutos), stoi(anio_publicacion), lista_escritores_1.consulta(referencia), titulo_libro);
-            lista_lecturas_1.alta(nuevo_cuento);
+            nueva_lectura = new Cuento(tipo_lectura[0], titulo, stoi(minutos), stoi(anio_publicacion), lista_escritores_1.consulta(referencia), titulo_libro);
+            // lista_lecturas_1.alta(nuevo_cuento);
         }
         else{
-            Lectura *nuevo_poema = new Poema(tipo_lectura[0], titulo, stoi(minutos), stoi(anio_publicacion),lista_escritores_1.consulta(referencia) , stoi(cant_versos));
-            lista_lecturas_1.alta(nuevo_poema);
+            nueva_lectura= new Poema(tipo_lectura[0], titulo, stoi(minutos), stoi(anio_publicacion),lista_escritores_1.consulta(referencia) , stoi(cant_versos));
+            // lista_lecturas_1.alta(nuevo_poema);
 
         }
-
+    lista_lecturas_1.alta(nueva_lectura);
     }   
     archivo_lecturas.close();
+    // delete nueva_lectura;
     // lista_lecturas_1.listar_lecturas();
 
 }
@@ -119,3 +120,5 @@ Lista_Lecturas Parser::devolver_lecturas(){
 Lista_Escritores Parser::devolver_escritores(){
     return lista_escritores_1;
 }
+
+// Parser::~Parser(){};
