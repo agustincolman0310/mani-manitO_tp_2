@@ -275,3 +275,24 @@ void Lista_Lecturas::vaciar_lista(){
     }
     cout<<"Se vació correctamente la lista de lecturas"<<endl;
 }
+
+int Lista_Lecturas::procesar_genero(string genero){
+    int genero_procesado = 0;
+    if(genero == "DRAMA"){
+        genero_procesado = DRAMA;
+    }else if(genero == "COMEDIA"){
+        genero_procesado = COMEDIA;
+    }else if(genero == "FICCION"){
+        genero_procesado = FICCION;
+    }else if(genero == "SUSPENSO"){
+        genero_procesado = SUSPENSO;
+    }else if(genero == "TERROR"){
+        genero_procesado = TERROR;
+    }else if(genero == "ROMANTICA"){
+        genero_procesado = ROMANTICA;
+    }else if(genero == "HISTORICA"){
+        genero_procesado = HISTORICA;
+    }
+    return genero_procesado;
+
+}

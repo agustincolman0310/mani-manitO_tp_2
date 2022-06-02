@@ -45,8 +45,8 @@ void Parser::procesar_escritores(){
         
     }   
     archivo_escritores.close();
-    lista_escritores_1.listar_escritores();
-    lista_escritores_1.vaciar_lista();
+    // lista_escritores_1.listar_escritores();
+    // lista_escritores_1.vaciar_lista();
 }
 
 
@@ -84,16 +84,12 @@ void Parser::procesar_lectura(){
             // Lectura* nueva_novela;
             if(genero == "HISTORICA"){
                 
-                nueva_lectura = new Historica(tipo_lectura[0], titulo, stoi(minutos), stoi(anio_publicacion), lista_escritores_1.consulta(referencia), genero, tema);
-            
-            }
-            else{
-                nueva_lectura = new Novela(tipo_lectura[0], titulo, stoi(minutos), stoi(anio_publicacion), lista_escritores_1.consulta(referencia), genero);
-            }
-
-
+                nueva_lectura = new Historica(tipo_lectura[0], titulo, stoi(minutos), stoi(anio_publicacion), lista_escritores_1.consulta(referencia), lista_lecturas_1.procesar_genero(genero),tema);
+           } else{
+                nueva_lectura = new Novela(tipo_lectura[0], titulo, stoi(minutos), stoi(anio_publicacion), lista_escritores_1.consulta(referencia), lista_lecturas_1.procesar_genero(genero));
+            }                                                                                                                                                  
         // lista_lecturas_1.alta(nueva_novela);
-
+           
         }
         else if(tipo_lectura == "C"){
 
@@ -101,15 +97,16 @@ void Parser::procesar_lectura(){
             // lista_lecturas_1.alta(nuevo_cuento);
         }
         else{
-            nueva_lectura= new Poema(tipo_lectura[0], titulo, stoi(minutos), stoi(anio_publicacion),lista_escritores_1.consulta(referencia) , stoi(cant_versos));
+            nueva_lectura = new Poema(tipo_lectura[0], titulo, stoi(minutos), stoi(anio_publicacion),lista_escritores_1.consulta(referencia) , stoi(cant_versos));
             // lista_lecturas_1.alta(nuevo_poema);
 
         }
     lista_lecturas_1.alta(nueva_lectura);
     }   
     archivo_lecturas.close();
+    
     // delete nueva_lectura;
-    // lista_lecturas_1.listar_lecturas();
+    // lista_lecturas_1.listar_lecturas()
 
 }
 

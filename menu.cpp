@@ -1,9 +1,6 @@
 #include "menu.h"
 using namespace std;
 
-
-// Lista_Escritores escritores;
-// Lista_Lecturas lecturas;
 Cola cola;
 
 Menu::Menu(Lista_Lecturas lecturas, Lista_Escritores escritores){
@@ -77,26 +74,55 @@ void Menu::procesar_opciones(int opcion){
 void Menu::agregar_lectura(){
     string titulo,nombre_completo,genero,tema,titulo_libro, nuevo_nombre;
     char tipo_lectura;
-    int minutos,anio_publicacion,cant_versos;
+    int minutos,anio_publicacion,cant_versos,numero_ingresado;
     Lectura* lectura;
     cout<<"Ingrese el tipo de lectura: \n";
     cin>>tipo_lectura;
+    while(tipo_lectura != NOVELA && tipo_lectura != POEMA && tipo_lectura != CUENTO){
+        cout<<"Juraria que no conozco ese tipo de lectura "<<CARA_PENSATIVA<<endl;
+        cout<<"Ingrese el tipo de lectura nuevamente: \n";
+        cin>>tipo_lectura;
+    }
     
     cout<< "Ingrese el titulo: \n";
     cin.ignore();
     getline(cin, titulo);
+    // while(lectura.consulta(titulo) != NULL){
+    //     cout<<"Me parece que ese titulo ya se uso!! \n";
+    //     getline(cin, titulo);
+    // }
     
     cout<<"Ingrese el nombre completo del escritor: \n";
-    cin.ignore();
+    //cin.ignore();
     getline(cin, nombre_completo);
-    
-    if(escritores.consulta(nombre_completo) == NULL){
-        agregar_escritor(nuevo_nombre);
+    while(escritores.consulta(nombre_completo) == NULL){
+        cout<<"Ese escritor no esta en nuestra base de datos... \n";
+        cout<<"Si queres agregar un escritor nuevo pulse 1, si desea escribir el nombre devuelta pulse 2 :\n";
+        cin>>numero_ingresado;
+        if(numero_ingresado == 1){
+            agregar_escritor(nuevo_nombre);
+            nombre_completo = nuevo_nombre;
+        }
+        else if(numero_ingresado == 2){
+            cout<<"Ingrese el nombre completo del escritor: \n";
+            cin.ignore();
+            getline(cin, nombre_completo);
+            cout<<nombre_completo;
+
+        }
+        else{
+            cout<<"Andamos con poca comprension lectora... \n";
+            cout<<"Si queres agregar un escritor nuevo pulse 1, si desea escribir el nombre devuelta pulse 2 :\n";
+        }
     }
-    nombre_completo = nuevo_nombre;
+    // nombre_completo = nuevo_nombre;
     
     cout<<"Ingrese la cantidad de minutos: \n";
     cin>>minutos;
+    while(minutos < 1){
+        cout<<"Ingrese una cantidad correcta de minutos: \n";
+        cin>>minutos;
+    }
 
     cout<<"Ingrese el año publicacion: \n";
     cin>>anio_publicacion;
@@ -104,12 +130,12 @@ void Menu::agregar_lectura(){
     if (tipo_lectura == NOVELA){
         cout<< "Ingrese el genero: \n";
         cin>>genero;
-        lectura = new Novela(tipo_lectura, titulo, minutos, anio_publicacion, escritores.consulta(nombre_completo), genero);
+        lectura = new Novela(tipo_lectura, titulo, minutos, anio_publicacion, escritores.consulta(nombre_completo), lecturas.procesar_genero(genero));
 
             if(genero == "HISTORICA"){
             cout<< "Ingrese el tema: \n";
             cin>>tema;  
-            lectura = new Historica(tipo_lectura, titulo, minutos, anio_publicacion, escritores.consulta(nombre_completo), genero, tema);
+            lectura = new Historica(tipo_lectura, titulo, minutos, anio_publicacion, escritores.consulta(nombre_completo), lecturas.procesar_genero(genero), tema);
 
             }
     }
@@ -136,6 +162,12 @@ void Menu::eliminar_lectura(){
     cout<< "Ingrese el titulo: \n";
     cin.ignore();
     getline(cin, titulo);
+    // while(lectura.consulta(titulo) == NULL){
+    //     cout<<"Me parece que ese titulo no existe!! \n";
+    //     cout<< "Ingrese el titulo: \n";
+    //     cin.ignore();
+    //     getline(cin, titulo);
+    // }
     lecturas.baja(titulo);
     lecturas.listar_lecturas();
 }
@@ -147,16 +179,24 @@ void Menu::agregar_escritor(string &nombre_completo){
     cout<<"Ingresa el nombre completo del escritor: \n";
     cin.ignore();
     getline(cin, nombre_completo);
-
+    while(escritores.consulta(nombre_completo) != NULL){
+        cout<<"Este escritor ya se encuentra en su lista."<<endl;
+        cout<<"Ingresa el nombre completo del escritor: \n";
+        getline(cin, nombre_completo);
+        cout<<nombre_completo<<endl;
+    }
     cout<<"Ingresa la nacionalidad del escritor: \n";
     cin>>nacionalidad;
-
+    
     cout<<"Ingresa el año de nacimiento del escritor: \n";
     cin>>anio_nacimiento;
-
     cout<<"Ingresa el año de fallecimiento del escritor: \n";
     cin>>anio_fallecimiento;
-
+    while(anio_nacimiento > anio_fallecimiento){
+        cout<<"¿Te parece que el año de fallecimiento sea menor al de nacimiento? "<<CARA_PENSATIVA<<endl;
+        cout<<"Ingresa el año de fallecimiento del escritor: \n";
+        cin>>anio_fallecimiento;
+    }
     cant_total = escritores.obtener_cantidad() + 1;
     
     pasar_total = to_string(cant_total);

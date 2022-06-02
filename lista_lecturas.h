@@ -3,6 +3,7 @@
 
 #include "lectura.h"
 #include "nodo.h"
+#include "constantes.h"
 
 
 typedef Lectura* T;
@@ -67,6 +68,7 @@ public:
     void listar_por_genero(string genero_recibido);
     void agregar_final(T dato);
     T encontrar_lectura_menor(int &minimo);
+    int procesar_genero(string genero);
     // ~Lista_Lecturas();
     int comparar(T dato);
     
