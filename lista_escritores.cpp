@@ -50,12 +50,19 @@ void Lista_Escritores::listar_escritores(){
     }
 }
 
+string Lista_Escritores::convertir_en_mayuscula(string cadena){
+    int largo_cadena = (int) cadena.length();
+    for(int i = 0; i < largo_cadena; i++) 
+        cadena[i] = (char) toupper(cadena[i]);
+    return cadena;
+}
+
  Escritor* Lista_Escritores::consulta(string nombre_completo){
     Nodo<Escritor*> *temp = primero;
     Escritor* escritor = NULL;
-   
+    
     while (temp) {
-        if ((temp->obtener_dato()->obtener_nombre_completo() == nombre_completo) || (temp->obtener_dato()->obtener_referencia() == nombre_completo)) {
+        if ((convertir_en_mayuscula(temp->obtener_dato()->obtener_nombre_completo()) == convertir_en_mayuscula(nombre_completo)) || (convertir_en_mayuscula(temp->obtener_dato()->obtener_referencia()) == convertir_en_mayuscula(nombre_completo))) {
             escritor = temp->obtener_dato();
         }
         temp = temp->obtener_siguiente();
@@ -76,8 +83,6 @@ void Lista_Escritores::modificar_anio_fallecimiento(string nombre_escritor, int 
 }
 
 void Lista_Escritores::baja(int pos) {
-
-
     Nodo<Escritor*>* borrar = primero;
     if (pos == 1){
         primero = primero->obtener_siguiente();

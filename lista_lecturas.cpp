@@ -27,6 +27,13 @@ void Lista_Lecturas::listar_por_escritor(string nombre_completo){
     }
 }
 
+string Lista_Lecturas::convertir_en_mayuscula(string cadena){
+    int largo_cadena = (int) cadena.length();
+    for(int i = 0; i < largo_cadena; i++) 
+        cadena[i] = (char) toupper(cadena[i]);
+    return cadena;
+}
+
 void Lista_Lecturas::listar_entre_anios(int desde, int hasta){
     Nodo<Lectura*> *temp = primero;
     while(temp){
@@ -53,12 +60,12 @@ void Lista_Lecturas::alta(Lectura* dato){
             temp->cambiar_siguiente(nuevo_nodo);
         }        
     cantidad++; 
-    // temp->eliminar_dato();
+    // delete nuevo_nodo->obtener_dato();
+    // delete nuevo_nodo;
 }
 
 void Lista_Lecturas::listar_por_genero(string genero_recibido){
     Nodo<Lectura*> *temp = primero;
-//     D escritor = NULL;
     while (temp) {
         if ((temp->obtener_dato()->obtener_tipo_lectura() == 'N') ) {
             if(temp->obtener_dato()->obtener_genero() == genero_recibido)
@@ -66,22 +73,35 @@ void Lista_Lecturas::listar_por_genero(string genero_recibido){
         }
         temp = temp->obtener_siguiente();
     }
-   
 }
 
-
-int Lista_Lecturas::buscar_titulo(string titulo_buscado)
-{
+int Lista_Lecturas::buscar_titulo(string titulo_buscado){
     Nodo<Lectura*> *temp = primero;
     int cont = 0;
-
-    while (temp->obtener_dato()->obtener_titulo() != titulo_buscado) {
-            cont++;
-            temp = temp->obtener_siguiente();
+    while (convertir_en_mayuscula(temp->obtener_dato()->obtener_titulo()) !=  convertir_en_mayuscula(titulo_buscado)) {
+        cont++;
+        temp = temp->obtener_siguiente();
     }
     cont++;
     return cont;
 }
+
+Lectura* Lista_Lecturas::consulta_titulo(string titulo){
+    Nodo<Lectura*> *temp = primero;
+    Lectura* lectura = NULL;
+    bool lectura_encontrada = false;
+    while (temp && !lectura_encontrada) {
+        if (convertir_en_mayuscula(temp->obtener_dato()->obtener_titulo()) == convertir_en_mayuscula(titulo)){
+            lectura = temp->obtener_dato();
+            lectura_encontrada = true;
+        }
+        temp = temp->obtener_siguiente();
+    }
+    return lectura;
+}
+
+
+
 
 
 Lectura* Lista_Lecturas::encontrar_lectura_menor(int &minimo){
@@ -153,13 +173,19 @@ void Lista_Lecturas::vaciar_lista(){
         delete obtener_nodo(i)->obtener_dato();
         delete obtener_nodo(i);
     }
-    // delete lista_lecturas;
+    //delete lista_lecturas;
 }
-
+// Lista_Lecturas::~Lista_Lecturas(){
+//     for(int i = 1; i <= obtener_cantidad();i++){
+//         delete obtener_nodo(i)->obtener_dato();
+//     }
+//     // vaciar_lista();
+// }
 void Lista_Lecturas::listar_lecturas(){
     for(int i=1; i <= obtener_cantidad(); i++){
         obtener_nodo(i)->obtener_dato()->mostrar();
     }
+    
 }
 
 int Lista_Lecturas::procesar_genero(string genero){

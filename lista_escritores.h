@@ -24,7 +24,7 @@ class Lista_Escritores{
         int obtener_cantidad();
 
         // //PRE: La lista no debe estar vacia.
-        // //POST: Muestra por pantalla los elementos de la lista.
+        // //POST: Muestra los elementos de la lista.
         void listar_escritores();
 
         // // PRE: La lista no debe estar vacía.
@@ -53,6 +53,7 @@ class Lista_Escritores{
         bool vacia();
         void alta(Escritor* dato, int posicion);
         void alta(Escritor* dato);
+        string convertir_en_mayuscula(string cadena);
         // void prueba_alta(Escritor* dato);
         // void prueba_baja();
     private:

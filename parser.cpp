@@ -16,7 +16,7 @@ void Parser::procesar_escritores(){
 
     fstream archivo_escritores(RUTA_ARCHIVO_ESCRITORES, ios::in);  
     if(!archivo_escritores.is_open()){
-        cout << "No se encontro un archivo con nombre " << RUTA_ARCHIVO_ESCRITORES << ", se va a crear el archivo" << endl;
+        cout << "No se encontró un archivo con nombre " << RUTA_ARCHIVO_ESCRITORES << ", se va a crear el archivo" << endl;
         archivo_escritores.open(RUTA_ARCHIVO_ESCRITORES, ios::out);
         archivo_escritores.close();
         archivo_escritores.open(RUTA_ARCHIVO_ESCRITORES, ios::in);
@@ -105,11 +105,6 @@ void Parser::procesar_lectura(){
     lista_lecturas_1.alta(nueva_lectura);
     }   
     archivo_lecturas.close();
-    
-    // delete nueva_lectura;
-    //lista_lecturas_1.listar_lecturas();
-    //lista_lecturas_1.vaciar_lista();
-    // lista_escritores_1.vaciar_lista();
 }
 
 Lista_Lecturas Parser::devolver_lecturas(){

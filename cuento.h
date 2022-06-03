@@ -11,7 +11,6 @@ public:
     ~Cuento(){};
     void mostrar();
     string obtener_genero();
-
 };
 
 #endif
