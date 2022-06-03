@@ -10,7 +10,7 @@ Poema::Poema(char tipo_lectura, std::string titulo, int minutos, int anio_public
 void Poema::mostrar(){
     std::cout<< "El tipo de lectura es: "<< tipo_lectura<< std::endl;
     std::cout<< "El titulo es: "<< titulo<< std::endl;
-    std::cout<< "La lectura lleva: "<< minutos << " minutos"<< std::endl;
+    std::cout<< "La lectura tiene una duracion de: "<< minutos << " minutos"<< std::endl;
     std::cout<< "La lectura fue publicada en: "<< anio_publicacion << std::endl;
     std::cout<< "El escritor es: " << escritor->obtener_nombre_completo() << std::endl;
     std::cout<< "El poema tiene: "<< cant_versos<< " versos"<< std::endl;

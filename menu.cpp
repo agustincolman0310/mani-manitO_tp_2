@@ -128,13 +128,16 @@ void Menu::agregar_lectura(){
     if (toupper(tipo_lectura) == NOVELA){
         cout<< "Ingrese el genero: \n";
         cin>>genero;
+        while(lecturas.convertir_en_mayuscula(genero) != "TERROR" && lecturas.convertir_en_mayuscula(genero) != "DRAMA" && lecturas.convertir_en_mayuscula(genero) != "COMEDIA" && lecturas.convertir_en_mayuscula(genero) != "FICCION" && lecturas.convertir_en_mayuscula(genero) != "SUSPENSO" && lecturas.convertir_en_mayuscula(genero) != "ROMANTICA" && lecturas.convertir_en_mayuscula(genero) != "HISTORICA"){
+            cout<<"Ingrese un genero valido... \n";
+            cin>>genero;
+        }
         lectura = new Novela(tipo_lectura, titulo, minutos, anio_publicacion, escritores.consulta(nombre_completo), lecturas.procesar_genero(lecturas.convertir_en_mayuscula(genero)));
 
-            if(lecturas.convertir_en_mayuscula(genero) == "HISTORICA"){
+        if(lecturas.convertir_en_mayuscula(genero) == "HISTORICA"){
             cout<< "Ingrese el tema: \n";
             cin>>tema;  
             lectura = new Historica(tipo_lectura, titulo, minutos, anio_publicacion, escritores.consulta(nombre_completo), lecturas.procesar_genero(lecturas.convertir_en_mayuscula(genero)), tema);
-
             }
     }
     else if(toupper(tipo_lectura) == CUENTO){

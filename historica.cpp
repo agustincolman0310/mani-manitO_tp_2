@@ -9,11 +9,11 @@ Historica::Historica(char tipo_lectura, std::string titulo,int minutos, int anio
 
 void Historica::mostrar(){
     std::cout<< "El tipo de lectura es: "<< tipo_lectura<< std::endl;
-    std::cout<< "El titulo es: "<< titulo<< std::endl;
-    std::cout<< "La lectura lleva: "<< minutos << " minutos"<< std::endl;
-    std::cout<< "La lectura fue publicada en: "<< anio_publicacion << std::endl;
+    std::cout<< "El título es: "<< titulo<< std::endl;
+    std::cout<< "La lectura tiene una duración de : "<< minutos << " minutos"<< std::endl;
+    std::cout<< "La lectura fue publicada en el año: "<< anio_publicacion << std::endl;
     std::cout<< "El escritor es: " << escritor->obtener_nombre_completo() << std::endl;
-    std::cout<< "El genero es: "<< convertir_genero(genero) << std::endl;
+    std::cout<< "El género es: "<< convertir_genero(genero) << std::endl;
     std::cout<< "El tema es: "<< tema<< std::endl;
     std::cout<<"\n";
 }
