@@ -24,6 +24,7 @@ private:
     Lista_Lecturas lista_lecturas_1;
 
 
+
 public:
     Parser();
     // ~Parser(){};

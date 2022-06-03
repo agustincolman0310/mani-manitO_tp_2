@@ -6,8 +6,7 @@ Cola cola;
 Menu::Menu(Lista_Lecturas lecturas, Lista_Escritores escritores){
     this->lecturas = lecturas;
     this->escritores = escritores;
-    // seguir_jugando = true;
-    
+    // seguir_jugando = true; 
 }
 
 int Menu::mostrar_menu(){
@@ -154,7 +153,7 @@ void Menu::agregar_lectura(){
 
     } 
     lecturas.alta(lectura);
-    lecturas.listar_lecturas();
+    //lecturas.listar_lecturas();
 }
 
 void Menu::eliminar_lectura(){
@@ -169,7 +168,7 @@ void Menu::eliminar_lectura(){
     //     getline(cin, titulo);
     // }
     lecturas.baja(titulo);
-    lecturas.listar_lecturas();
+    //lecturas.listar_lecturas();
 }
 
 void Menu::agregar_escritor(string &nombre_completo){
@@ -203,7 +202,7 @@ void Menu::agregar_escritor(string &nombre_completo){
     referencia = "(" + pasar_total + ")";
     escritor = new Escritor(nombre_completo, nacionalidad, anio_nacimiento, anio_fallecimiento, referencia);
     escritores.alta(escritor);
-    escritores.listar_escritores();
+    //escritores.listar_escritores();
 }
 
 void Menu::cambiar_dato_escritor(){
@@ -216,7 +215,7 @@ void Menu::cambiar_dato_escritor(){
     cout<<"Ingrese la fecha de fallecimiento nueva: \n";
     cin>>anio_fallecimiento;
     escritores.modificar_anio_fallecimiento(nombre_completo,anio_fallecimiento);
-    escritores.listar_escritores();
+    //escritores.listar_escritores();
 }
 
 void Menu::imprimir_escritores(){
@@ -250,6 +249,7 @@ void Menu::listar_por_escritor(){
     cin.ignore();
     getline(cin, nombre_completo);
     lecturas.listar_por_escritor(nombre_completo);
+
 }
 
 void Menu::listar_por_genero(){

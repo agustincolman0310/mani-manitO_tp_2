@@ -17,7 +17,7 @@ Lista_Lecturas::Lista_Lecturas(){
 
 
 void Lista_Lecturas::listar_por_escritor(string nombre_completo){
-    Nodo<T> *temp = primero;
+    Nodo<Lectura*> *temp = primero;
 
     while(temp){
         if(temp->obtener_dato()->obtener_escritor()->obtener_nombre_completo() == nombre_completo){
@@ -28,7 +28,7 @@ void Lista_Lecturas::listar_por_escritor(string nombre_completo){
 }
 
 void Lista_Lecturas::listar_entre_anios(int desde, int hasta){
-    Nodo<T> *temp = primero;
+    Nodo<Lectura*> *temp = primero;
     while(temp){
         if((temp->obtener_dato()->obtener_anio_publicacion()) >= desde && (temp->obtener_dato()->obtener_anio_publicacion()) <= hasta ){
             temp->obtener_dato()->mostrar();
@@ -37,22 +37,9 @@ void Lista_Lecturas::listar_entre_anios(int desde, int hasta){
     }
 }
 
-int Lista_Lecturas::comparar(T dato){
-    int valor = 0;
-    // Nodo<T> *nuevo_nodo = new Nodo<T> (data_);
-    Nodo<T> *temp = primero;
-    if ((temp->obtener_dato()->obtener_anio_publicacion()) > (dato->obtener_anio_publicacion())) {
-        valor = 1;
-    }
-    else if((temp->obtener_dato()->obtener_anio_publicacion()) < (dato->obtener_anio_publicacion())){
-        valor = -1;
-    }
-
-    return valor;   
-}
-void Lista_Lecturas::insertar_ordenadamente(T dato){
-    Nodo<T> *nuevo_nodo = new Nodo<T> (dato);
-    Nodo<T> *temp = primero;
+void Lista_Lecturas::alta(Lectura* dato){
+    Nodo<Lectura*> *nuevo_nodo = new Nodo<Lectura*> (dato);
+    Nodo<Lectura*> *temp = primero;
     if (!primero || (primero->obtener_dato()->obtener_anio_publicacion()) > (dato->obtener_anio_publicacion())) {
         
         nuevo_nodo->cambiar_siguiente(primero);
@@ -70,7 +57,7 @@ void Lista_Lecturas::insertar_ordenadamente(T dato){
 }
 
 void Lista_Lecturas::listar_por_genero(string genero_recibido){
-    Nodo<T> *temp = primero;
+    Nodo<Lectura*> *temp = primero;
 //     D escritor = NULL;
     while (temp) {
         if ((temp->obtener_dato()->obtener_tipo_lectura() == 'N') ) {
@@ -81,81 +68,25 @@ void Lista_Lecturas::listar_por_genero(string genero_recibido){
     }
    
 }
-void Lista_Lecturas::listar_lecturas(){
-    Nodo<T> *temp = primero;
-    
-    if (!primero) {
-        cout << "La Lista está vacía " << endl;
-    } else {
-        while (temp) {
-            if(temp != NULL){
-                temp->obtener_dato()->mostrar();
-            }
-            temp = temp->obtener_siguiente();
-        }
-  }
-}
-void Lista_Lecturas::eliminar_por_titulo(string titulo){
-    Nodo<T> *temp = primero;
-    Nodo<T> *temp1 = primero->obtener_siguiente();
 
-    int cont = 0;
-
-    if (primero->obtener_dato()->obtener_titulo() == titulo) {
-        primero = temp->obtener_siguiente();
-    } else {
-        while (temp1) {
-            if (temp1->obtener_dato()->obtener_titulo() == titulo) {
-                Nodo<T> *aux_node = temp1;
-                temp->cambiar_siguiente(temp1->obtener_siguiente());
-                delete aux_node;
-                cont++;
-                cantidad--;
-            }
-            temp = temp->obtener_siguiente();
-            temp1 = temp1->obtener_siguiente();
-        }
-    }
-
-    if (cont == 0) {
-        cout << "No existe el dato " << endl;
-    }
-}
-
-void Lista_Lecturas::alta(T dato){
-    // Nodo<T> *nuevo_nodo = new Nodo<T> (dato);
-    insertar_ordenadamente(dato);
-    //nuevo_nodo->eliminar_dato();
-    // delete nuevo_nodo;
-}
 
 int Lista_Lecturas::buscar_titulo(string titulo_buscado)
 {
-    Nodo<T> *temp = primero;
+    Nodo<Lectura*> *temp = primero;
     int cont = 0;
-    //int cont2 = 1;
- 
+
     while (temp->obtener_dato()->obtener_titulo() != titulo_buscado) {
-        //if (temp->obtener_dato()->obtener_titulo() == titulo_buscado) {
-            //cout << "El dato se encuentra en la posición: " << cont << endl;
-            // cont2++;
             cont++;
             temp = temp->obtener_siguiente();
     }
     cont++;
- 
-    // if (cont2 == 0) {
-    //     cout << "No existe el dato " << endl;
-    // }
-    // cout << endl << endl;
-
     return cont;
 }
 
 
-T Lista_Lecturas::encontrar_lectura_menor(int &minimo){
-    Nodo<T> *temp = primero;
-    T lectura = NULL;
+Lectura* Lista_Lecturas::encontrar_lectura_menor(int &minimo){
+    Nodo<Lectura*> *temp = primero;
+    Lectura* lectura = NULL;
     int minimo_maximo = 0;
     while(temp){
         
@@ -177,8 +108,8 @@ T Lista_Lecturas::encontrar_lectura_menor(int &minimo){
 
 void Lista_Lecturas::sortear_lectura(int numero){
     int i = 1;
-    Nodo<T> *temp = primero;
-    T lectura_sorteada = NULL;
+    Nodo<Lectura*> *temp = primero;
+    Lectura* lectura_sorteada = NULL;
 
     while(temp){
         if(i == numero){
@@ -190,47 +121,8 @@ void Lista_Lecturas::sortear_lectura(int numero){
     lectura_sorteada->mostrar();
 }
 
-void Lista_Lecturas::agregar_final(T dato){
-    Nodo<T> *new_node = new Nodo<T> (dato);
-    Nodo<T> *temp = primero;
-
-    if (!primero) {
-        primero = new_node;
-    } else {
-        while (temp->obtener_siguiente() != NULL) {
-            temp = temp->obtener_siguiente();
-        }
-        temp->cambiar_siguiente(new_node);
-    }
-    // delete new_node;
-}
-
-void Lista_Lecturas::eliminar_por_dato(string titulo)
-{
-    Nodo<T> *temp = primero;
-    Nodo<T> *temp1 = primero->obtener_siguiente();
-
-    int cont = 0;
-
-    if (primero->obtener_dato()->obtener_titulo() == titulo) {
-        primero = temp->obtener_siguiente();
-    } else {
-        while (temp1) {
-            if (temp1->obtener_dato()->obtener_titulo() == titulo) {
-                Nodo<T> *aux_node = temp1;
-                temp->cambiar_siguiente(temp1->obtener_siguiente());
-                delete aux_node;
-                cont++;
-                cantidad--;
-            }
-            temp = temp->obtener_siguiente();
-            temp1 = temp1->obtener_siguiente();
-        }
-    }
-}
-
-Nodo<T>* Lista_Lecturas::obtener_nodo(int pos) {
-    Nodo<T>* aux = primero;
+Nodo<Lectura*>* Lista_Lecturas::obtener_nodo(int pos) {
+    Nodo<Lectura*>* aux = primero;
     int contador = 1;
     while (contador < pos) {
         aux = aux->obtener_siguiente();
@@ -242,12 +134,12 @@ Nodo<T>* Lista_Lecturas::obtener_nodo(int pos) {
 void Lista_Lecturas::baja(string titulo) {
     int pos = buscar_titulo(titulo);
     
-    Nodo<T>* borrar = primero;
+    Nodo<Lectura*>* borrar = primero;
     if (pos == 1){
         primero = primero->obtener_siguiente();
     }
     else {
-        Nodo<T>* anterior = obtener_nodo(pos - 1);
+        Nodo<Lectura*>* anterior = obtener_nodo(pos - 1);
         borrar = anterior->obtener_siguiente();
         anterior->cambiar_siguiente(borrar->obtener_siguiente());
     }
@@ -256,28 +148,18 @@ void Lista_Lecturas::baja(string titulo) {
     delete borrar;
 }
 
-void Lista_Lecturas::baja(int pos) {
-
-
-    Nodo<T>* borrar = primero;
-    if (pos == 1){
-        primero = primero->obtener_siguiente();
+void Lista_Lecturas::vaciar_lista(){
+    for(int i=1; i <= obtener_cantidad(); i++){
+        delete obtener_nodo(i)->obtener_dato();
+        delete obtener_nodo(i);
     }
-    else {
-        Nodo<T>* anterior = obtener_nodo(pos - 1);
-        borrar = anterior->obtener_siguiente();
-        anterior->cambiar_siguiente(borrar->obtener_siguiente());
-    }
-    cantidad--;
-    borrar->eliminar_dato();
-    delete borrar;
+    // delete lista_lecturas;
 }
 
-void Lista_Lecturas::vaciar_lista(){
-    while(!vacia()){
-        baja(1);
+void Lista_Lecturas::listar_lecturas(){
+    for(int i=1; i <= obtener_cantidad(); i++){
+        obtener_nodo(i)->obtener_dato()->mostrar();
     }
-    cout<<"Se vació correctamente la lista de lecturas"<<endl;
 }
 
 int Lista_Lecturas::procesar_genero(string genero){

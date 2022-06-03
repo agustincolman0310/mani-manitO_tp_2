@@ -1,6 +1,7 @@
 #include "parser.h"
 #include <string>
 using namespace std;
+#include "lista.h"
 
  Parser::Parser() {
       this->lista_escritores_1 = lista_escritores_1;
@@ -41,11 +42,11 @@ void Parser::procesar_escritores(){
        
         Escritor* escritor = new Escritor(nombre_completo, nacionalidad, stoi(anio_nacimiento), stoi(anio_fallecimiento), referencia);
         // delete escritor;
+
         lista_escritores_1.alta(escritor);
-        
     }   
     archivo_escritores.close();
-    // lista_escritores_1.listar_escritores();
+    //lista_escritores_1.listar_escritores();
     // lista_escritores_1.vaciar_lista();
 }
 
@@ -106,9 +107,8 @@ void Parser::procesar_lectura(){
     archivo_lecturas.close();
     
     // delete nueva_lectura;
-    lista_lecturas_1.listar_lecturas();
-
-    lista_lecturas_1.vaciar_lista();
+    //lista_lecturas_1.listar_lecturas();
+    //lista_lecturas_1.vaciar_lista();
     // lista_escritores_1.vaciar_lista();
 }
 
