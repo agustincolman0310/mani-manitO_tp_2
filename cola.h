@@ -5,51 +5,41 @@
 
 typedef Lectura* Dato;
 class Cola {
-    // Atributos
 private:
     Nodo<Dato>* primero;
     Nodo<Dato>* ultimo;
 
-    // Metodos
 public:
     /*
     Constructor
     PRE: -
-    POS: construye una Cola vacia
+    POST: Construye una Cola vacia.
     */
     Cola();
-
     /*
     Alta
-    PRE: e es un Dato valido
-    POS: agrega el elemento al final de la Cola
+    PRE: e es un Dato valido.
+    POST: Agrega el elemento al final de la Cola.
     */
-    void alta(Dato e);
-
+    void alta(Dato elemento);
     /*
     Baja
-    PRE: la Cola no puede estar vacia
-    POS: quita el elemento del principio de la Cola
+    PRE: La Cola no puede estar vacia.
+    POST: Quita el elemento del principio de la Cola.
     */
     void baja();
-
     /*
-    Consulta
-    PRE: la Cola no puede estar vacia
-    POS: devuelve el elemento del principio de la Cola (pero no modifica)
+    PRE: La Cola no puede estar vacia.
+    POST: Devuelve el elemento del principio de la Cola.
     */
     Dato consulta();
-
-
     /*
-    Vacia
     PRE: -
-    POS: devuelve true si la Cola esta vacia, false de lo contrario
+    POST: Devuelve true si la Cola esta vacia, false de lo contrario.
     */
     bool vacia();
-
-    // Destructor
+    // Destructor.
     ~Cola();
 };
 
-#endif // COLA_H_INCLUDED
+#endif 

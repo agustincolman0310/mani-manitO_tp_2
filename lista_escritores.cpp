@@ -98,14 +98,8 @@ void Lista_Escritores::baja(int pos) {
 }
 
 void Lista_Escritores::vaciar_lista(){
-    // for(int i=1; i <= obtener_cantidad(); i++){
-    // //     lista_escritores.baja(i);
-    // //     //delete obtener_nodo(i)->obtener_dato();
-    //     delete obtener_nodo(i);
-    // }
     while(!vacia()){
         baja(1);
     }
 
-    // delete this->lista_escritores;
 }

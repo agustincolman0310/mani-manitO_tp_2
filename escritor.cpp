@@ -44,9 +44,24 @@ Escritor::Escritor(string nombre_completo, string nacionalidad, int anio_nacimie
 void Escritor::mostrar_atributos(){
         cout << "N° referencia: " << this->referencia << endl;
         cout << "Nombre completo: " << this->nombre_completo << endl;
-        cout << "Nacionalidad: " << this->nacionalidad << endl;
-        cout << "Año nacimiento: " << this->anio_nacimiento << endl;
-        cout << "Año fallecimiento: " << this->anio_fallecimiento << endl;
+        if(this->nacionalidad == NACIONALIDAD_DESCONOCIDA){
+            cout << "Nacionalidad: Desconocida " << endl;
+        }
+        else{
+            cout << "Nacionalidad: " << this->nacionalidad << endl;
+        }
+        if(this->anio_nacimiento == ANIO_DESCONOCIDO){
+            cout << "Año nacimiento: Desconocido"<< endl;
+        }
+        else{
+            cout << "Año nacimiento: " << this->anio_nacimiento << endl;
+        }
+        if(this->anio_fallecimiento == ANIO_DESCONOCIDO){
+            cout << "Año fallecimiento: Desconocido" << endl;
+        }
+        else{
+            cout << "Año fallecimiento: " << this->anio_fallecimiento << endl;
+        }
         cout << "\n";
 }
 

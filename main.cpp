@@ -26,7 +26,8 @@ int main() {
     while(opcion_recibida != OPCION_12){
         opcion_recibida = menu.mostrar_menu();
         menu.procesar_opciones(opcion_recibida);
-     }
+    }
+
     menu.vaciar_listas();
 
 

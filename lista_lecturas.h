@@ -60,7 +60,7 @@ public:
     PRE: La lista debe ser válida.
     POST: Devuelve la posición del elemento que tiene el título que se pasa por parámetro.
     */
-    int buscar_titulo(string titulo_buscado);;
+    int buscar_titulo(string titulo_buscado);
     /*
     PRE: numero deber ser mayor a 0.
     POST: Muestra la lectura que se encuentra en la posición numero.
@@ -96,7 +96,7 @@ public:
     int procesar_genero(string genero);
     ~Lista_Lecturas(){};
     // int comparar(T dato);
-
+    void baja(int pos);
 };
 
 #endif

@@ -1,0 +1,5 @@
+Basicamente el trabajo practico lo fuimos haciendo de manera conjunta con la herramienta de Live Share de Visual Studio, 
+tratamos de coincidir bastantes dias a la semana y lo fuimos encarando asi. Uno se encargo principalmente de hacer la 
+implementacion de la lista y los nodos, pero todos decidimos la implementacion de una lista simplemente enlazada y el 
+posterior desarrollo tambien. En las ultimas instancias del trabajo nos dividimos lo que es la interfaz, la busqueda de
+casos borders, el desarrollo del manual del usuario y las pre y post condiciones. 

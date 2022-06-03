@@ -5,11 +5,11 @@
 // #include "string.h"
 class Lectura{
 protected:
+    char tipo_lectura;
     std::string titulo;
     int minutos;
     int anio_publicacion;
     Escritor* escritor;
-    char tipo_lectura;
 public:
     //Construye una lectura.
     Lectura(char tipo_lectura, std::string titulo, int minutos, int anio_publicacion, Escritor* escritor);

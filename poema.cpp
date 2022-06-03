@@ -13,7 +13,7 @@ void Poema::mostrar(){
     std::cout<< "La lectura tiene una duracion de: "<< minutos << " minutos"<< std::endl;
     std::cout<< "La lectura fue publicada en: "<< anio_publicacion << std::endl;
     std::cout<< "El escritor es: " << escritor->obtener_nombre_completo() << std::endl;
-    std::cout<< "El poema tiene: "<< cant_versos<< " versos"<< std::endl;
+    std::cout<< "El Poema tiene: "<< cant_versos<< " versos"<< std::endl;
     std::cout<<"\n";
 
 }

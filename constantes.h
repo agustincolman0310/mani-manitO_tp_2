@@ -4,6 +4,8 @@
 const char NOVELA = 'N';
 const char CUENTO = 'C';
 const char POEMA = 'P';
+const int ANIO_DESCONOCIDO = -1;
+const std::string NACIONALIDAD_DESCONOCIDA = "¿?";
 #define CARA_PENSATIVA "\U0001f914"
 //const char HISTORICA = 'H';
 const std::string RUTA_ARCHIVO_ESCRITORES = "escritores.txt";

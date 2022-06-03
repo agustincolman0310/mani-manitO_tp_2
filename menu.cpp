@@ -11,19 +11,24 @@ Menu::Menu(Lista_Lecturas lecturas, Lista_Escritores escritores){
 
 int Menu::mostrar_menu(){
     int opcion = 0;
-    cout<<"\t1- Agregar nueva lectura.\n"; 
-    cout<<"\t2- Quitar una lectura.\n";     
-    cout<<"\t3- Agregar escritor.\n"; ;
-    cout<<"\t4- Cambiar dato de un escritor.\n";
-    cout<<"\t5- Listar escritores.\n"; 
-    cout<<"\t6- Sortear lecturas random.\n"; 
-    cout<<"\t7- Listar todas las lecturas.\n"; 
-    cout<<"\t8- Listar lecturas entre años.\n";
-    cout<<"\t9- Listar lecturas por escritor.\n";
-    cout<<"\t10- Listar novelas por género.\n";
-    cout<<"\t11- Armar cola ordenada por tiempo de lectura.\n";
-    cout<<"\t12- Salir.\n";
-    cout<<"Ingrese una opción: ";
+    cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n";
+    cout<<"\t###########~MENU~########### \n";
+    cout<<"\t[1] Agregar nueva lectura.\n"; 
+    cout<<"\t[2] Quitar una lectura.\n";     
+    cout<<"\t[3] Agregar escritor.\n"; ;
+    cout<<"\t[4] Cambiar dato de un escritor.\n";
+    cout<<"\t[5] Listar escritores.\n"; 
+    cout<<"\t[6] Sortear lecturas random.\n"; 
+    cout<<"\t[7] Listar todas las lecturas.\n"; 
+    cout<<"\t[8] Listar lecturas entre años.\n";
+    cout<<"\t[9] Listar lecturas por escritor.\n";
+    cout<<"\t[10] Listar novelas por género.\n";
+    cout<<"\t[11] Armar cola ordenada por tiempo de lectura.\n";
+    cout<<"\t[12] Salir.\n";
+    cout<<"\t###################### \n";
+    cout<<"\t# Ingrese una opción # \n";
+    cout<<"\t###################### \n";
+    cout<<"\t->";
     cin>>opcion;
     return opcion;
 }
@@ -64,17 +69,15 @@ void Menu::procesar_opciones(int opcion){
         case OPCION_11:
             cola_ordenada();
             break;
-        case OPCION_12:
-            salir();
-            break;
     }
 }
 
 void Menu::agregar_lectura(){
-    string titulo,nombre_completo,genero,tema,titulo_libro, nuevo_nombre;
+    string titulo,nombre_completo,genero,tema,titulo_libro,nuevo_nombre;
     char tipo_lectura;
     int minutos,anio_publicacion,cant_versos,numero_ingresado;
     Lectura* lectura;
+    cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n";
     cout<<"Ingrese el tipo de lectura (C para cuento, P para poema, N para novela): \n";
     cin>>tipo_lectura;
     while(tipo_lectura!= NOVELA && tipo_lectura != POEMA && tipo_lectura != CUENTO){
@@ -158,6 +161,7 @@ void Menu::agregar_lectura(){
 }
 
 void Menu::eliminar_lectura(){
+    cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n";
     string titulo;
     cout<< "Ingrese el titulo: \n";
     cin.ignore();
@@ -174,7 +178,7 @@ void Menu::agregar_escritor(string &nombre_completo){
     string nacionalidad, referencia, pasar_total;
     int anio_nacimiento, anio_fallecimiento, cant_total;
     Escritor* escritor;
-    
+    cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n";
     cout<<"Ingresa el nombre completo del escritor: \n";
     cin.ignore();
     getline(cin, nombre_completo);
@@ -193,7 +197,7 @@ void Menu::agregar_escritor(string &nombre_completo){
     cout<<"Ingresa el año de fallecimiento del escritor: \n";
     cin>>anio_fallecimiento;
     
-    while(anio_nacimiento > anio_fallecimiento){
+    while(anio_nacimiento > anio_fallecimiento && anio_fallecimiento != -1){
         cout<<"¿Te parece que el año de fallecimiento sea menor al de nacimiento? "<<CARA_PENSATIVA<<endl;
         cout<<"Ingresa el año de fallecimiento del escritor: \n";
         cin>>anio_fallecimiento;
@@ -209,6 +213,7 @@ void Menu::agregar_escritor(string &nombre_completo){
 void Menu::cambiar_dato_escritor(){
     string nombre_completo;
     int anio_fallecimiento;
+    cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n";
     cout<<"Ingresa el nombre completo del escritor que queres modificar: \n";   
     cin.ignore();
     getline(cin, nombre_completo);
@@ -223,6 +228,7 @@ void Menu::cambiar_dato_escritor(){
 }
 
 void Menu::imprimir_escritores(){
+    cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n";
     cout<<"Imprimiendo... \n";
     escritores.listar_escritores();
 }
@@ -231,18 +237,22 @@ void Menu::lectura_random(){
     int valor;
     srand((unsigned int)time(NULL));
     valor = 1 + rand() % lecturas.obtener_cantidad();
-    lecturas.sortear_lectura(valor);
+    cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n";
     cout<<"La lectura sorteada es la " <<valor<< "...\n";
     cout<<"Imprimiendo... \n";
+    lecturas.sortear_lectura(valor);
+
 }
 
 void Menu::imprimir_lecturas(){
+    cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n";
     cout<<"Imprimiendo... \n";
     lecturas.listar_lecturas();
 }
 
 void Menu::listar_entre_anios(){
     int anio_1, anio_2;
+    cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n";
     cout<<"Ingresa desde: ";
     cin>>anio_1;
     cout<<"Hasta: ";
@@ -260,6 +270,7 @@ void Menu::listar_entre_anios(){
 
 void Menu::listar_por_escritor(){
     string nombre_completo;
+    cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n";
     cout<<"Ingresa el nombre del escritor: \n";
     cin.ignore();
     getline(cin, nombre_completo);
@@ -269,6 +280,7 @@ void Menu::listar_por_escritor(){
 
 void Menu::listar_por_genero(){
     string genero;
+    cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n";
     cout<<"Ingresa el genero: \n";
     cin>>genero;
     lecturas.procesar_genero(genero);
@@ -277,6 +289,7 @@ void Menu::listar_por_genero(){
 
 void Menu::cola_ordenada(){
     int minimo = 0;
+    cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n";
     for(int i = 0; i < lecturas.obtener_cantidad(); i++){
         cola.alta(lecturas.encontrar_lectura_menor(minimo));
     }
@@ -291,12 +304,8 @@ void Menu::cola_ordenada(){
     cout<<"Tercera baja"<<endl;
 }
 
-
-bool Menu::salir(){
-    return(seguir_jugando = false);
-}
-
 void Menu::vaciar_listas(){
+
     escritores.vaciar_lista();
     lecturas.vaciar_lista();
 }

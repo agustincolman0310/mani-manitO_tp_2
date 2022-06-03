@@ -18,12 +18,17 @@ Lista_Lecturas::Lista_Lecturas(){
 
 void Lista_Lecturas::listar_por_escritor(string nombre_completo){
     Nodo<Lectura*> *temp = primero;
+    int contador = 0;
 
     while(temp){
-        if(temp->obtener_dato()->obtener_escritor()->obtener_nombre_completo() == nombre_completo){
+        if(convertir_en_mayuscula(temp->obtener_dato()->obtener_escritor()->obtener_nombre_completo()) == convertir_en_mayuscula(nombre_completo)){
             temp->obtener_dato()->mostrar();
+            contador++;
         }
         temp = temp->obtener_siguiente();
+    }
+    if(contador == 0){
+        cout<<"No hay niguna obra de ese escritor...\n";
     }
 }
 
@@ -36,11 +41,16 @@ string Lista_Lecturas::convertir_en_mayuscula(string cadena){
 
 void Lista_Lecturas::listar_entre_anios(int desde, int hasta){
     Nodo<Lectura*> *temp = primero;
+    int contador = 0;
     while(temp){
         if((temp->obtener_dato()->obtener_anio_publicacion()) >= desde && (temp->obtener_dato()->obtener_anio_publicacion()) <= hasta ){
             temp->obtener_dato()->mostrar();
+            contador++;
         }
         temp = temp->obtener_siguiente();
+    }
+    if(contador == 0){
+        cout<<"No hay ninguna lectura entre esos años... \n";
     }
 }
 
@@ -66,12 +76,18 @@ void Lista_Lecturas::alta(Lectura* dato){
 
 void Lista_Lecturas::listar_por_genero(string genero_recibido){
     Nodo<Lectura*> *temp = primero;
+    int contador = 0;
     while (temp) {
-        if ((temp->obtener_dato()->obtener_tipo_lectura() == 'N') ) {
-            if(temp->obtener_dato()->obtener_genero() == genero_recibido)
-            temp->obtener_dato()->mostrar();
+        if (toupper(temp->obtener_dato()->obtener_tipo_lectura()) == NOVELA ) {
+            if(temp->obtener_dato()->obtener_genero() == convertir_en_mayuscula(genero_recibido)){
+                temp->obtener_dato()->mostrar();
+                contador++;
+            }
         }
         temp = temp->obtener_siguiente();
+    }
+    if(contador == 0){
+        cout<<"No hay ninguna lectura con ese genero...\n";
     }
 }
 
@@ -153,7 +169,10 @@ Nodo<Lectura*>* Lista_Lecturas::obtener_nodo(int pos) {
 
 void Lista_Lecturas::baja(string titulo) {
     int pos = buscar_titulo(titulo);
-    
+    baja(pos);
+}
+
+void Lista_Lecturas::baja(int pos) {
     Nodo<Lectura*>* borrar = primero;
     if (pos == 1){
         primero = primero->obtener_siguiente();
@@ -164,23 +183,16 @@ void Lista_Lecturas::baja(string titulo) {
         anterior->cambiar_siguiente(borrar->obtener_siguiente());
     }
     cantidad--;
-   // borrar->eliminar_dato();
+    delete borrar->obtener_dato();
     delete borrar;
 }
 
 void Lista_Lecturas::vaciar_lista(){
-    for(int i=1; i <= obtener_cantidad(); i++){
-        delete obtener_nodo(i)->obtener_dato();
-        delete obtener_nodo(i);
+    while(!vacia()){
+        baja(1);
     }
-    //delete lista_lecturas;
 }
-// Lista_Lecturas::~Lista_Lecturas(){
-//     for(int i = 1; i <= obtener_cantidad();i++){
-//         delete obtener_nodo(i)->obtener_dato();
-//     }
-//     // vaciar_lista();
-// }
+
 void Lista_Lecturas::listar_lecturas(){
     for(int i=1; i <= obtener_cantidad(); i++){
         obtener_nodo(i)->obtener_dato()->mostrar();

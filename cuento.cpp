@@ -12,7 +12,7 @@ void Cuento::mostrar(){
     std::cout<< "La lectura tiene una duracion de: "<< minutos << " minutos"<< std::endl;
     std::cout<< "La lectura fue publicada en: "<< anio_publicacion << std::endl;
     std::cout<< "El escritor es: " << escritor->obtener_nombre_completo() << std::endl;
-    std::cout<< "El poema se encuentra en el libro: "<< libro<< std::endl;
+    std::cout<< "El Cuento se encuentra en el libro: "<< libro << std::endl;
     std::cout<<"\n";
 
 }
@@ -21,4 +21,3 @@ string Cuento::obtener_genero(){
     return libro;
 }
 
-// Cuento::~Cuento(){};

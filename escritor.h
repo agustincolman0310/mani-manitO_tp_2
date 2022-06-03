@@ -2,6 +2,7 @@
 #define ESCRITOR_H_INCLUDED
 using namespace std;
 #include <string>
+#include "constantes.h"
 
 class Escritor{
 private:

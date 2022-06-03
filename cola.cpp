@@ -9,8 +9,8 @@ Cola::Cola() {
 }
 
 // alta
-void Cola::alta(Dato e) {
-    Nodo<Dato>* nuevo = new Nodo<Dato>(e);
+void Cola::alta(Dato elemento) {
+    Nodo<Dato>* nuevo = new Nodo<Dato>(elemento);
     if (primero)
         ultimo->cambiar_siguiente(nuevo);
     else
