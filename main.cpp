@@ -7,23 +7,17 @@
 
 using namespace std;
 int main() {
-    //cout<<"Vamos a procesar archivos"<<endl;
-    Parser parser;
-    // parser = nullptr;
-    parser.procesar_escritores();
-    //cout << "Procesar escritores" << endl;
-
-    parser.procesar_lectura();
-    //cout << "Procesar lecturas" << endl;
     
-    //escritor = new Escritor;
-    // cout<< "2" <<endl;
+    Parser parser;
+    parser.procesar_escritores();
+    parser.procesar_lectura();
+ 
     Menu menu(parser.devolver_lecturas(),parser.devolver_escritores());
+    menu.cargar_cola();
+
     int opcion_recibida;
 
-    // cargar_escritores(escritor);
-    //menu.procesar_opciones(opcion_recibida);
-    while(opcion_recibida != OPCION_12){
+    while(opcion_recibida != OPCION_13){
         opcion_recibida = menu.mostrar_menu();
         menu.procesar_opciones(opcion_recibida);
     }

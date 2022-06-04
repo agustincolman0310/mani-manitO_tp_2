@@ -2,7 +2,6 @@
 #define LECTURA_H_INCLUDED
 #include "escritor.h"
 
-// #include "string.h"
 class Lectura{
 protected:
     char tipo_lectura;
@@ -18,6 +17,7 @@ public:
     POST: Devuelve el tipo de la lectura(C si es cuento, N si es novela y P si es poema). 
     */
     char obtener_tipo_lectura();
+    //Destructor
     virtual ~Lectura(){};
     /*
     PRE: - 
@@ -39,7 +39,9 @@ public:
     POST: Devuelve la duración de la lectura. 
     */
     int obtener_tiempo_lectura();
+  
     virtual void mostrar() = 0;
+
     virtual string obtener_genero() = 0;
 };
 

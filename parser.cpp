@@ -1,16 +1,11 @@
 #include "parser.h"
 #include <string>
 using namespace std;
-#include "lista.h"
 
  Parser::Parser() {
-      this->lista_escritores_1 = lista_escritores_1;
-      this->lista_lecturas_1 = lista_lecturas_1;
+      this->lista_escritores = lista_escritores;
+      this->lista_lecturas = lista_lecturas;
  }
-/*string Parser::a_mayuscula(string cadena){
-    for(int i = 0; i < cadena.lenght(); i++) cadena[i] = toupper(cadena[i];)
-    return cadena;
-}*/
 
 void Parser::procesar_escritores(){
 
@@ -31,23 +26,20 @@ void Parser::procesar_escritores(){
             getline(archivo_escritores,anio_fallecimiento);              
         }
         else{
-            anio_nacimiento = "-1";
+            anio_nacimiento = ANIO_NO_ENCONTRADO;
         }
         if(anio_fallecimiento.empty()){
-            anio_fallecimiento = "-1";
+            anio_fallecimiento = ANIO_NO_ENCONTRADO;
         }
         else{
             getline(archivo_escritores,linea_espacio);
         }
        
         Escritor* escritor = new Escritor(nombre_completo, nacionalidad, stoi(anio_nacimiento), stoi(anio_fallecimiento), referencia);
-        // delete escritor;
 
-        lista_escritores_1.alta(escritor);
+        lista_escritores.alta(escritor);
     }   
     archivo_escritores.close();
-    //lista_escritores_1.listar_escritores();
-    // lista_escritores_1.vaciar_lista();
 }
 
 
@@ -55,7 +47,7 @@ void Parser::procesar_lectura(){
     Lectura* nueva_lectura;
     fstream archivo_lecturas(RUTA_ARCHIVO_LECTURAS, ios::in);  
     if(!archivo_lecturas.is_open()){
-        cout << "No se encontro un archivo con nombre " << RUTA_ARCHIVO_LECTURAS << ", se va a crear el archivo" << endl;
+        cout << "No se encontró un archivo con nombre " << RUTA_ARCHIVO_LECTURAS << ", se va a crear el archivo" << endl;
         archivo_lecturas.open(RUTA_ARCHIVO_LECTURAS, ios::out);
         archivo_lecturas.close();
         archivo_lecturas.open(RUTA_ARCHIVO_LECTURAS, ios::in);
@@ -65,13 +57,13 @@ void Parser::procesar_lectura(){
         getline(archivo_lecturas, titulo);
         getline(archivo_lecturas, minutos);
         getline(archivo_lecturas, anio_publicacion);
-        if(tipo_lectura == "N"){
+        if(tipo_lectura == NOVELA){
             getline(archivo_lecturas, genero);
-            if(genero == "HISTORICA"){
+            if(genero == NOVELA_HISTORICA){
                 getline(archivo_lecturas, tema);
             }
         }
-        else if(tipo_lectura == "C"){
+        else if(tipo_lectura == CUENTO){
             getline(archivo_lecturas, titulo_libro);
         }
         else{
@@ -81,38 +73,30 @@ void Parser::procesar_lectura(){
         getline(archivo_lecturas, referencia);
         getline(archivo_lecturas, linea_espacio); 
         
-        if(tipo_lectura == "N"){ 
-            // Lectura* nueva_novela;
-            if(genero == "HISTORICA"){
+        if(tipo_lectura == NOVELA){ 
+            if(genero == NOVELA_HISTORICA){
                 
-                nueva_lectura = new Historica(tipo_lectura[0], titulo, stoi(minutos), stoi(anio_publicacion), lista_escritores_1.consulta(referencia), lista_lecturas_1.procesar_genero(genero),tema);
+                nueva_lectura = new Historica(tipo_lectura[PRIMER_CARACTER], titulo, stoi(minutos), stoi(anio_publicacion), lista_escritores.consulta(referencia), lista_lecturas.procesar_genero(genero),tema);
            } else{
-                nueva_lectura = new Novela(tipo_lectura[0], titulo, stoi(minutos), stoi(anio_publicacion), lista_escritores_1.consulta(referencia), lista_lecturas_1.procesar_genero(genero));
-            }                                                                                                                                                  
-        // lista_lecturas_1.alta(nueva_novela);
-           
+                nueva_lectura = new Novela(tipo_lectura[PRIMER_CARACTER], titulo, stoi(minutos), stoi(anio_publicacion), lista_escritores.consulta(referencia), lista_lecturas.procesar_genero(genero));
+            }                                                                                                                                                           
         }
-        else if(tipo_lectura == "C"){
-
-            nueva_lectura = new Cuento(tipo_lectura[0], titulo, stoi(minutos), stoi(anio_publicacion), lista_escritores_1.consulta(referencia), titulo_libro);
-            // lista_lecturas_1.alta(nuevo_cuento);
+        else if(tipo_lectura == CUENTO){
+            nueva_lectura = new Cuento(tipo_lectura[PRIMER_CARACTER], titulo, stoi(minutos), stoi(anio_publicacion), lista_escritores.consulta(referencia), titulo_libro);
         }
         else{
-            nueva_lectura = new Poema(tipo_lectura[0], titulo, stoi(minutos), stoi(anio_publicacion),lista_escritores_1.consulta(referencia) , stoi(cant_versos));
-            // lista_lecturas_1.alta(nuevo_poema);
+            nueva_lectura = new Poema(tipo_lectura[PRIMER_CARACTER], titulo, stoi(minutos), stoi(anio_publicacion),lista_escritores.consulta(referencia) , stoi(cant_versos));
 
         }
-    lista_lecturas_1.alta(nueva_lectura);
+    lista_lecturas.alta(nueva_lectura);
     }   
     archivo_lecturas.close();
 }
 
 Lista_Lecturas Parser::devolver_lecturas(){
-    return lista_lecturas_1;
+    return lista_lecturas;
 }
 
 Lista_Escritores Parser::devolver_escritores(){
-    return lista_escritores_1;
+    return lista_escritores;
 }
-
-// Parser::~Parser(){};

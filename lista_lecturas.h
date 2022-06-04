@@ -4,7 +4,6 @@
 #include "lectura.h"
 #include "nodo.h"
 #include "constantes.h"
-#include "lista.h"
 #include "string.h"
 
 class Lista_Lecturas{
@@ -15,18 +14,19 @@ private:
     Nodo<Lectura*>* actual;
     Nodo<Lectura*>* ultimo;
     Nodo<Lectura*>* obtener_nodo(int pos);
-    Lista<Lectura*> lista_lecturas;
-
 
 public:
+    /*
+    PRE: Recibe una cadena de string.
+    POST: Devuelve el string en mayúsculas.
+    */
     string convertir_en_mayuscula(string cadena);
     /*
     Constructor
     PRE: -
-    POST: construye una Lista vacia
+    POST: construye una Lista vacia.
     */
     Lista_Lecturas();
-
     /*
     PRE: La lista no debe estar vacía.
     POST: Muestra el contenido de la lista.
@@ -42,9 +42,11 @@ public:
     POST: En caso de existir, elimina la lectura que tiene el título que se pasa.
     */
     void baja(string titulo);
-    // void baja(int pos);
+     /*
+    PRE: Recibe una lista con elementos ya cargados.
+    POST: Vacia la lista.
+    */
     void vaciar_lista();
-    // void mostrar_lectura(T lectura);
     /*
     PRE: La lista no debe estar vacía.
     POST: En caso de existir, devuelve la lectura que tiene el título que se pasa;
@@ -86,16 +88,20 @@ public:
     POST: Muestra las novelas que tienen como genero a genero_recibido.
     */
     void listar_por_genero(string genero_recibido);
-    // void agregar_final(T dato);
+    /*
+    PRE: genero_recibido debe ser válido. 
+    POST: Muestra las novelas que tienen como genero a genero_recibido.
+    */
     Lectura* encontrar_lectura_menor(int &minimo);
     /*
     PRE: - 
     POST: En caso de existir, devuelve el número que tiene genero en el enum de generos, de lo contrario
-    devuelve 0.  .
+    devuelve 0.
     */
     int procesar_genero(string genero);
+
     ~Lista_Lecturas(){};
-    // int comparar(T dato);
+
     void baja(int pos);
 };
 

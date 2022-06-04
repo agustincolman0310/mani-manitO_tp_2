@@ -27,8 +27,6 @@ public:
     PRE: genero debe ser un número válido, es decir que se encuentre en el enum de Generos. 
     POST: Devuelve el genero de la novela como string. 
     */   
-    // string convertir_genero(int genero);
-    // int procesar_genero(string genero);
 };
 
 

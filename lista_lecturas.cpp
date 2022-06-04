@@ -70,15 +70,13 @@ void Lista_Lecturas::alta(Lectura* dato){
             temp->cambiar_siguiente(nuevo_nodo);
         }        
     cantidad++; 
-    // delete nuevo_nodo->obtener_dato();
-    // delete nuevo_nodo;
 }
 
 void Lista_Lecturas::listar_por_genero(string genero_recibido){
     Nodo<Lectura*> *temp = primero;
     int contador = 0;
     while (temp) {
-        if (toupper(temp->obtener_dato()->obtener_tipo_lectura()) == NOVELA ) {
+        if (toupper(temp->obtener_dato()->obtener_tipo_lectura()) == TIPO_NOVELA ) {
             if(temp->obtener_dato()->obtener_genero() == convertir_en_mayuscula(genero_recibido)){
                 temp->obtener_dato()->mostrar();
                 contador++;
@@ -116,28 +114,24 @@ Lectura* Lista_Lecturas::consulta_titulo(string titulo){
     return lectura;
 }
 
-
-
-
-
 Lectura* Lista_Lecturas::encontrar_lectura_menor(int &minimo){
     Nodo<Lectura*> *temp = primero;
     Lectura* lectura = NULL;
-    int minimo_maximo = 0;
+    int minimo_temporal = 0;
     while(temp){
         
-        if(minimo < temp->obtener_dato()->obtener_tiempo_lectura() && temp->obtener_dato()->obtener_tiempo_lectura() < minimo_maximo){ 
-            minimo_maximo = temp->obtener_dato()->obtener_tiempo_lectura();
+        if(minimo < temp->obtener_dato()->obtener_tiempo_lectura() && temp->obtener_dato()->obtener_tiempo_lectura() < minimo_temporal){ 
+            minimo_temporal = temp->obtener_dato()->obtener_tiempo_lectura();
             lectura = temp->obtener_dato();
         }
-        else if(minimo_maximo == 0 && minimo < temp->obtener_dato()->obtener_tiempo_lectura()){
-            minimo_maximo = temp->obtener_dato()->obtener_tiempo_lectura();
+        else if(minimo_temporal == 0 && minimo < temp->obtener_dato()->obtener_tiempo_lectura()){
+            minimo_temporal = temp->obtener_dato()->obtener_tiempo_lectura();
             lectura = temp->obtener_dato();
         }
 
         temp = temp->obtener_siguiente(); 
     }
-    minimo = minimo_maximo;
+    minimo = minimo_temporal;
     return lectura;
 }
 
@@ -218,5 +212,4 @@ int Lista_Lecturas::procesar_genero(string genero){
         genero_procesado = HISTORICA;
     }
     return genero_procesado;
-
 }

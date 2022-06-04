@@ -70,11 +70,6 @@ string Lista_Escritores::convertir_en_mayuscula(string cadena){
     return escritor;
 }
 
-// string Lista_Escritores::devolver_nombre_escritor(string nombre_completo){
-//     Escritor* escritor = consulta(nombre_completo);
-//     return escritor->obtener_nombre_completo();
-// }
-
 void Lista_Escritores::modificar_anio_fallecimiento(string nombre_escritor, int nuevo_anio){
     if(consulta(nombre_escritor) != NULL)
         consulta(nombre_escritor)->modificar_anio_fallecimiento(nuevo_anio);

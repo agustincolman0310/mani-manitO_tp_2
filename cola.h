@@ -39,6 +39,7 @@ public:
     */
     bool vacia();
     // Destructor.
+    void mostrar_cola();
     ~Cola();
 };
 

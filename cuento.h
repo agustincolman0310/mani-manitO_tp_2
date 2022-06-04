@@ -7,9 +7,21 @@ class Cuento : public Lectura{
 private:
     std::string libro;
 public:
+    // Constructor
     Cuento(char tipo_lectura, std::string titulo, int minutos, int anio_publicacion, Escritor* escritor, std::string libro);
+    // Destrcutor
     ~Cuento(){};
+    /*
+    Constructor
+    PRE: -
+    POST: Muestra los atributos del cuento.
+    */
     void mostrar();
+    /*
+    Constructor
+    PRE: -
+    POST: Obtiene el genero del cuento.
+    */
     string obtener_genero();
 };
 

@@ -1,15 +1,20 @@
 #ifndef CONSTANTES_H_INCLUDED
 #define CONSTANTES_H_INCLUDED
-#include<string>
-const char NOVELA = 'N';
-const char CUENTO = 'C';
-const char POEMA = 'P';
+using namespace std;
+const char TIPO_NOVELA = 'N';
+const char TIPO_CUENTO = 'C';
+const char TIPO_POEMA = 'P';
+const string NOVELA = "N";
+const string CUENTO = "C";
+const string POEMA = "P";
+const string NOVELA_HISTORICA = "HISTORICA";
+const string NACIONALIDAD_DESCONOCIDA = "¿?";
+const string ANIO_NO_ENCONTRADO = "-1";
+const string RUTA_ARCHIVO_ESCRITORES = "escritores.txt";
+const string RUTA_ARCHIVO_LECTURAS = "lectura.txt";
 const int ANIO_DESCONOCIDO = -1;
-const std::string NACIONALIDAD_DESCONOCIDA = "¿?";
+const int PRIMER_CARACTER = 0;
 #define CARA_PENSATIVA "\U0001f914"
-//const char HISTORICA = 'H';
-const std::string RUTA_ARCHIVO_ESCRITORES = "escritores.txt";
-const std::string RUTA_ARCHIVO_LECTURAS = "lectura.txt";
 
 enum Generos{
     DRAMA = 1,
@@ -34,6 +39,7 @@ enum Opciones{
     OPCION_10,
     OPCION_11,
     OPCION_12,
+    OPCION_13,
 };
 
 #endif

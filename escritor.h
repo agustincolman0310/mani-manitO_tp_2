@@ -12,24 +12,34 @@ private:
     int anio_fallecimiento;
     string referencia;
 public:
-    
+    // Constructor
     Escritor(string nombre_completo, string nacionalidad, int anio_nacimiento, int anio_fallecimiento, string referencia);
+    /*
+    PRE: -
+    POST: Muestra los atributos del Escritor.
+    */
     void mostrar_atributos();
+    /*
+    PRE: -
+    POST: Obtiene el año de nacimiento.
+    */
     int obtener_anio_nacimiento();
+    //Destructor
     ~Escritor(){};
+    /*
+    PRE: -
+    POST: Obtiene el nombre completo del escritor.
+    */
     string obtener_nombre_completo();
+    /*
+    PRE: -
+    POST: Obtiene la referencia del escritor.
+    */
     string obtener_referencia();
+    /*
+    PRE: anio_nuevo debe ser un número mayor a 0.
+    POST: anio_fallecimiento pasa a ser anio_nuevo.
+    */
     void modificar_anio_fallecimiento(int anio_nuevo);
-    // void obtener_nombre_completo(string nombre_completo);
-    // void obtener_nacionalidad(string nacionalidad);
-    // void obtener_anio_nacimiento(int anio_nacimiento);
-    // void obtener_anio_fallecimiento(int anio_fallecimiento);
-    // void obtener_referencia(string referencia);
-    // string devolver_referencia();
-    // string devolver_nombre_completo();
-    // string devolver_nacionalidad();
-    // int devolver_anio_nacimiento();
-    // int devolver_anio_fallecimiento();
-    // void mostrar();
 };
 #endif

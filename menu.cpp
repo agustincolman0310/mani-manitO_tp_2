@@ -6,7 +6,6 @@ Cola cola;
 Menu::Menu(Lista_Lecturas lecturas, Lista_Escritores escritores){
     this->lecturas = lecturas;
     this->escritores = escritores;
-    // seguir_jugando = true; 
 }
 
 int Menu::mostrar_menu(){
@@ -23,8 +22,9 @@ int Menu::mostrar_menu(){
     cout<<"\t[8] Listar lecturas entre años.\n";
     cout<<"\t[9] Listar lecturas por escritor.\n";
     cout<<"\t[10] Listar novelas por género.\n";
-    cout<<"\t[11] Armar cola ordenada por tiempo de lectura.\n";
-    cout<<"\t[12] Salir.\n";
+    cout<<"\t[11] Quitar lectura de menor tiempo.\n";
+    cout<<"\t[12] Mostrar lecturas por tiempo de duracion.\n";
+    cout<<"\t[13] Salir.\n";
     cout<<"\t###################### \n";
     cout<<"\t# Ingrese una opción # \n";
     cout<<"\t###################### \n";
@@ -52,7 +52,7 @@ void Menu::procesar_opciones(int opcion){
             imprimir_escritores(); 
             break;
         case OPCION_6:
-            lectura_random();
+            sortear_lectura_random();
             break;    
         case OPCION_7:
             imprimir_lecturas();
@@ -67,7 +67,10 @@ void Menu::procesar_opciones(int opcion){
             listar_por_genero();
             break;
         case OPCION_11:
-            cola_ordenada();
+            baja_cola();
+            break;
+        case OPCION_12:
+            mostrar_cola();
             break;
     }
 }
@@ -80,7 +83,7 @@ void Menu::agregar_lectura(){
     cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n";
     cout<<"Ingrese el tipo de lectura (C para cuento, P para poema, N para novela): \n";
     cin>>tipo_lectura;
-    while(tipo_lectura!= NOVELA && tipo_lectura != POEMA && tipo_lectura != CUENTO){
+    while(tipo_lectura!= TIPO_NOVELA && tipo_lectura != TIPO_POEMA && tipo_lectura != TIPO_CUENTO){
         cout<<"Juraria que no conozco ese tipo de lectura... "<<CARA_PENSATIVA<<endl;
         cout<<"Ingrese el tipo de lectura nuevamente: \n";
         cin>>tipo_lectura;
@@ -110,7 +113,6 @@ void Menu::agregar_lectura(){
             cout<<"Ingrese el nombre completo del escritor: \n";
             cin.ignore();
             getline(cin, nombre_completo);
-            cout<<nombre_completo;
         }
         else{
             cout<<"Andamos con poca comprension lectora... \n";
@@ -128,7 +130,7 @@ void Menu::agregar_lectura(){
     cout<<"Ingrese el año publicacion: \n";
     cin>>anio_publicacion;
 
-    if (toupper(tipo_lectura) == NOVELA){
+    if (toupper(tipo_lectura) == TIPO_NOVELA){
         cout<< "Ingrese el genero: \n";
         cin>>genero;
         while(lecturas.convertir_en_mayuscula(genero) != "TERROR" && lecturas.convertir_en_mayuscula(genero) != "DRAMA" && lecturas.convertir_en_mayuscula(genero) != "COMEDIA" && lecturas.convertir_en_mayuscula(genero) != "FICCION" && lecturas.convertir_en_mayuscula(genero) != "SUSPENSO" && lecturas.convertir_en_mayuscula(genero) != "ROMANTICA" && lecturas.convertir_en_mayuscula(genero) != "HISTORICA"){
@@ -137,13 +139,13 @@ void Menu::agregar_lectura(){
         }
         lectura = new Novela(tipo_lectura, titulo, minutos, anio_publicacion, escritores.consulta(nombre_completo), lecturas.procesar_genero(lecturas.convertir_en_mayuscula(genero)));
 
-        if(lecturas.convertir_en_mayuscula(genero) == "HISTORICA"){
+        if(lecturas.convertir_en_mayuscula(genero) == NOVELA_HISTORICA){
             cout<< "Ingrese el tema: \n";
             cin>>tema;  
             lectura = new Historica(tipo_lectura, titulo, minutos, anio_publicacion, escritores.consulta(nombre_completo), lecturas.procesar_genero(lecturas.convertir_en_mayuscula(genero)), tema);
             }
     }
-    else if(toupper(tipo_lectura) == CUENTO){
+    else if(toupper(tipo_lectura) == TIPO_CUENTO){
         cout<< "Ingrese el titulo del libro: \n";
         cin.ignore();
         getline(cin, titulo_libro);
@@ -151,7 +153,7 @@ void Menu::agregar_lectura(){
         lectura = new Cuento(tipo_lectura, titulo, minutos, anio_publicacion,escritores.consulta(nombre_completo) , titulo_libro);
 
     }
-    else if(toupper(tipo_lectura) == POEMA){
+    else if(toupper(tipo_lectura) == TIPO_POEMA){
         cout<< "Ingrese la cantidad de versos: \n";
         cin>>cant_versos;
         lectura = new Poema(tipo_lectura, titulo, minutos, anio_publicacion, escritores.consulta(nombre_completo), cant_versos);
@@ -233,7 +235,7 @@ void Menu::imprimir_escritores(){
     escritores.listar_escritores();
 }
 
-void Menu::lectura_random(){
+void Menu::sortear_lectura_random(){
     int valor;
     srand((unsigned int)time(NULL));
     valor = 1 + rand() % lecturas.obtener_cantidad();
@@ -241,7 +243,6 @@ void Menu::lectura_random(){
     cout<<"La lectura sorteada es la " <<valor<< "...\n";
     cout<<"Imprimiendo... \n";
     lecturas.sortear_lectura(valor);
-
 }
 
 void Menu::imprimir_lecturas(){
@@ -287,25 +288,34 @@ void Menu::listar_por_genero(){
     lecturas.listar_por_genero(genero);
 }
 
-void Menu::cola_ordenada(){
-    int minimo = 0;
+void Menu::baja_cola(){
+    string respuesta;
     cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n";
-    for(int i = 0; i < lecturas.obtener_cantidad(); i++){
+    cout<<"¿Leíste "<< cola.consulta()->obtener_titulo() << " ?"<<endl;
+    cin>>respuesta;
+    while(respuesta != "SI" && respuesta != "NO"){
+        cout<<"Por favor, ingresá SI, si la leíste. De lo contrario, NO"<<endl;
+        cin>>respuesta;
+    }
+    if(respuesta == "SI"){
+        cola.baja();
+    }
+
+}
+
+void Menu::cargar_cola(){
+    int minimo = 0;
+    for(int i = 0; i < lecturas.obtener_cantidad() ; i++){
         cola.alta(lecturas.encontrar_lectura_menor(minimo));
     }
-    cola.consulta()->mostrar();
-    cola.baja();
-    cout<<"Primera baja"<<endl;
-    cola.consulta()->mostrar();
-    cola.baja();
-    cout<<"Segunda baja"<<endl;
-    cola.consulta()->mostrar();
-    cola.baja();
-    cout<<"Tercera baja"<<endl;
+}
+
+void Menu::mostrar_cola(){
+    cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n";
+    cola.mostrar_cola();
 }
 
 void Menu::vaciar_listas(){
-
     escritores.vaciar_lista();
     lecturas.vaciar_lista();
 }

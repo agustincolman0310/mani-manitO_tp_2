@@ -1,7 +1,6 @@
 #include <iostream>
 #include "poema.h"
 
-
 Poema::Poema(char tipo_lectura, std::string titulo, int minutos, int anio_publicacion, Escritor* escritor, int cant_versos)
     :Lectura(tipo_lectura, titulo, minutos, anio_publicacion, escritor){
         this->cant_versos = cant_versos;
@@ -15,11 +14,7 @@ void Poema::mostrar(){
     std::cout<< "El escritor es: " << escritor->obtener_nombre_completo() << std::endl;
     std::cout<< "El Poema tiene: "<< cant_versos<< " versos"<< std::endl;
     std::cout<<"\n";
-
 }
-
-// Poema::~Poema(){};
-
 
 string Poema::obtener_genero(){
     return to_string(cant_versos);

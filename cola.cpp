@@ -33,6 +33,16 @@ Dato Cola::consulta() {
     return primero->obtener_dato();
 }
 
+void Cola::mostrar_cola(){
+    Nodo<Dato>* aux = primero;
+
+    while(aux != NULL){
+        aux->obtener_dato()->mostrar();
+        aux = aux->obtener_siguiente();
+    }
+
+}
+
 
 // vacia
 bool Cola::vacia() {
