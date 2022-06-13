@@ -11,6 +11,7 @@ private:
     int anio_nacimiento;
     int anio_fallecimiento;
     string referencia;
+
 public:
     // Constructor
     Escritor(string nombre_completo, string nacionalidad, int anio_nacimiento, int anio_fallecimiento, string referencia);
@@ -24,7 +25,7 @@ public:
     POST: Obtiene el año de nacimiento.
     */
     int obtener_anio_nacimiento();
-    //Destructor
+    // Destructor
     ~Escritor(){};
     /*
     PRE: -

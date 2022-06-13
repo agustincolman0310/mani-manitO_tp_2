@@ -11,7 +11,7 @@ protected:
     Escritor* escritor;
 public:
     //Construye una lectura.
-    Lectura(char tipo_lectura, std::string titulo, int minutos, int anio_publicacion, Escritor* escritor);
+    Lectura(char tipo_lectura, string titulo, int minutos, int anio_publicacion, Escritor* escritor);
     /*
     PRE: - 
     POST: Devuelve el tipo de la lectura(C si es cuento, N si es novela y P si es poema). 
@@ -42,7 +42,7 @@ public:
   
     virtual void mostrar() = 0;
 
-    virtual string obtener_genero() = 0;
+    virtual string obtener_atributo_diferente() = 0;
 };
 
 #endif

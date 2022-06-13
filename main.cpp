@@ -8,6 +8,8 @@
 using namespace std;
 int main() {
     
+    system("clear");
+
     Parser parser;
     parser.procesar_escritores();
     parser.procesar_lectura();

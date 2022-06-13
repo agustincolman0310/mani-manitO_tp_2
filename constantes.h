@@ -15,6 +15,11 @@ const string RUTA_ARCHIVO_LECTURAS = "lectura.txt";
 const int ANIO_DESCONOCIDO = -1;
 const int PRIMER_CARACTER = 0;
 #define CARA_PENSATIVA "\U0001f914"
+#define VERDE   "\033[32m"
+#define BLANCO   "\033[37m"
+#define MAGENTA "\033[35m"
+#define AMARILLO  "\033[33m"
+
 
 enum Generos{
     DRAMA = 1,

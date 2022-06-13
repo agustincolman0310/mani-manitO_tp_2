@@ -10,11 +10,10 @@ Nodo<Escritor*>* Lista_Escritores::obtener_nodo(int pos) {
     }
     return aux;
 }
-Lista_Escritores::Lista_Escritores()
-{
+
+Lista_Escritores::Lista_Escritores(){
     cantidad = 0;
     primero = nullptr;
-    actual = nullptr;
 }
 
 int Lista_Escritores::obtener_cantidad(){
@@ -33,7 +32,6 @@ void Lista_Escritores::alta(Escritor* dato, int posicion){
     }
     cantidad++;
 }
-
 
 void Lista_Escritores::alta(Escritor* dato){
     int posicion_final = obtener_cantidad() + 1;
@@ -57,7 +55,7 @@ string Lista_Escritores::convertir_en_mayuscula(string cadena){
     return cadena;
 }
 
- Escritor* Lista_Escritores::consulta(string nombre_completo){
+Escritor* Lista_Escritores::consulta(string nombre_completo){
     Nodo<Escritor*> *temp = primero;
     Escritor* escritor = NULL;
     
@@ -96,5 +94,4 @@ void Lista_Escritores::vaciar_lista(){
     while(!vacia()){
         baja(1);
     }
-
 }

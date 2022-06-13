@@ -3,11 +3,11 @@
 #include "lectura.h"
 #include "nodo.h"
 
-typedef Lectura* Dato;
-class Cola {
+typedef Lectura *Dato;
+class Cola{
 private:
-    Nodo<Dato>* primero;
-    Nodo<Dato>* ultimo;
+    Nodo<Dato> *primero;
+    Nodo<Dato> *ultimo;
 
 public:
     /*
@@ -38,9 +38,13 @@ public:
     POST: Devuelve true si la Cola esta vacia, false de lo contrario.
     */
     bool vacia();
-    // Destructor.
+    /*
+    PRE: -
+    POST: Muestra todos los elementos de la Cola.
+    */
     void mostrar_cola();
+    // Destructor.
     ~Cola();
 };
 
-#endif 
+#endif

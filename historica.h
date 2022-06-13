@@ -4,12 +4,11 @@
 
 class Historica : public Novela{
 private:
-    std::string tema;
+    string tema;
+
 public:
     // Constructor.
-    Historica(char tipo_lectura, std::string titulo,int minutos, int anio_publicacion, Escritor* escritor, int genero, std::string tema);
-    // Destructor.
-    ~Historica(){};
+    Historica(char tipo_lectura, string titulo, int minutos, int anio_publicacion, Escritor *escritor, int genero, char* tema);
     /*
     PRE: -
     POST: Muestra los atributos de la Novela historica.

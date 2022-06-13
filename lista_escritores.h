@@ -7,6 +7,12 @@
 using namespace std;
 
 class Lista_Escritores{
+
+    private:
+        Nodo<Escritor*>* primero;
+        Nodo<Escritor*>* obtener_nodo(int pos);
+        int cantidad;
+
     public:
         // Constructor
         Lista_Escritores();
@@ -53,12 +59,6 @@ class Lista_Escritores{
         // PRE: -
         // POST: Devuelve el string convertido en mayúscula.
         string convertir_en_mayuscula(string cadena);
-
-    private:
-        Nodo<Escritor*>* primero;
-        Nodo<Escritor*>* actual;
-        Nodo<Escritor*>* obtener_nodo(int pos);
-        int cantidad;
 
 };
 

@@ -9,8 +9,6 @@ private:
 public:
     // Constructor
     Cuento(char tipo_lectura, std::string titulo, int minutos, int anio_publicacion, Escritor* escritor, std::string libro);
-    // Destrcutor
-    ~Cuento(){};
     /*
     Constructor
     PRE: -
@@ -22,7 +20,7 @@ public:
     PRE: -
     POST: Obtiene el genero del cuento.
     */
-    string obtener_genero();
+    string obtener_atributo_diferente();
 };
 
 #endif

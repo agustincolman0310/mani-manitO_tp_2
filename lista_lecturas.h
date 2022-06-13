@@ -11,8 +11,6 @@ class Lista_Lecturas{
 private:
     Nodo<Lectura*>* primero;
     int cantidad;
-    Nodo<Lectura*>* actual;
-    Nodo<Lectura*>* ultimo;
     Nodo<Lectura*>* obtener_nodo(int pos);
 
 public:

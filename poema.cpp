@@ -7,15 +7,15 @@ Poema::Poema(char tipo_lectura, std::string titulo, int minutos, int anio_public
 }
 
 void Poema::mostrar(){
-    std::cout<< "El tipo de lectura es: "<< tipo_lectura<< std::endl;
-    std::cout<< "El titulo es: "<< titulo<< std::endl;
-    std::cout<< "La lectura tiene una duracion de: "<< minutos << " minutos"<< std::endl;
-    std::cout<< "La lectura fue publicada en: "<< anio_publicacion << std::endl;
-    std::cout<< "El escritor es: " << escritor->obtener_nombre_completo() << std::endl;
-    std::cout<< "El Poema tiene: "<< cant_versos<< " versos"<< std::endl;
-    std::cout<<"\n";
+    cout<< "El tipo de lectura es: "<< tipo_lectura<< endl;
+    cout<< "El titulo es: "<< titulo<< endl;
+    cout<< "La lectura tiene una duracion de: "<< minutos << " minutos"<< endl;
+    cout<< "La lectura fue publicada en: "<< anio_publicacion << endl;
+    cout<< "El escritor es: " << escritor->obtener_nombre_completo() << endl;
+    cout<< "El Poema tiene: "<< cant_versos<< " versos"<< endl;
+    cout<<"\n";
 }
 
-string Poema::obtener_genero(){
+string Poema::obtener_atributo_diferente(){
     return to_string(cant_versos);
 }

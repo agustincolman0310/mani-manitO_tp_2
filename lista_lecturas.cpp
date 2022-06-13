@@ -11,8 +11,6 @@ int Lista_Lecturas::obtener_cantidad(){
 Lista_Lecturas::Lista_Lecturas(){
     primero = nullptr;
     cantidad = 0;
-    actual = nullptr;
-    ultimo = nullptr;
 }
 
 
@@ -77,7 +75,7 @@ void Lista_Lecturas::listar_por_genero(string genero_recibido){
     int contador = 0;
     while (temp) {
         if (toupper(temp->obtener_dato()->obtener_tipo_lectura()) == TIPO_NOVELA ) {
-            if(temp->obtener_dato()->obtener_genero() == convertir_en_mayuscula(genero_recibido)){
+            if(temp->obtener_dato()->obtener_atributo_diferente() == convertir_en_mayuscula(genero_recibido)){
                 temp->obtener_dato()->mostrar();
                 contador++;
             }

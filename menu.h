@@ -14,7 +14,6 @@
 
 class Menu{
 private:
-    bool seguir_jugando;
     Lista_Escritores escritores;
     Lista_Lecturas lecturas;
     Cola cola;
