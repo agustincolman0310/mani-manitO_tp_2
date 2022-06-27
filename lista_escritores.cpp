@@ -19,6 +19,7 @@ Lista_Escritores::Lista_Escritores(){
 int Lista_Escritores::obtener_cantidad(){
     return cantidad;
 }
+
 void Lista_Escritores::alta(Escritor* dato, int posicion){
     Nodo<Escritor*>* nuevo = new Nodo<Escritor*>(dato);
     if (posicion == 1){
@@ -56,12 +57,14 @@ string Lista_Escritores::convertir_en_mayuscula(string cadena){
     return cadena;
 }
 
-Escritor* Lista_Escritores::consulta(string nombre_completo){
+Escritor* Lista_Escritores::consulta(string atributo){
     Nodo<Escritor*> *temp = primero;
     Escritor* escritor = NULL;
+    string atributo_mayuscula = convertir_en_mayuscula(atributo);
     
     while (temp) {
-        if ((convertir_en_mayuscula(temp->obtener_dato()->obtener_nombre_completo()) == convertir_en_mayuscula(nombre_completo)) || (convertir_en_mayuscula(temp->obtener_dato()->obtener_referencia()) == convertir_en_mayuscula(nombre_completo))) {
+        if ((convertir_en_mayuscula(temp->obtener_dato()->obtener_nombre_completo()) == atributo_mayuscula) 
+        || (temp->obtener_dato()->obtener_referencia()) == atributo) {
             escritor = temp->obtener_dato();
         }
         temp = temp->obtener_siguiente();
@@ -74,6 +77,17 @@ void Lista_Escritores::modificar_anio_fallecimiento(string nombre_escritor, int 
         consulta(nombre_escritor)->modificar_anio_fallecimiento(nuevo_anio);
     else
         cout<<"El escritor no se encuentra el escritor en la lista"<<endl;
+}
+
+int Lista_Escritores::buscar_referencia(string referencia){
+    Nodo<Escritor*> *temp = primero;
+    int cont = 0;
+    while (temp->obtener_dato()->obtener_referencia() !=  referencia) {
+        cont++;
+        temp = temp->obtener_siguiente();
+    }
+    cont++;
+    return cont;
 }
 
 void Lista_Escritores::baja(int pos) {
@@ -89,6 +103,11 @@ void Lista_Escritores::baja(int pos) {
     cantidad--;
     delete borrar->obtener_dato();
     delete borrar;
+}
+
+void Lista_Escritores::baja(string referencia){
+    int posicion = buscar_referencia(referencia);
+    baja(posicion);
 }
 
 void Lista_Escritores::vaciar_lista(){

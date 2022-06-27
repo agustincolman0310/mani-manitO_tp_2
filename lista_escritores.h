@@ -30,7 +30,7 @@ class Lista_Escritores{
         // PRE: La lista no debe estar vacía.
         // POST: En caso de existir el objeto con el atributo nombre_completo que se pasa, lo devuelve; de lo contrario 
         // retorna NULL
-        Escritor* consulta(string nombre_completo);
+        Escritor* consulta(string atributo);
 
         // PRE: La lista no debe estar vacía, el escritor debe estar en ella y nueva_fecha debe ser mayor a 0.
         // POST: Modifica la fecha de fallecimiento del escritor que se le pasa, asignandole nueva_fecha.
@@ -60,6 +60,9 @@ class Lista_Escritores{
         // POST: Devuelve el string convertido en mayúscula.
         string convertir_en_mayuscula(string cadena);
 
+        int buscar_referencia(string referencia);
+
+        void baja(string referencia);
 };
 
 #endif
