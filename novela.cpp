@@ -16,7 +16,6 @@ void Novela::mostrar(){
     std::cout<< "El escritor es: " << escritor->obtener_nombre_completo() << std::endl;
     std::cout<< "El genero es: "<< convertir_genero(genero)<< std::endl;
     std::cout<<"\n";
-
 }
 
 string Novela::convertir_genero(int genero){                                                                                                                                                                                                                                                                                                                                                                                    

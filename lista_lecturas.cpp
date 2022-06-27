@@ -126,7 +126,7 @@ Lectura* Lista_Lecturas::encontrar_lectura_menor(int &minimo){
             minimo_temporal = temp->obtener_dato()->obtener_tiempo_lectura();
             lectura = temp->obtener_dato();
         }
-
+        
         temp = temp->obtener_siguiente(); 
     }
     minimo = minimo_temporal;
@@ -188,8 +188,7 @@ void Lista_Lecturas::vaciar_lista(){
 void Lista_Lecturas::listar_lecturas(){
     for(int i=1; i <= obtener_cantidad(); i++){
         obtener_nodo(i)->obtener_dato()->mostrar();
-    }
-    
+    }   
 }
 
 int Lista_Lecturas::procesar_genero(string genero){
@@ -210,4 +209,8 @@ int Lista_Lecturas::procesar_genero(string genero){
         genero_procesado = HISTORICA;
     }
     return genero_procesado;
+}
+
+Lectura* Lista_Lecturas::obtener_lectura(int pos){
+    return obtener_nodo(pos)->obtener_dato();
 }

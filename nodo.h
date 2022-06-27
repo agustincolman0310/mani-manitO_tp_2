@@ -19,7 +19,7 @@ public:
     // PRE: -
     // POST: Siguiente pasa a ser nuevo_nodo.
     void cambiar_siguiente(Nodo* nuevo_nodo);
-
+    
     // PRE: El nodo no debe estar vacío
     // POST: Devuelve el dato que se encuentra en el nodo.
     T obtener_dato();
@@ -47,6 +47,5 @@ template < typename T >
 Nodo<T> *Nodo<T>::obtener_siguiente(){
     return siguiente;
 };
-
 
 #endif

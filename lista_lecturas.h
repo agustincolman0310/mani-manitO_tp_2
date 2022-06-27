@@ -11,9 +11,13 @@ class Lista_Lecturas{
 private:
     Nodo<Lectura*>* primero;
     int cantidad;
-    Nodo<Lectura*>* obtener_nodo(int pos);
+    // Nodo<Lectura*>* obtener_nodo(int pos);
 
+    Nodo<Lectura*>* obtener_nodo(int pos);
 public:
+
+    Lectura* obtener_lectura(int pos);
+
     /*
     PRE: Recibe una cadena de string.
     POST: Devuelve el string en mayúsculas.

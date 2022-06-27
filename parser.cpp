@@ -75,7 +75,6 @@ void Parser::procesar_lectura(){
         
         if(tipo_lectura == NOVELA){ 
             if(genero == NOVELA_HISTORICA){
-                
                 nueva_lectura = new Historica(tipo_lectura[PRIMER_CARACTER], titulo, stoi(minutos), stoi(anio_publicacion), lista_escritores.consulta(referencia), lista_lecturas.procesar_genero(genero), const_cast<char*>(tema.c_str()));
            } else{
                 nueva_lectura = new Novela(tipo_lectura[PRIMER_CARACTER], titulo, stoi(minutos), stoi(anio_publicacion), lista_escritores.consulta(referencia), lista_lecturas.procesar_genero(genero));

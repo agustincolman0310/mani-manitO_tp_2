@@ -5,20 +5,6 @@ Casa Tomada
 Bestiario
 (1)
 
-N
-Rayuela
-2900
-2001
-FICCION
-(1)
-
-N
-Misery
-2100
-1995
-TERROR
-(3)
-
 P
 El Poema del Mio Cid
 12

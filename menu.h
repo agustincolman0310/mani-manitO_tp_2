@@ -104,6 +104,4 @@ public:
     void cargar_cola();
 };
 
-
-
 #endif

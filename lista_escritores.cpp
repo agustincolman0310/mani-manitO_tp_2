@@ -50,8 +50,9 @@ void Lista_Escritores::listar_escritores(){
 
 string Lista_Escritores::convertir_en_mayuscula(string cadena){
     int largo_cadena = (int) cadena.length();
-    for(int i = 0; i < largo_cadena; i++) 
+    for(int i = 0; i < largo_cadena; i++){
         cadena[i] = (char) toupper(cadena[i]);
+    }
     return cadena;
 }
 
