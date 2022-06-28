@@ -14,14 +14,15 @@
 #include "constantes.h"
 #include <cstdlib>
 #include "time.h"
+#include "tabla_hashing.h"
 
 using namespace std;
 
 class Parser {
 private:
-    Lista_Escritores lista_escritores;
+    // Lista_Escritores lista_escritores;
     Lista_Lecturas lista_lecturas;
-    
+    Tabla_Hashing tabla_escritores;
 public:
     //Constructor
     Parser();
@@ -39,7 +40,7 @@ public:
     PRE: Recibe una lista cargada.
     POST: Se encarga de devolver la lista_escritores.
     */
-    Lista_Escritores devolver_escritores(); 
+    Tabla_Hashing devolver_escritores(); 
     /*
     PRE: Recibe una lista cargada.
     POST: Se encarga de devolver las lista_lecturas.

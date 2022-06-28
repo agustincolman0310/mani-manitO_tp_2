@@ -29,6 +29,8 @@ int Kruskal::unir(int i, int j){
 }
 
 void Kruskal::recorrer(){
+    cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n";
+
     int i = 0, j = 0, minimo = 0, costo_minimo = 0, aux_1 = 1, aux_2 = 0, aux_3 = 0, aux_4 = 0, aux_5 = 0;
 
     cout << "Camino mínimo: \n" << endl;

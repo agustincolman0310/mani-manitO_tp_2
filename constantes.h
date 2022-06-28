@@ -47,6 +47,7 @@ enum Opciones{
     OPCION_11,
     OPCION_12,
     OPCION_13,
+    OPCION_14,
 };
 
 #endif

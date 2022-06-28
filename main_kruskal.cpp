@@ -29,31 +29,14 @@ void Main_Kruskal::inicializar_aristas(Grafo grafo){
 }
 
 void Main_Kruskal::ejecutar_kruskal(){
-    cout << cantidad_vertices << endl;
     // vertices.listar_lecturas();
     Grafo grafo(cantidad_vertices);
+
     for (int pos = 1; pos <= cantidad_vertices; pos++){
-        
-        // vertices.obtener_nodo(pos)->obtener_dato()->mostrar();
         grafo.agregar_vertice(vertices.obtener_lectura(pos));
-        // cout << vertices.obtener_lectura(pos)->obtener_titulo() << endl;
-        // cout << grafo.obtener_vertices()[pos-1].obtener_vertice()->obtener_titulo() << endl;
     }
-    // cout << cantidad_vertices << endl;
 
     inicializar_aristas(grafo);
-
-   
-    cout <<"Vertices del grafo"<<endl;
-    
-    cout << " " << endl;
-
-    for (int i = 0; i < cantidad_vertices; i++){
-        
-        cout << grafo.obtener_vertices()[i].obtener_vertice()->obtener_titulo() << " " << endl;
-    }
-    
-    cout << " " << endl;
 
     Kruskal kruskal(grafo, grafo.obtener_vertices());
 

@@ -3,21 +3,21 @@ Casa Tomada
 57
 1990
 Bestiario
-(1)
+(1568)
 
 P
 El Poema del Mio Cid
 12
 1140
 3733
-(1)
+(4567)
 
 N
 Frankestein
 1600
 1818
 TERROR
-(2)
+(1544)
 
 N
 Una columna de fuego
@@ -25,11 +25,11 @@ Una columna de fuego
 2017
 HISTORICA
 Guerra de religiones en Europa en la segunda mitad del siglo XVI
-(5)
+(1757)
 
 P
 Voy a dormir
 100
 2020
 14
-(4)
+(1568)

@@ -3,7 +3,7 @@
 using namespace std;
 
  Parser::Parser() {
-      this->lista_escritores = lista_escritores;
+      this->tabla_escritores = tabla_escritores;
       this->lista_lecturas = lista_lecturas;
  }
 
@@ -34,10 +34,9 @@ void Parser::procesar_escritores(){
         else{
             getline(archivo_escritores,linea_espacio);
         }
-       
         Escritor* escritor = new Escritor(nombre_completo, nacionalidad, stoi(anio_nacimiento), stoi(anio_fallecimiento), referencia);
 
-        lista_escritores.alta(escritor);
+        tabla_escritores.insertar_escritor(escritor);
     }   
     archivo_escritores.close();
 }
@@ -75,16 +74,16 @@ void Parser::procesar_lectura(){
         
         if(tipo_lectura == NOVELA){ 
             if(genero == NOVELA_HISTORICA){
-                nueva_lectura = new Historica(tipo_lectura[PRIMER_CARACTER], titulo, stoi(minutos), stoi(anio_publicacion), lista_escritores.consulta(referencia), lista_lecturas.procesar_genero(genero), const_cast<char*>(tema.c_str()));
+                nueva_lectura = new Historica(tipo_lectura[PRIMER_CARACTER], titulo, stoi(minutos), stoi(anio_publicacion), tabla_escritores.consulta(referencia), lista_lecturas.procesar_genero(genero), const_cast<char*>(tema.c_str()));
            } else{
-                nueva_lectura = new Novela(tipo_lectura[PRIMER_CARACTER], titulo, stoi(minutos), stoi(anio_publicacion), lista_escritores.consulta(referencia), lista_lecturas.procesar_genero(genero));
+                nueva_lectura = new Novela(tipo_lectura[PRIMER_CARACTER], titulo, stoi(minutos), stoi(anio_publicacion), tabla_escritores.consulta(referencia), lista_lecturas.procesar_genero(genero));
             }                                                                                                                                                           
         }
         else if(tipo_lectura == CUENTO){
-            nueva_lectura = new Cuento(tipo_lectura[PRIMER_CARACTER], titulo, stoi(minutos), stoi(anio_publicacion), lista_escritores.consulta(referencia), titulo_libro);
+            nueva_lectura = new Cuento(tipo_lectura[PRIMER_CARACTER], titulo, stoi(minutos), stoi(anio_publicacion), tabla_escritores.consulta(referencia), titulo_libro);
         }
         else{
-            nueva_lectura = new Poema(tipo_lectura[PRIMER_CARACTER], titulo, stoi(minutos), stoi(anio_publicacion),lista_escritores.consulta(referencia) , stoi(cant_versos));
+            nueva_lectura = new Poema(tipo_lectura[PRIMER_CARACTER], titulo, stoi(minutos), stoi(anio_publicacion),tabla_escritores.consulta(referencia) , stoi(cant_versos));
 
         }
     lista_lecturas.alta(nueva_lectura);
@@ -96,6 +95,6 @@ Lista_Lecturas Parser::devolver_lecturas(){
     return lista_lecturas;
 }
 
-Lista_Escritores Parser::devolver_escritores(){
-    return lista_escritores;
+Tabla_Hashing Parser::devolver_escritores(){
+    return tabla_escritores;
 }

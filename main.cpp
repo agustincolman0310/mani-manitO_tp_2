@@ -12,20 +12,22 @@ int main() {
     Parser parser;
     parser.procesar_escritores();
     parser.procesar_lectura();
-    Main_Kruskal kruskal(parser.devolver_lecturas());
-    // Menu menu(parser.devolver_lecturas(),parser.devolver_escritores());
+    // Main_Kruskal kruskal(parser.devolver_lecturas());
+    // parser.devolver_escritores().mostrar_escritores();
+
+    Menu menu(parser.devolver_lecturas(),parser.devolver_escritores());
     // menu.cargar_cola();
-    kruskal.ejecutar_kruskal();
-    parser.devolver_lecturas().vaciar_lista();
-    parser.devolver_escritores().vaciar_lista();
-    // int opcion_recibida;
+    // kruskal.ejecutar_kruskal();
+    // parser.devolver_lecturas().vaciar_lista();
+    // parser.devolver_escritores().vaciar_lista();
+    int opcion_recibida;
     
-    // while(opcion_recibida != OPCION_13){
-    //     opcion_recibida = menu.mostrar_menu();
-    //     menu.procesar_opciones(opcion_recibida);
-    // }
+    while(opcion_recibida != OPCION_14){
+        opcion_recibida = menu.mostrar_menu();
+        menu.procesar_opciones(opcion_recibida);
+    }
     
-    // menu.vaciar_listas();
+    menu.vaciar_listas();
 
 
     return 0;

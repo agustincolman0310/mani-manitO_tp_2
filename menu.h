@@ -3,6 +3,7 @@
 
 #include "lista_escritores.h"
 #include "lista_lecturas.h"
+#include "tabla_hashing.h"
 #include <iostream>
 #include <string>
 #include "cuento.h"
@@ -11,10 +12,11 @@
 #include "historica.h"
 #include "constantes.h"
 #include "cola.h"
+#include "main_kruskal.h"
 
 class Menu{
 private:
-    Lista_Escritores escritores;
+    Tabla_Hashing escritores;
     Lista_Lecturas lecturas;
     Cola cola;
     /*
@@ -78,10 +80,15 @@ private:
     POST: Imprime por pantalla la cola de lecturas.
     */
     void mostrar_cola();
+    /*
+    PRE: -
+    POST: Imprime por pantalla el recorrido minimo por Kruskal.
+    */
+    void mostrar_tiempo_minimo();
     
 public:
     // Constructor
-    Menu(Lista_Lecturas lecturas, Lista_Escritores escritores);
+    Menu(Lista_Lecturas lecturas, Tabla_Hashing escritores);
     /*
     PRE: opcion debe ser un número entre 1 y 13.
     POST: Dependiendo de la opción elegida, hace una cosa u otra.

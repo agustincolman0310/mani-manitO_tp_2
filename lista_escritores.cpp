@@ -64,7 +64,7 @@ Escritor* Lista_Escritores::consulta(string atributo){
     
     while (temp) {
         if ((convertir_en_mayuscula(temp->obtener_dato()->obtener_nombre_completo()) == atributo_mayuscula) 
-        || (temp->obtener_dato()->obtener_referencia()) == atributo) {
+        || ((temp->obtener_dato()->obtener_referencia())) == atributo) {
             escritor = temp->obtener_dato();
         }
         temp = temp->obtener_siguiente();
@@ -72,12 +72,12 @@ Escritor* Lista_Escritores::consulta(string atributo){
     return escritor;
 }
 
-void Lista_Escritores::modificar_anio_fallecimiento(string nombre_escritor, int nuevo_anio){
-    if(consulta(nombre_escritor) != NULL)
-        consulta(nombre_escritor)->modificar_anio_fallecimiento(nuevo_anio);
-    else
-        cout<<"El escritor no se encuentra el escritor en la lista"<<endl;
-}
+// void Lista_Escritores::modificar_anio_fallecimiento(string nombre_escritor, int nuevo_anio){
+//     if(consulta(nombre_escritor) != NULL)
+//         consulta(nombre_escritor)->modificar_anio_fallecimiento(nuevo_anio);
+//     else
+//         cout<<"El escritor no se encuentra el escritor en la lista"<<endl;
+// }
 
 int Lista_Escritores::buscar_referencia(string referencia){
     Nodo<Escritor*> *temp = primero;
