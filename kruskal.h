@@ -23,8 +23,9 @@ public:
     //post: muestra por pantalla el camino mínimo entre el origen y el destino, detallando su recorrido y peso
     // void caminoMinimo(int origen, int destino);
 
-    ~Kruskal(){};
+    // ~Kruskal(){};
 
+    void liberar_matriz();
 private:
     int encontrar(int i);
     int unir(int i, int j);

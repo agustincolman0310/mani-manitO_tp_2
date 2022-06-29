@@ -42,7 +42,7 @@ public:
 
     int ** obtener_matriz();
 
-    ~Grafo(){};
+    // ~Grafo(){};
 };
 
 

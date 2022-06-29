@@ -75,9 +75,9 @@ void Tabla_Hashing::mostrar_escritores(){
 
 void Tabla_Hashing::vaciar_tabla(){
     for(int i = 0; i < TAMANIO; i++){
-        
-        escritores[i]->vaciar_lista();
-        delete escritores[i];
+        if(escritores[i] != nullptr){
+            escritores[i]->vaciar_lista();
+            delete escritores[i];
+        }
     }
-    // delete [] escritores;
 }

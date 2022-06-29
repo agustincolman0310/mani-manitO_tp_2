@@ -41,4 +41,6 @@ void Main_Kruskal::ejecutar_kruskal(){
     Kruskal kruskal(grafo, grafo.obtener_vertices());
 
     kruskal.recorrer();
+
+    kruskal.liberar_matriz();
 }

@@ -25,7 +25,7 @@ public:
     //post: muestra por pantalla el camino mínimo entre el origen y el destino, detallando su recorrido y peso
     // void caminoMinimo(int origen, int destino);
     void ejecutar_kruskal();
-    ~Main_Kruskal(){};
+    // ~Main_Kruskal(){};
 };
 
 

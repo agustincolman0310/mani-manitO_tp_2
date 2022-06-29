@@ -6,7 +6,7 @@ Kruskal::Kruskal(Grafo grafo, Vertice* vertices){
     this->matriz_pesos = grafo.obtener_matriz();
     cantidad_vertices = grafo.obtener_cantidad();
     vector = new int[cantidad_vertices + 1];
-    for(int i = 0; i < cantidad_vertices+1; i++){
+    for(int i = 0; i < cantidad_vertices + 1 ; i++){
         vector[i] = 0;
     }
 
@@ -64,4 +64,16 @@ void Kruskal::recorrer(){
     cout << " " << endl;
     
     cout<<"El costo minimo total es: "<< costo_minimo << endl;
+}
+
+void Kruskal::liberar_matriz(){
+    delete [] vertices;
+    delete [] vector;
+    if(matriz_pesos != nullptr){
+        for(int i = 0; i < cantidad_vertices; i++){
+            delete [] matriz_pesos[i];
+        }   
+        delete [] matriz_pesos;
+    }
+    matriz_pesos = nullptr;
 }
