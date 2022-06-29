@@ -28,3 +28,8 @@ char Lectura::obtener_tipo_lectura(){
 int Lectura::obtener_tiempo_lectura(){
         return minutos;
 }
+
+void Lectura::modificar_escritor(){
+        // escritor->modificar_nombre();
+        escritor = NULL;
+}

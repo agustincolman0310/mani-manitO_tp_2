@@ -18,6 +18,8 @@ public:
     POST: Devuelve la cantidad de versos que tiene el poema, en forma de string. 
     */
     string obtener_atributo_diferente();
+
+    void modificar_referencia();
 };
 
 #endif

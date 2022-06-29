@@ -85,6 +85,8 @@ private:
     POST: Imprime por pantalla el recorrido minimo por Kruskal.
     */
     void mostrar_tiempo_minimo();
+
+    void eliminar_escritor();
     
 public:
     // Constructor

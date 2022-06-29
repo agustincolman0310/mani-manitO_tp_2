@@ -82,7 +82,7 @@ Escritor* Lista_Escritores::consulta(string atributo){
 int Lista_Escritores::buscar_referencia(string referencia){
     Nodo<Escritor*> *temp = primero;
     int cont = 0;
-    while (temp->obtener_dato()->obtener_referencia() !=  referencia) {
+    while ((temp->obtener_dato()->obtener_referencia() !=  referencia))  {
         cont++;
         temp = temp->obtener_siguiente();
     }

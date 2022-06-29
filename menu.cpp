@@ -25,7 +25,8 @@ int Menu::mostrar_menu(){
     cout<<"\t["<<MAGENTA<<"11"<<BLANCO"] Quitar lectura de menor tiempo.\n";
     cout<<"\t["<<MAGENTA<<"12"<<BLANCO"] Mostrar lecturas por tiempo de duracion.\n";
     cout<<"\t["<<MAGENTA<<"13"<<BLANCO"] Mostrar orden y tiempo mínimo en leer todas las lecturas.\n";
-    cout<<"\t["<<MAGENTA<<"14"<<BLANCO"] Salir.\n";
+    cout<<"\t["<<MAGENTA<<"14"<<BLANCO"] Eliminar escritor.\n";
+    cout<<"\t["<<MAGENTA<<"15"<<BLANCO"] Salir.\n";
     cout<<"\t---------------------- \n";
     cout<<"\t-|"<<AMARILLO<<"Ingrese una opción"<<BLANCO"|- \n";
     cout<<"\t---------------------- \n";
@@ -75,6 +76,10 @@ void Menu::procesar_opciones(int opcion){
         break;
         case OPCION_13:
             mostrar_tiempo_minimo();
+        break;
+        case OPCION_14:
+            eliminar_escritor();
+        break;
     }
 }
 
@@ -325,4 +330,23 @@ void Menu::vaciar_listas(){
 void Menu::mostrar_tiempo_minimo(){
     Main_Kruskal kruskal(lecturas);
     kruskal.ejecutar_kruskal();
+}
+
+void Menu::eliminar_escritor(){
+    cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n";
+    string nombre_completo;
+    cout<< "Ingrese el nombre completo del escritor: \n";
+    cin.ignore();
+    getline(cin, nombre_completo);
+    Escritor* escritor_a_eliminar; 
+    // while(escritores.consulta_escritor(nombre_completo) == NULL){
+    //     cout<<"El nombre ingresado no existe \n";
+    //     cout<< "Ingrese el nombre completo nuevamente: \n";
+    //     getline(cin, nombre_completo);
+    // }
+    escritor_a_eliminar = escritores.consulta_escritor(nombre_completo);
+    // cout<<escritor_a_eliminar->obtener_referencia()<<endl;
+    lecturas.modificar_por_escritor(nombre_completo);
+    escritores.eliminar_escritor(escritor_a_eliminar->obtener_referencia());
+    // delete escritor_a_eliminar;
 }

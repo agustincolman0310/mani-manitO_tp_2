@@ -19,6 +19,9 @@ public:
     POST: Transforma el genero recibido en un string.
     */
     string convertir_genero(int genero);
+
+    void modificar_referencia();
+
 };
 
 #endif

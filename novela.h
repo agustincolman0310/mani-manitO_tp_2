@@ -21,6 +21,9 @@ public:
     POST: Devuelve el genero de la novela. 
     */    
     string obtener_atributo_diferente();
+
+    void modificar_referencia();
+
 };
 
 

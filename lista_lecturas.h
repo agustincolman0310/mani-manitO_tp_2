@@ -80,6 +80,7 @@ public:
     POST: Muestra las lecturas que tienen por escritor a nombre_completo.
     */
     void listar_por_escritor(string nombre_completo);
+    void modificar_por_escritor(string nombre_completo);
     /*
     PRE: Tanto desde como hasta deben ser números mayores a 0 y hasta debe ser mayor a desde. 
     POST: Muestra las lecturas que tienen fueron publicadas entre esas fechas.

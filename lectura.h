@@ -43,6 +43,8 @@ public:
     virtual void mostrar() = 0;
 
     virtual string obtener_atributo_diferente() = 0;
+
+    void modificar_escritor();
 };
 
 #endif

@@ -13,13 +13,12 @@ Lista_Lecturas::Lista_Lecturas(){
     cantidad = 0;
 }
 
-
 void Lista_Lecturas::listar_por_escritor(string nombre_completo){
     Nodo<Lectura*> *temp = primero;
     int contador = 0;
 
     while(temp){
-        if(convertir_en_mayuscula(temp->obtener_dato()->obtener_escritor()->obtener_nombre_completo()) == convertir_en_mayuscula(nombre_completo)){
+        if(temp->obtener_dato() != NULL && convertir_en_mayuscula(temp->obtener_dato()->obtener_escritor()->obtener_nombre_completo()) == convertir_en_mayuscula(nombre_completo)){
             temp->obtener_dato()->mostrar();
             contador++;
         }
@@ -30,6 +29,22 @@ void Lista_Lecturas::listar_por_escritor(string nombre_completo){
     }
 }
 
+void Lista_Lecturas::modificar_por_escritor(string nombre_completo){
+    Nodo<Lectura*> *temp = primero;
+    // int contador = 0;
+
+    while(temp){
+        
+        if((temp->obtener_dato()->obtener_escritor()->obtener_nombre_completo()) == convertir_en_mayuscula(nombre_completo)){
+            temp->obtener_dato()->modificar_escritor();
+            // contador++;
+        }
+        temp = temp->obtener_siguiente();
+    }
+    // if(contador == 0){
+    //     cout<<"No hay niguna obra de ese escritor...\n";
+    // }
+}
 string Lista_Lecturas::convertir_en_mayuscula(string cadena){
     int largo_cadena = (int) cadena.length();
     for(int i = 0; i < largo_cadena; i++) 

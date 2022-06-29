@@ -83,7 +83,7 @@ void Parser::procesar_lectura(){
             nueva_lectura = new Cuento(tipo_lectura[PRIMER_CARACTER], titulo, stoi(minutos), stoi(anio_publicacion), tabla_escritores.consulta(referencia), titulo_libro);
         }
         else{
-            nueva_lectura = new Poema(tipo_lectura[PRIMER_CARACTER], titulo, stoi(minutos), stoi(anio_publicacion),tabla_escritores.consulta(referencia) , stoi(cant_versos));
+            nueva_lectura = new Poema(tipo_lectura[PRIMER_CARACTER], titulo, stoi(minutos), stoi(anio_publicacion), tabla_escritores.consulta(referencia) , stoi(cant_versos));
 
         }
     lista_lecturas.alta(nueva_lectura);

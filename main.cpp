@@ -22,7 +22,7 @@ int main() {
     // parser.devolver_escritores().vaciar_lista();
     int opcion_recibida;
     
-    while(opcion_recibida != OPCION_14){
+    while(opcion_recibida != OPCION_15){
         opcion_recibida = menu.mostrar_menu();
         menu.procesar_opciones(opcion_recibida);
     }

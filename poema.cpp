@@ -11,11 +11,20 @@ void Poema::mostrar(){
     cout<< "El titulo es: "<< titulo<< endl;
     cout<< "La lectura tiene una duracion de: "<< minutos << " minutos"<< endl;
     cout<< "La lectura fue publicada en: "<< anio_publicacion << endl;
-    cout<< "El escritor es: " << escritor->obtener_nombre_completo() << endl;
+    if(escritor != NULL){
+        cout<< "El escritor es: " << escritor->obtener_nombre_completo() << endl;
+    }else{
+        escritor->modificar_nombre();
+        cout << "El escritor es: ANONIMO" << endl;
+    }
     cout<< "El Poema tiene: "<< cant_versos<< " versos"<< endl;
     cout<<"\n";
 }
 
 string Poema::obtener_atributo_diferente(){
     return to_string(cant_versos);
+}
+
+void Poema::modificar_referencia(){
+    escritor = NULL;
 }

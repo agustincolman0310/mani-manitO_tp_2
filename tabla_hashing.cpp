@@ -35,18 +35,25 @@ int Tabla_Hashing::obtener_referencia(string referencia){
 } 
 
 void Tabla_Hashing::eliminar_escritor(string referencia){
+    
     int numero_clave = obtener_referencia(referencia);
+    
     int posicion = hashing(numero_clave);
-
+    
     escritores[posicion]->baja(referencia);
 }
 
 Escritor* Tabla_Hashing::consulta(string referencia){
-    int numero_clave = obtener_referencia(referencia);
-    cout<<"el numero de referencia es: "<<numero_clave<<endl;
-    int posicion = hashing(numero_clave);
+    if(referencia == "ANONIMO"){
+        return NULL;
+    }else{
+
+        int numero_clave = obtener_referencia(referencia);
+    // cout<<"el numero de referencia es: "<<numero_clave<<endl;
+        int posicion = hashing(numero_clave);
     
-    return escritores[posicion]->consulta(referencia);
+        return escritores[posicion]->consulta(referencia);
+    }
 }
 
 Escritor* Tabla_Hashing::consulta_escritor(string nombre_completo){

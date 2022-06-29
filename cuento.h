@@ -21,6 +21,9 @@ public:
     POST: Obtiene el genero del cuento.
     */
     string obtener_atributo_diferente();
+
+    void modificar_referencia();
+
 };
 
 #endif

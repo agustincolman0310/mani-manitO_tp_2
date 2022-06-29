@@ -10,9 +10,15 @@ Historica::Historica(char tipo_lectura, string titulo, int minutos, int anio_pub
 void Historica::mostrar(){
     cout << "El tipo de lectura es: " << tipo_lectura << endl;
     cout << "El título es: " << titulo << endl;
-    cout << "La lectura tiene una duración de : " << minutos << " minutos" << endl;
+    cout << "La lectura tiene una duración de: " << minutos << " minutos" << endl;
     cout << "La lectura fue publicada en el año: " << anio_publicacion << endl;
-    cout << "El escritor es: " << escritor->obtener_nombre_completo() << endl;
+    if(escritor != NULL){
+        cout << "El escritor es: " << escritor->obtener_nombre_completo() << endl;
+    }
+    else{
+        escritor->modificar_nombre();
+        cout << "El escritor es: ANONIMO" << endl;
+    }
     cout << "El género es: " << convertir_genero(genero) << endl;
     cout << "El tema es: " << tema << endl;
     cout << "\n";
@@ -24,4 +30,7 @@ string Historica::convertir_genero(int genero){
         genero_historica = "HISTORICA";
     }
     return genero_historica;
+}
+void Historica::modificar_referencia(){
+    escritor = NULL;
 }

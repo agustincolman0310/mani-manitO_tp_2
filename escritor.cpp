@@ -50,3 +50,7 @@ void Escritor::modificar_anio_fallecimiento(int anio_nuevo){
 string Escritor::obtener_referencia(){
     return referencia;
 }
+
+void Escritor::modificar_nombre(){
+    nombre_completo = " ";
+}
