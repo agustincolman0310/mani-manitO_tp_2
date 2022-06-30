@@ -22,8 +22,6 @@ public:
     */
     string obtener_atributo_diferente();
 
-    void modificar_referencia();
-
 };
 
 #endif

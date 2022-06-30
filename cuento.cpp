@@ -7,14 +7,14 @@ Cuento::Cuento(char tipo_lectura, string titulo, int minutos, int anio_publicaci
 }
 
 void Cuento::mostrar(){
-    cout << "El tipo de lectura es: " << tipo_lectura << endl;
+    cout<< "El tipo de lectura es: "<< MAGENTA<<tipo_lectura<<BLANCO<< endl;
     cout << "El titulo es: " << titulo << endl;
     cout << "La lectura tiene una duracion de: " << minutos << " minutos" << endl;
     cout << "La lectura fue publicada en: " << anio_publicacion << endl;
-    if(escritor != NULL){
+    if(escritor != nullptr){
         cout<< "El escritor es: " << escritor->obtener_nombre_completo() << endl;
     }else{
-        escritor->modificar_nombre();
+        //escritor->modificar_nombre();
         cout << "El escritor es: ANONIMO" << endl;
     }
     cout << "El Cuento se encuentra en el libro: " << libro << endl;
@@ -23,8 +23,4 @@ void Cuento::mostrar(){
 
 string Cuento::obtener_atributo_diferente(){
     return libro;
-}
-
-void Cuento::modificar_referencia(){
-    escritor = NULL;
 }

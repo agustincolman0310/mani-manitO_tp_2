@@ -34,13 +34,11 @@ int Tabla_Hashing::obtener_referencia(string referencia){
     return numero;
 } 
 
-void Tabla_Hashing::eliminar_escritor(string referencia){
+void Tabla_Hashing::eliminar_escritor(int isni){
     
-    int numero_clave = obtener_referencia(referencia);
+    int posicion = hashing(isni);
     
-    int posicion = hashing(numero_clave);
-    
-    escritores[posicion]->baja(referencia);
+    escritores[posicion]->baja(isni);
 }
 
 Escritor* Tabla_Hashing::consulta(string referencia){

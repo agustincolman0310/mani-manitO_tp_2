@@ -51,6 +51,10 @@ string Escritor::obtener_referencia(){
     return referencia;
 }
 
-void Escritor::modificar_nombre(){
-    nombre_completo = " ";
+void Escritor::modificar_escritor(){
+    nombre_completo = "AGUSTIN";
+    nacionalidad = "COLMAN";
+    anio_nacimiento = -1;
+    anio_fallecimiento = -1;
+    referencia = "0";
 }

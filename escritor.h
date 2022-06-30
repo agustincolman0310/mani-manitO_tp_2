@@ -13,7 +13,7 @@ private:
     string referencia;
 
 public:
-    void modificar_nombre();
+    void modificar_escritor();
     // Constructor
     Escritor(string nombre_completo, string nacionalidad, int anio_nacimiento, int anio_fallecimiento, string referencia);
     /*

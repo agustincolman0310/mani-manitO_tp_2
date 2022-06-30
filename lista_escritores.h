@@ -38,7 +38,7 @@ class Lista_Escritores{
 
         // PRE: La lista no debe estar vacía y pos debe estar entre 1 y obtener_cantidad().
         // POST: Elimina el elemento que está en pos.
-        void baja(int pos);
+        void baja_nodo(int pos);
 
         // PRE: La lista debe contar con elementos.
         // POST: Da de baja todos los elementos de la lista.
@@ -62,7 +62,7 @@ class Lista_Escritores{
 
         int buscar_referencia(string referencia);
 
-        void baja(string referencia);
+        void baja(int isni);
 };
 
 #endif

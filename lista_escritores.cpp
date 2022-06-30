@@ -90,7 +90,7 @@ int Lista_Escritores::buscar_referencia(string referencia){
     return cont;
 }
 
-void Lista_Escritores::baja(int pos) {
+void Lista_Escritores::baja_nodo(int pos) {
     Nodo<Escritor*>* borrar = primero;
     if (pos == 1){
         primero = primero->obtener_siguiente();
@@ -103,15 +103,17 @@ void Lista_Escritores::baja(int pos) {
     cantidad--;
     delete borrar->obtener_dato();
     delete borrar;
+    borrar = nullptr;
 }
 
-void Lista_Escritores::baja(string referencia){
+void Lista_Escritores::baja(int isni){
+    string referencia = "(" + to_string(isni) + ")";
     int posicion = buscar_referencia(referencia);
-    baja(posicion);
+    baja_nodo(posicion);
 }
 
 void Lista_Escritores::vaciar_lista(){
     while(!vacia()){
-        baja(1);
+        baja_nodo(1);
     }
 }

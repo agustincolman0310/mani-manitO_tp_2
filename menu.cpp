@@ -10,27 +10,29 @@ Menu::Menu(Lista_Lecturas lecturas, Tabla_Hashing escritores){
 
 int Menu::mostrar_menu(){
     int opcion = 0;
-    cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n";
-    cout<<"\t-------------------|"<<VERDE "MENU"<<BLANCO"|------------------- \n";
-    cout<<"\t["<<MAGENTA<<"1"<<BLANCO"] Agregar nueva lectura.\n"; 
-    cout<<"\t["<<MAGENTA<<"2"<<BLANCO"] Quitar una lectura.\n";     
-    cout<<"\t["<<MAGENTA<<"3"<<BLANCO"] Agregar escritor.\n"; ;
-    cout<<"\t["<<MAGENTA<<"4"<<BLANCO"] Cambiar dato de un escritor.\n";
-    cout<<"\t["<<MAGENTA<<"5"<<BLANCO"] Listar escritores.\n"; 
-    cout<<"\t["<<MAGENTA<<"6"<<BLANCO"] Sortear lecturas random.\n"; 
-    cout<<"\t["<<MAGENTA<<"7"<<BLANCO"] Listar todas las lecturas.\n"; 
-    cout<<"\t["<<MAGENTA<<"8"<<BLANCO"] Listar lecturas entre años.\n";
-    cout<<"\t["<<MAGENTA<<"9"<<BLANCO"] Listar lecturas por escritor.\n";
-    cout<<"\t["<<MAGENTA<<"10"<<BLANCO"] Listar novelas por género.\n";
-    cout<<"\t["<<MAGENTA<<"11"<<BLANCO"] Quitar lectura de menor tiempo.\n";
-    cout<<"\t["<<MAGENTA<<"12"<<BLANCO"] Mostrar lecturas por tiempo de duracion.\n";
-    cout<<"\t["<<MAGENTA<<"13"<<BLANCO"] Mostrar orden y tiempo mínimo en leer todas las lecturas.\n";
-    cout<<"\t["<<MAGENTA<<"14"<<BLANCO"] Eliminar escritor.\n";
-    cout<<"\t["<<MAGENTA<<"15"<<BLANCO"] Salir.\n";
-    cout<<"\t---------------------- \n";
-    cout<<"\t-|"<<AMARILLO<<"Ingrese una opción"<<BLANCO"|- \n";
-    cout<<"\t---------------------- \n";
-    cout<<"\t->";
+    cout<<"🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦\n";
+    //cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n";
+    cout<<"🟦\t-------------------|"<<VERDE "MENU"<<BLANCO"|-------------------                  🟦\n";
+    cout<<"🟦\t["<<MAGENTA<<"1"<<BLANCO"] Agregar nueva lectura.                                    🟦\n"; 
+    cout<<"🟦\t["<<MAGENTA<<"2"<<BLANCO"] Quitar una lectura.                                       🟦\n";     
+    cout<<"🟦\t["<<MAGENTA<<"3"<<BLANCO"] Agregar escritor.                                         🟦\n";
+    cout<<"🟦\t["<<MAGENTA<<"4"<<BLANCO"] Cambiar dato de un escritor.                              🟦\n";
+    cout<<"🟦\t["<<MAGENTA<<"5"<<BLANCO"] Listar escritores.                                        🟦\n"; 
+    cout<<"🟦\t["<<MAGENTA<<"6"<<BLANCO"] Sortear lecturas random.                                  🟦\n"; 
+    cout<<"🟦\t["<<MAGENTA<<"7"<<BLANCO"] Listar todas las lecturas.                                🟦\n"; 
+    cout<<"🟦\t["<<MAGENTA<<"8"<<BLANCO"] Listar lecturas entre años.                               🟦\n";
+    cout<<"🟦\t["<<MAGENTA<<"9"<<BLANCO"] Listar lecturas por escritor.                             🟦\n";
+    cout<<"🟦\t["<<MAGENTA<<"10"<<BLANCO"] Listar novelas por género.                               🟦\n";
+    cout<<"🟦\t["<<MAGENTA<<"11"<<BLANCO"] Quitar lectura de menor tiempo.                          🟦\n";
+    cout<<"🟦\t["<<MAGENTA<<"12"<<BLANCO"] Mostrar lecturas por tiempo de duracion.                 🟦\n";
+    cout<<"🟦\t["<<MAGENTA<<"13"<<BLANCO"] Mostrar orden y tiempo mínimo en leer todas las lecturas.🟦\n";
+    cout<<"🟦\t["<<MAGENTA<<"14"<<BLANCO"] Eliminar escritor.                                       🟦\n";
+    cout<<"🟦\t["<<MAGENTA<<"15"<<BLANCO"] Salir.                                                   🟦\n";
+    cout<<"🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦\n";
+    cout<<"\t🔲🔲🔲🔲🔲🔲🔲🔲🔲🔲🔲🔲\n";
+    cout<<"\t🔲"<<AMARILLO<<" Ingrese una opción "<<BLANCO"🔲\n";
+    cout<<"\t🔲🔲🔲🔲🔲🔲🔲🔲🔲🔲🔲🔲\n";
+    cout<<"\t▶️  ";
     cin>>opcion;
     return opcion;
 }
@@ -82,13 +84,7 @@ void Menu::procesar_opciones(int opcion){
         break;
     }
 }
-
-void Menu::agregar_lectura(){
-    string titulo,nombre_completo,genero,tema,titulo_libro,nuevo_nombre;
-    char tipo_lectura;
-    int minutos,anio_publicacion,cant_versos;
-    Lectura* lectura;
-    cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n";
+void Menu::validar_datos_lectura(char &tipo_lectura, string &titulo, string &nombre_completo, int &minutos, int &anio_publicacion){
     cout<<"Ingrese el tipo de lectura (C para cuento, P para poema, N para novela): \n";
     cin>>tipo_lectura;
     while(tipo_lectura!= TIPO_NOVELA && tipo_lectura != TIPO_POEMA && tipo_lectura != TIPO_CUENTO){
@@ -135,7 +131,15 @@ void Menu::agregar_lectura(){
 
     cout<<"Ingrese el año publicacion: \n";
     cin>>anio_publicacion;
+}
 
+void Menu::agregar_lectura(){
+    string titulo, nombre_completo, genero, tema, titulo_libro, nuevo_nombre;
+    char tipo_lectura;
+    int minutos, anio_publicacion, cant_versos;
+    Lectura* lectura;
+    cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n";
+    validar_datos_lectura(tipo_lectura, titulo, nombre_completo, minutos, anio_publicacion);
     if (toupper(tipo_lectura) == TIPO_NOVELA){
         cout<< "Ingrese el genero: \n";
         cin>>genero;
@@ -334,19 +338,9 @@ void Menu::mostrar_tiempo_minimo(){
 
 void Menu::eliminar_escritor(){
     cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n";
-    string nombre_completo;
-    cout<< "Ingrese el nombre completo del escritor: \n";
-    cin.ignore();
-    getline(cin, nombre_completo);
-    Escritor* escritor_a_eliminar; 
-    // while(escritores.consulta_escritor(nombre_completo) == NULL){
-    //     cout<<"El nombre ingresado no existe \n";
-    //     cout<< "Ingrese el nombre completo nuevamente: \n";
-    //     getline(cin, nombre_completo);
-    // }
-    escritor_a_eliminar = escritores.consulta_escritor(nombre_completo);
-    // cout<<escritor_a_eliminar->obtener_referencia()<<endl;
-    lecturas.modificar_por_escritor(nombre_completo);
-    escritores.eliminar_escritor(escritor_a_eliminar->obtener_referencia());
-    // delete escritor_a_eliminar;
+    int isni;
+    cout<< "Ingrese el ISNI del escritor que quiere eliminar: \n";
+    cin>>isni;
+    lecturas.modificar_por_escritor(isni);
+    escritores.eliminar_escritor(isni);
 }

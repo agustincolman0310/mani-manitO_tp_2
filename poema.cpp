@@ -7,14 +7,14 @@ Poema::Poema(char tipo_lectura, std::string titulo, int minutos, int anio_public
 }
 
 void Poema::mostrar(){
-    cout<< "El tipo de lectura es: "<< tipo_lectura<< endl;
+    cout<< "El tipo de lectura es: "<< MAGENTA<<tipo_lectura<<BLANCO<< endl;
     cout<< "El titulo es: "<< titulo<< endl;
     cout<< "La lectura tiene una duracion de: "<< minutos << " minutos"<< endl;
     cout<< "La lectura fue publicada en: "<< anio_publicacion << endl;
-    if(escritor != NULL){
+    if(escritor != nullptr){
         cout<< "El escritor es: " << escritor->obtener_nombre_completo() << endl;
     }else{
-        escritor->modificar_nombre();
+        //escritor->modificar_nombre();
         cout << "El escritor es: ANONIMO" << endl;
     }
     cout<< "El Poema tiene: "<< cant_versos<< " versos"<< endl;
@@ -25,6 +25,3 @@ string Poema::obtener_atributo_diferente(){
     return to_string(cant_versos);
 }
 
-void Poema::modificar_referencia(){
-    escritor = NULL;
-}

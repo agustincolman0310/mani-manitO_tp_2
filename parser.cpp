@@ -21,19 +21,29 @@ void Parser::procesar_escritores(){
     while(getline(archivo_escritores, referencia)){
         getline(archivo_escritores,nombre_completo);
         getline(archivo_escritores,nacionalidad);
-        getline(archivo_escritores,anio_nacimiento);
-        if(!anio_nacimiento.empty()){
-            getline(archivo_escritores,anio_fallecimiento);              
+        if(!nacionalidad.empty()){
+            getline(archivo_escritores,anio_nacimiento);
+            if(!anio_nacimiento.empty()){
+                getline(archivo_escritores,anio_fallecimiento);
+                if(anio_fallecimiento.empty()){
+                    anio_fallecimiento = ANIO_NO_ENCONTRADO;
+                }
+                else{
+                    getline(archivo_escritores,linea_espacio);
+                }              
+            }
+            else{
+                anio_nacimiento = ANIO_NO_ENCONTRADO;
+                anio_fallecimiento = ANIO_NO_ENCONTRADO;
+            }              
         }
         else{
-            anio_nacimiento = ANIO_NO_ENCONTRADO;
-        }
-        if(anio_fallecimiento.empty()){
+            nacionalidad = NACIONALIDAD_DESCONOCIDA;
             anio_fallecimiento = ANIO_NO_ENCONTRADO;
+            anio_nacimiento = ANIO_NO_ENCONTRADO;
+
         }
-        else{
-            getline(archivo_escritores,linea_espacio);
-        }
+       
         Escritor* escritor = new Escritor(nombre_completo, nacionalidad, stoi(anio_nacimiento), stoi(anio_fallecimiento), referencia);
 
         tabla_escritores.insertar_escritor(escritor);

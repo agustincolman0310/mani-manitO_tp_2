@@ -14,7 +14,7 @@ public:
     Tabla_Hashing();
     ~Tabla_Hashing(){};
     void insertar_escritor(Escritor* escritor);
-    void eliminar_escritor(string referencia);
+    void eliminar_escritor(int isni);
     Escritor* consulta(string referencia);
     void mostrar_escritores();
     void vaciar_tabla();
