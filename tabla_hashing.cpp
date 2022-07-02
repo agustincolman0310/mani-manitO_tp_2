@@ -86,3 +86,13 @@ void Tabla_Hashing::vaciar_tabla(){
         }
     }
 }
+
+void Tabla_Hashing::mostrar_referencias(){
+    for(int i = 0; i < TAMANIO; i++){
+        //cout << "En la posicion: " << i << endl; 
+        if(escritores[i] != nullptr){
+            escritores[i]->listar_referencias();
+        }
+
+    }
+}

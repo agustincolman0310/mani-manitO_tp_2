@@ -9,18 +9,18 @@ Novela::Novela(char tipo_lectura, std::string titulo,int minutos, int anio_publi
 }
 
 void Novela::mostrar(){
-    std::cout<< "El tipo de lectura es: "<<MAGENTA<< tipo_lectura <<BLANCO<< std::endl;
-    std::cout<< "El titulo es: "<< titulo<< std::endl;
-    std::cout<< "La lectura lleva: "<< minutos << " minutos"<< std::endl;
-    std::cout<< "La lectura fue publicada en: "<< anio_publicacion << std::endl;
+    std::cout<< "☕ El tipo de lectura es: "<<MAGENTA<< tipo_lectura <<BLANCO<< std::endl;
+    std::cout<< "📖 El titulo es: "<< titulo<< std::endl;
+    std::cout<< "⏳ La lectura lleva: "<< minutos << " minutos"<< std::endl;
+    std::cout<< "📌 La lectura fue publicada en: "<< anio_publicacion << std::endl;
     if(escritor != nullptr){
-        cout<< "El escritor es: " << escritor->obtener_nombre_completo() << std::endl;
+        cout<< "🖊️ El escritor es: " << escritor->obtener_nombre_completo() << std::endl;
     }
     else{
         //escritor->modificar_nombre();
-        cout<< "El escritor es: ANONIMO" << std::endl;
+        cout<< "🖊️ El escritor es: ANONIMO" << std::endl;
     }
-    std::cout<< "El genero es: "<< convertir_genero(genero)<< std::endl;
+    std::cout<< "📙 El genero es: "<< convertir_genero(genero)<< std::endl;
     std::cout<<"\n";
 }
 

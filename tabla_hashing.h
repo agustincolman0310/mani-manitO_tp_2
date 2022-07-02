@@ -19,6 +19,7 @@ public:
     void mostrar_escritores();
     void vaciar_tabla();
     Escritor* consulta_escritor(string nombre_completo);
+    void mostrar_referencias();
 private:
     int hashing(int clave);
     int obtener_referencia(string referencia);

@@ -40,11 +40,11 @@ void Cola::mostrar_cola(){
 
 // vacia
 bool Cola::vacia(){
-    return (ultimo == 0);
+    return (ultimo == nullptr);
 }
 
 // Destructor
-Cola::~Cola(){
+void Cola::vaciar_cola(){
     while (!vacia())
         baja();
 }

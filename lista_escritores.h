@@ -63,6 +63,8 @@ class Lista_Escritores{
         int buscar_referencia(string referencia);
 
         void baja(int isni);
+
+        void listar_referencias();
 };
 
 #endif

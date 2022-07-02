@@ -14,6 +14,7 @@ private:
 
 public:
     void modificar_escritor();
+    void mostrar_referencia();
     // Constructor
     Escritor(string nombre_completo, string nacionalidad, int anio_nacimiento, int anio_fallecimiento, string referencia);
     /*

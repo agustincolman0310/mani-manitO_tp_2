@@ -20,6 +20,8 @@ const int POSICION_NO_ENCONTRADA = -1;
 #define BLANCO   "\033[37m"
 #define MAGENTA "\033[35m"
 #define AMARILLO  "\033[33m"
+#define ROJO "\033[31m"
+#define GRIS "\033[37m"
 const int INFINITO = 99999999;
 
 
@@ -48,7 +50,6 @@ enum Opciones{
     OPCION_12,
     OPCION_13,
     OPCION_14,
-    OPCION_15,
 };
 
 #endif

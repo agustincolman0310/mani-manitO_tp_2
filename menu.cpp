@@ -24,21 +24,19 @@ int Menu::mostrar_menu(){
     cout<<"🟦\t["<<MAGENTA<<"9"<<BLANCO"] Listar lecturas por escritor.                             🟦\n";
     cout<<"🟦\t["<<MAGENTA<<"10"<<BLANCO"] Listar novelas por género.                               🟦\n";
     cout<<"🟦\t["<<MAGENTA<<"11"<<BLANCO"] Quitar lectura de menor tiempo.                          🟦\n";
-    cout<<"🟦\t["<<MAGENTA<<"12"<<BLANCO"] Mostrar lecturas por tiempo de duracion.                 🟦\n";
-    cout<<"🟦\t["<<MAGENTA<<"13"<<BLANCO"] Mostrar orden y tiempo mínimo en leer todas las lecturas.🟦\n";
-    cout<<"🟦\t["<<MAGENTA<<"14"<<BLANCO"] Eliminar escritor.                                       🟦\n";
-    cout<<"🟦\t["<<MAGENTA<<"15"<<BLANCO"] Salir.                                                   🟦\n";
+    cout<<"🟦\t["<<MAGENTA<<"12"<<BLANCO"] Mostrar orden y tiempo mínimo en leer todas las lecturas.🟦\n";
+    cout<<"🟦\t["<<MAGENTA<<"13"<<BLANCO"] Eliminar escritor.                                       🟦\n";
+    cout<<"🟦\t["<<MAGENTA<<"14"<<BLANCO"] Salir.                                                   🟦\n";
     cout<<"🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦\n";
-    cout<<"\t🔲🔲🔲🔲🔲🔲🔲🔲🔲🔲🔲🔲\n";
-    cout<<"\t🔲"<<AMARILLO<<" Ingrese una opción "<<BLANCO"🔲\n";
-    cout<<"\t🔲🔲🔲🔲🔲🔲🔲🔲🔲🔲🔲🔲\n";
+    cout<<"\t⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜\n";
+    cout<<"\t⬜"<<AMARILLO<<" Ingrese una opción "<<BLANCO"⬜\n";
+    cout<<"\t⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜\n";
     cout<<"\t▶️  ";
     cin>>opcion;
     return opcion;
 }
 
 void Menu::procesar_opciones(int opcion){ 
-    string nombre_completo;
     switch(opcion){ 
         case OPCION_1:  
             agregar_lectura();
@@ -47,7 +45,7 @@ void Menu::procesar_opciones(int opcion){
             eliminar_lectura();
         break;
         case OPCION_3:
-            agregar_escritor(nombre_completo);
+            agregar_escritor();
         break;
         case OPCION_4:
             cambiar_dato_escritor();
@@ -74,18 +72,15 @@ void Menu::procesar_opciones(int opcion){
             baja_cola();
         break;
         case OPCION_12:
-            mostrar_cola();
-        break;
-        case OPCION_13:
             mostrar_tiempo_minimo();
         break;
-        case OPCION_14:
+        case OPCION_13:
             eliminar_escritor();
         break;
     }
 }
 void Menu::validar_datos_lectura(char &tipo_lectura, string &titulo, string &nombre_completo, int &minutos, int &anio_publicacion){
-    cout<<"Ingrese el tipo de lectura (C para cuento, P para poema, N para novela): \n";
+    cout<<"Ingrese el tipo de lectura ("<<MAGENTA<<"C"<<BLANCO" para cuento, "<<MAGENTA<< "P" <<BLANCO<< " para poema, "<< MAGENTA<< "N" <<BLANCO<< " para novela): \n";
     cin>>tipo_lectura;
     while(tipo_lectura!= TIPO_NOVELA && tipo_lectura != TIPO_POEMA && tipo_lectura != TIPO_CUENTO){
         cout<<"Juraria que no conozco ese tipo de lectura... "<<CARA_PENSATIVA<<endl;
@@ -147,12 +142,12 @@ void Menu::agregar_lectura(){
             cout<<"Ingrese un genero válido... \n";
             cin>>genero;
         }
-        lectura = new Novela(tipo_lectura, titulo, minutos, anio_publicacion, escritores.consulta(nombre_completo), lecturas.procesar_genero(lecturas.convertir_en_mayuscula(genero)));
+        lectura = new Novela(tipo_lectura, titulo, minutos, anio_publicacion, escritores.consulta_escritor(nombre_completo), lecturas.procesar_genero(lecturas.convertir_en_mayuscula(genero)));
 
         if(lecturas.convertir_en_mayuscula(genero) == NOVELA_HISTORICA){
             cout<< "Ingrese el tema: \n";
             cin>>tema;  
-            lectura = new Historica(tipo_lectura, titulo, minutos, anio_publicacion, escritores.consulta(nombre_completo), lecturas.procesar_genero(lecturas.convertir_en_mayuscula(genero)), const_cast<char*>(tema.c_str()));
+            lectura = new Historica(tipo_lectura, titulo, minutos, anio_publicacion, escritores.consulta_escritor(nombre_completo), lecturas.procesar_genero(lecturas.convertir_en_mayuscula(genero)), const_cast<char*>(tema.c_str()));
             }
     }
     else if(toupper(tipo_lectura) == TIPO_CUENTO){
@@ -160,13 +155,13 @@ void Menu::agregar_lectura(){
         cin.ignore();
         getline(cin, titulo_libro);
 
-        lectura = new Cuento(tipo_lectura, titulo, minutos, anio_publicacion,escritores.consulta(nombre_completo) , titulo_libro);
+        lectura = new Cuento(tipo_lectura, titulo, minutos, anio_publicacion,escritores.consulta_escritor(nombre_completo) , titulo_libro);
 
     }
     else if(toupper(tipo_lectura) == TIPO_POEMA){
         cout<< "Ingrese la cantidad de versos: \n";
         cin>>cant_versos;
-        lectura = new Poema(tipo_lectura, titulo, minutos, anio_publicacion, escritores.consulta(nombre_completo), cant_versos);
+        lectura = new Poema(tipo_lectura, titulo, minutos, anio_publicacion, escritores.consulta_escritor(nombre_completo), cant_versos);
 
     } 
     lecturas.alta(lectura);
@@ -186,63 +181,65 @@ void Menu::eliminar_lectura(){
     lecturas.baja(titulo);
 }
 
-void Menu::agregar_escritor(string &nombre_completo){
-    string nacionalidad, referencia, pasar_total;
+void Menu::agregar_escritor(){
+    string nombre_completo, nacionalidad, referencia;
     int anio_nacimiento, anio_fallecimiento, isni;
     Escritor* escritor;
     cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n";
-    cout<<"Ingresá el nombre completo del escritor: \n";
+    cout << "Ingrese el número de ISNI (número de 4 digitos): \n" ;
+    cin >> isni;
+    referencia = "(" + to_string(isni) + ")";
+    // while(escritores.consulta(referencia) != NULL ){
+    //     cout<<"Este escritor ya se encuentra en su lista."<<endl;
+    //     cout<<"Ingresá el ISNI nuevamente : \n";
+    //     getline(cin, nombre_completo);
+    // }
+    cout<<"Ingrese el nombre completo del escritor: \n";
     cin.ignore();
     getline(cin, nombre_completo);
     // cout << nombre_completo << endl;
-    while(escritores.consulta_escritor(nombre_completo) != NULL){
-        cout<<"Este escritor ya se encuentra en su lista."<<endl;
-        cout<<"Ingresá el nombre completo del escritor: \n";
-        getline(cin, nombre_completo);
-    }
-    cout<<"Ingresá la nacionalidad del escritor: \n";
+    cout<<"Ingrese la nacionalidad del escritor: \n";
     cin>>nacionalidad;
     
-    cout<<"Ingresá el año de nacimiento del escritor: \n";
+    cout<<"Ingrese el año de nacimiento del escritor: \n";
     cin>>anio_nacimiento;
 
-    cout<<"Ingresá el año de fallecimiento del escritor: \n";
+    cout<<"Ingrese el año de fallecimiento del escritor: \n";
     cin>>anio_fallecimiento;
     
     while(anio_nacimiento > anio_fallecimiento && anio_fallecimiento != -1){
         cout<<"¿Te parece que el año de fallecimiento sea menor al de nacimiento? "<<CARA_PENSATIVA<<endl;
-        cout<<"Ingresá el año de fallecimiento del escritor: \n";
+        cout<<"Ingrese el año de fallecimiento del escritor: \n";
         cin>>anio_fallecimiento;
     }
-    cout << "Ingresá el número de ISNI (número de 4 digitos): \n" << endl;
-    cin >> isni;
-    
-    referencia = "(" + to_string(isni) + ")";
     escritor = new Escritor(nombre_completo, nacionalidad, anio_nacimiento, anio_fallecimiento, referencia);
     escritores.insertar_escritor(escritor);
 }
 
 void Menu::cambiar_dato_escritor(){
-    string nombre_completo;
-    int anio_fallecimiento;
-    cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n";
-    cout<<"Ingresá el nombre completo del escritor que queres modificar: \n";   
-    cin.ignore();
-    getline(cin, nombre_completo);
-    // while(escritores.consulta(nombre_completo) == NULL){
-    //     cout<<"Nombre no encontrado... \n";
-    //     cout<<"Ingresá nuevamente el nombre completo del escritor que queres modificar: \n";   
-    //     getline(cin, nombre_completo);
-    // }
+    string referencia;
+    int anio_fallecimiento, isni;
+    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n";
+    escritores.mostrar_referencias();
+    cout << "Ingresá el ISNI del escritor que queres modificar: \n";   
+    cin >> isni;
+    referencia = "("+ to_string(isni) + ")";
+    while(escritores.consulta(referencia) == NULL){
+        cout<<"Escritor no encontrado... \n";
+        cout<<"Ingresá nuevamente el ISNI del escritor que queres modificar: \n";   
+        cin>>isni;
+        referencia = "("+ to_string(isni) + ")";
+    }
     cout<<"Ingrese la fecha de fallecimiento nueva: \n";
     cin>>anio_fallecimiento;
-    Escritor* consulta = escritores.consulta(nombre_completo);
+    Escritor* consulta = escritores.consulta(referencia);
     consulta->modificar_anio_fallecimiento(anio_fallecimiento);
 }
 
 void Menu::imprimir_escritores(){
     cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n";
-    cout<<"Imprimiendo... \n";
+    cout<<"\tImprimiendo... \n";
+    cout<<"\n";
     escritores.mostrar_escritores();
 }
 
@@ -287,7 +284,6 @@ void Menu::listar_por_escritor(){
     cin.ignore();
     getline(cin, nombre_completo);
     lecturas.listar_por_escritor(nombre_completo);
-
 }
 
 void Menu::listar_por_genero(){
@@ -300,30 +296,42 @@ void Menu::listar_por_genero(){
 }
 
 void Menu::baja_cola(){
+    cargar_cola();
     string respuesta;
+    
     cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n";
-    cout<<"¿Leíste "<< cola.consulta()->obtener_titulo() << " ?"<<endl;
+    cout<<"¿Leyó "<< cola.consulta()->obtener_titulo() << " ? (Ingrese SI de haberla leído, NO de lo contrario.)"<<endl;
     cin>>respuesta;
-    while(respuesta != "SI" && respuesta != "NO"){
-        cout<<"Por favor, ingresá SI, si la leíste. De lo contrario, NO"<<endl;
-        cin>>respuesta;
-    }
-    if(respuesta == "SI"){
-        cola.baja();
+    
+    while(!cola.vacia() || respuesta == "NO"){
+
+        // while(respuesta != "SI" && respuesta != "NO"){
+        //     cout<<"Por favor, ingresá SI, si la leíste. De lo contrario, NO"<<endl;
+        //     cin>>respuesta;
+        // }
+        if(respuesta == "SI"){
+            cola.baja();
+            cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n";
+        }
+        if(!cola.vacia()){
+            cout<<"¿Leyó"<< cola.consulta()->obtener_titulo() << " ? (Ingrese SI de haberla leído, NO de lo contrario.)"<<endl;
+            cin>>respuesta;
+            // cola.vaciar_cola();
+
+        }
+            // cola.mostrar_cola();
+
     }
 
+    cola.vaciar_cola();
 }
 
 void Menu::cargar_cola(){
     int minimo = 0;
-    for(int i = 0; i < lecturas.obtener_cantidad() ; i++){
+    int cantidad = lecturas.obtener_cantidad();
+    for(int i = 0; i < cantidad ; i++){
         cola.alta(lecturas.encontrar_lectura_menor(minimo));
     }
-}
-
-void Menu::mostrar_cola(){
-    cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n";
-    cola.mostrar_cola();
 }
 
 void Menu::vaciar_listas(){
@@ -339,8 +347,9 @@ void Menu::mostrar_tiempo_minimo(){
 void Menu::eliminar_escritor(){
     cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n";
     int isni;
+    escritores.mostrar_referencias();
     cout<< "Ingrese el ISNI del escritor que quiere eliminar: \n";
-    cin>>isni;
+    cin >> isni;
     lecturas.modificar_por_escritor(isni);
     escritores.eliminar_escritor(isni);
 }

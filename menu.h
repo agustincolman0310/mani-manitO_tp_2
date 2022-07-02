@@ -34,7 +34,7 @@ private:
     PRE: El Escritor que se desea dar de alta, no debe estar en la lista de Escritores.
     POST: Inserta el nuevo Escritor en el final la lista de Escritores.
     */
-    void agregar_escritor(string &nombre_completo);
+    void agregar_escritor();
     /*
     PRE: El nombre del Escritor al que se le desea modificar el dato, debe existir en la lista de Escritores.
     POST: Modifica el dato del Escritor.
@@ -75,11 +75,6 @@ private:
     POST: Elimina el primer elemento de la cola.
     */
     void baja_cola();
-    /*
-    PRE: La cola debe contener algun elemento.
-    POST: Imprime por pantalla la cola de lecturas.
-    */
-    void mostrar_cola();
     /*
     PRE: -
     POST: Imprime por pantalla el recorrido minimo por Kruskal.

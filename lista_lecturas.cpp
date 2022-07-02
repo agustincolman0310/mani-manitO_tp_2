@@ -18,7 +18,6 @@ void Lista_Lecturas::listar_por_escritor(string nombre_completo){
     int contador = 0;
     
     while(temp){
-        // cout<<temp->obtener_dato()->obtener_escritor()->obtener_nombre_completo()<< endl;
         if((temp->obtener_dato()->obtener_escritor() != nullptr) && convertir_en_mayuscula(temp->obtener_dato()->obtener_escritor()->obtener_nombre_completo()) == convertir_en_mayuscula(nombre_completo)){
             temp->obtener_dato()->mostrar();
             contador++;
@@ -27,7 +26,7 @@ void Lista_Lecturas::listar_por_escritor(string nombre_completo){
         temp = temp->obtener_siguiente();
     }
     if(contador == 0){
-        cout<<"No hay niguna obra de ese escritor...\n";
+        cout<<"No hay niguna obra de " << nombre_completo << "...\n";
     }
 }
 

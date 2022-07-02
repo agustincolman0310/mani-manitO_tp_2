@@ -44,7 +44,7 @@ public:
     */
     void mostrar_cola();
     // Destructor.
-    ~Cola();
+    void vaciar_cola();
 };
 
 #endif

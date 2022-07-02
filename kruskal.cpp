@@ -30,10 +30,14 @@ int Kruskal::unir(int i, int j){
 
 void Kruskal::recorrer(){
     cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n";
-
+    cout << "Las lecturas son: ";
     int i = 0, j = 0, minimo = 0, costo_minimo = 0, aux_1 = 1, aux_2 = 0, aux_3 = 0, aux_4 = 0, aux_5 = 0;
-
-    cout << "Camino mínimo: \n" << endl;
+    for(int i = 0; i < cantidad_vertices; i++){
+        //cout << "Los vertices son: " << vertices[i].obtener_vertice()->obtener_titulo() <<  endl;
+        cout << vertices[i].obtener_vertice()->obtener_titulo() << " - ";
+    }
+    cout << endl;
+    cout << "Tiempo mínimo para leer todas las lecturas: \n" << endl;
     
     while( aux_1 < cantidad_vertices){
         for( i = 1, minimo = INFINITO; i <= cantidad_vertices; i++){
@@ -46,24 +50,21 @@ void Kruskal::recorrer(){
             }
         }
     
-        
         aux_3 = encontrar(aux_3);
         
         aux_5 = encontrar(aux_5);
 
         if(unir(aux_3, aux_5) > 0){
-    
-            
-             aux_1++;
-            cout << " Arista entre Lectura: " << vertices[aux_2-1].obtener_vertice()->obtener_titulo()
-            << " y Lectura: " << vertices[aux_4-1].obtener_vertice()->obtener_titulo() << ", lleva un tiempo de: "<< minimo << " minutos" << endl;
+            aux_1++;
+            cout << "Pasar de la lectura " << vertices[aux_2-1].obtener_vertice()->obtener_titulo()
+            << " a la lectura " << vertices[aux_4-1].obtener_vertice()->obtener_titulo() << ", lleva un tiempo de: "<< ROJO << minimo << BLANCO << " minutos" << endl;
             costo_minimo += minimo;
         }
          matriz_pesos[aux_2-1][aux_4-1] = matriz_pesos[aux_4-1][aux_2-1] = INFINITO;
     }
     cout << " " << endl;
     
-    cout<<"El costo minimo total es: "<< costo_minimo << endl;
+    cout<<"El costo mínimo total es: "<< costo_minimo << endl;
 }
 
 void Kruskal::liberar_matriz(){

@@ -9,6 +9,7 @@
 using namespace std;
 
 int main() {
+    // system("clear");
     Parser parser;
     parser.procesar_escritores();
     parser.procesar_lectura();
@@ -16,15 +17,15 @@ int main() {
     // parser.devolver_escritores().mostrar_escritores();
 
     Menu menu(parser.devolver_lecturas(),parser.devolver_escritores());
-    // menu.cargar_cola();
-    // kruskal.ejecutar_kruskal();
-    // parser.devolver_lecturas().vaciar_lista();
-    // parser.devolver_escritores().vaciar_lista();
     int opcion_recibida;
     
-    while(opcion_recibida != OPCION_15){
+    while(opcion_recibida != OPCION_14){
         opcion_recibida = menu.mostrar_menu();
+        // if(opcion_recibida == OPCION_11){
+        //     menu.cargar_cola();
+        // }
         menu.procesar_opciones(opcion_recibida);
+        // system("clear");
     }
     
     menu.vaciar_listas();

@@ -51,10 +51,7 @@ string Escritor::obtener_referencia(){
     return referencia;
 }
 
-void Escritor::modificar_escritor(){
-    nombre_completo = "AGUSTIN";
-    nacionalidad = "COLMAN";
-    anio_nacimiento = -1;
-    anio_fallecimiento = -1;
-    referencia = "0";
+void Escritor::mostrar_referencia(){
+    cout << "Refencia: " << referencia << endl;
+    cout << "Autor: " << nombre_completo << endl;
 }

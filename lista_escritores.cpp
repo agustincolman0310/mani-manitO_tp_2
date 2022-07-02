@@ -117,3 +117,9 @@ void Lista_Escritores::vaciar_lista(){
         baja_nodo(1);
     }
 }
+
+void Lista_Escritores::listar_referencias(){
+    for(int i=1; i <= obtener_cantidad(); i++){
+        obtener_nodo(i)->obtener_dato()->mostrar_referencia();
+    }
+}
