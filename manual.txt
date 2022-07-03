@@ -93,3 +93,11 @@ A continuacion debera ingresar el ISNI del escritor que desea eliminar y se elim
 
 Salir (Opción 14): 
 Al seleccionar esta opción, el programa finalizará.
+
+Hashing Escritores
+Alta: Siempre implicará un orden O(1) debido a que siempre inserta el nuevo escritor al final de la lista.
+Baja: Dependiendo de la posición que tenga el escritor dentro de la lista, será O(1) en el mejor de los casos
+y O(N) en el peor de todos(el escritor se encontraría al final de la lista). 
+Consulta: Dependiendo de la posición que tenga el escritor buscado de la lista, será O(1) en el mejor de los casos
+y O(N) en el peor de todos(el escritor se encontraría al final de la lista o no se encuentra).
+
