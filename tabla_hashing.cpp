@@ -45,11 +45,9 @@ Escritor* Tabla_Hashing::consulta(string referencia){
     if(referencia == "ANONIMO"){
         return NULL;
     }else{
-
         int numero_clave = obtener_referencia(referencia);
-    // cout<<"el numero de referencia es: "<<numero_clave<<endl;
         int posicion = hashing(numero_clave);
-    
+
         return escritores[posicion]->consulta(referencia);
     }
 }

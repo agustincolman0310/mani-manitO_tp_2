@@ -63,12 +63,16 @@ int Grafo::peso_arista(Lectura* vertice_origen, Lectura* vertice_destino){
 }
 
 int Grafo::asignar_peso_arista(Lectura* origen, Lectura* destino, int &peso){
-    if(origen->obtener_tipo_lectura() == destino->obtener_tipo_lectura()){
-        if(origen->obtener_tipo_lectura() == TIPO_CUENTO){
+    
+    char tipo_lectura_origen = origen->obtener_tipo_lectura();
+    char tipo_lectura_destino = destino->obtener_tipo_lectura();
+
+    if(tipo_lectura_origen == tipo_lectura_destino){
+        if(tipo_lectura_origen == TIPO_CUENTO){
             peso = 8;
-        }else if(origen->obtener_tipo_lectura() == TIPO_POEMA){
+        }else if(tipo_lectura_origen == TIPO_POEMA){
             peso = 1;
-        }else if(origen->obtener_tipo_lectura() == TIPO_NOVELA){
+        }else if(tipo_lectura_origen == TIPO_NOVELA){
             if((origen->obtener_atributo_diferente() == NOVELA_HISTORICA) ||
              (destino->obtener_atributo_diferente() == NOVELA_HISTORICA)){
                  peso = 60;
@@ -81,20 +85,20 @@ int Grafo::asignar_peso_arista(Lectura* origen, Lectura* destino, int &peso){
              }
         }
     }
-    else if((origen->obtener_tipo_lectura() == TIPO_CUENTO && destino->obtener_tipo_lectura() == TIPO_POEMA) || 
-    (origen->obtener_tipo_lectura() == TIPO_POEMA && destino->obtener_tipo_lectura() == TIPO_CUENTO)){
+    else if((tipo_lectura_origen == TIPO_CUENTO && tipo_lectura_destino == TIPO_POEMA) || 
+    (tipo_lectura_origen == TIPO_POEMA && tipo_lectura_destino == TIPO_CUENTO)){
         peso = 0;
     }
-    else if((origen->obtener_tipo_lectura() == TIPO_CUENTO && destino->obtener_tipo_lectura() == TIPO_NOVELA) || 
-            (origen->obtener_tipo_lectura() == TIPO_NOVELA && destino->obtener_tipo_lectura() == TIPO_CUENTO)){
+    else if((tipo_lectura_origen == TIPO_CUENTO && tipo_lectura_destino == TIPO_NOVELA) || 
+            (tipo_lectura_origen == TIPO_NOVELA && tipo_lectura_destino == TIPO_CUENTO)){
         if(origen->obtener_atributo_diferente() == NOVELA_HISTORICA || destino->obtener_atributo_diferente() == NOVELA_HISTORICA){
             peso = 15;
         }else{
             peso = 10;
         }
     }
-    else if((origen->obtener_tipo_lectura() == TIPO_POEMA && destino->obtener_tipo_lectura() == TIPO_NOVELA) || 
-            (origen->obtener_tipo_lectura() == TIPO_NOVELA && destino->obtener_tipo_lectura() == TIPO_POEMA)){
+    else if((tipo_lectura_origen == TIPO_POEMA && tipo_lectura_destino == TIPO_NOVELA) || 
+            (tipo_lectura_origen == TIPO_NOVELA && tipo_lectura_destino == TIPO_POEMA)){
         if(origen->obtener_atributo_diferente() == NOVELA_HISTORICA || destino->obtener_atributo_diferente() == NOVELA_HISTORICA){
             peso = 20;
         }else{

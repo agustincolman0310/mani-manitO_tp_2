@@ -83,7 +83,7 @@ private:
 
     void eliminar_escritor();
 
-    void validar_datos_lectura(char &tipo_lectura, string &titulo, string &nombre_completo, int &minutos, int &anio_publicacion);
+    void validar_datos_lectura(char &tipo_lectura, string &titulo, string &referencia, int &minutos, int &anio_publicacion);
     
 public:
     // Constructor

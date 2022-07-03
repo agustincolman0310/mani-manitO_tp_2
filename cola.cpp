@@ -33,7 +33,7 @@ void Cola::mostrar_cola(){
     Nodo<Dato> *aux = primero;
 
     while (aux != NULL){
-        aux->obtener_dato()->mostrar();
+        cout << aux->obtener_dato()->obtener_titulo() << endl;
         aux = aux->obtener_siguiente();
     }
 }

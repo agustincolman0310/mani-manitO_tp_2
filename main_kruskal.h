@@ -14,18 +14,19 @@ private:
     Lista_Lecturas vertices;
     int cantidad_vertices;
 
-
-
 public:
+    //Constructor
     Main_Kruskal(Lista_Lecturas vertices);
-    // Main_Kruskal();
-
+    /*
+    PRE: grafo debe estar inicializado.
+    POST: Le carga al grafo los vertices y con esos vertices, inicializa las aristas.
+    */
     void inicializar_aristas(Grafo grafo);
-
-    //post: muestra por pantalla el camino mínimo entre el origen y el destino, detallando su recorrido y peso
-    // void caminoMinimo(int origen, int destino);
+    /*
+    PRE: -
+    POST: Se encarga de hacer las acciones pertinentes del método de Kruskal (agrega vertices, inicializa aristas, lo construye y lo libera). 
+    */
     void ejecutar_kruskal();
-    // ~Main_Kruskal(){};
 };
 
 
