@@ -1,7 +1,7 @@
 Lo primero que vas a ver apenas ingresas, es el Menú. En el mismo, vas a ver 
 todas las opciones que tenemos 
 para ofrecerte. A continuación, te explicamos que vas a poder hacer en cada una 
-de ellas. 
+de ellas. Tene en cuenta que al final de cada opcion se le pedira que ingresa una tecla para volver al menu.
  
 Agregar Lectura (Opción 1):  
 Vas a poder dar de alta: POEMAS, CUENTOS y NOVELAS. Para hacerlo deberás 

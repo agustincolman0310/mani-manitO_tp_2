@@ -1,22 +1,23 @@
-#ifndef MAIN_KRUSKAL_H
-#define MAIN_KRUSKAL_H
+#ifndef ARBOL_MINIMO_H_INCLUDED
+#define ARBOL_MINIMO_H_INCLUDED
 
 #include "vertice.h"
 #include "lista_lecturas.h"
-using namespace std;
 #include "constantes.h"
 #include "grafo.h"
 #include "kruskal.h"
 #include "lectura.h"
 
-class Main_Kruskal{
+using namespace std;
+
+class Arbol_Minimo{
 private:
     Lista_Lecturas vertices;
     int cantidad_vertices;
 
 public:
     //Constructor
-    Main_Kruskal(Lista_Lecturas vertices);
+    Arbol_Minimo(Lista_Lecturas vertices);
     /*
     PRE: grafo debe estar inicializado.
     POST: Le carga al grafo los vertices y con esos vertices, inicializa las aristas.
@@ -30,4 +31,4 @@ public:
 };
 
 
-#endif //MAIN_KRUSKAL_H
+#endif //ARBOL_MINIMO_H

@@ -10,8 +10,8 @@ const string POEMA = "P";
 const string NOVELA_HISTORICA = "HISTORICA";
 const string NACIONALIDAD_DESCONOCIDA = "¿?";
 const string ANIO_NO_ENCONTRADO = "-1";
-const string RUTA_ARCHIVO_ESCRITORES = "escritores.txt";
-const string RUTA_ARCHIVO_LECTURAS = "lectura.txt";
+const string RUTA_ARCHIVO_ESCRITORES = "../escritores.txt";
+const string RUTA_ARCHIVO_LECTURAS = "../lecturas.txt";
 const int ANIO_DESCONOCIDO = -1;
 const int PRIMER_CARACTER = 0;
 const int POSICION_NO_ENCONTRADA = -1;
@@ -21,7 +21,9 @@ const int POSICION_NO_ENCONTRADA = -1;
 #define MAGENTA "\033[35m"
 #define AMARILLO  "\033[33m"
 #define ROJO "\033[31m"
-#define GRIS "\033[37m"
+#define CYAN "\033[36m"
+#define AZUL "\033[34m"
+
 const int INFINITO = 99999999;
 
 

@@ -12,7 +12,7 @@
 #include "historica.h"
 #include "constantes.h"
 #include "cola.h"
-#include "main_kruskal.h"
+#include "arbol_minimo.h"
 
 class Menu{
 private:
@@ -80,10 +80,21 @@ private:
     POST: Imprime por pantalla el recorrido minimo por Kruskal.
     */
     void mostrar_tiempo_minimo();
-
+    /*
+    PRE: El escritor debe existir.
+    POST: Elimina el escritor en base a su ISNI.
+    */
     void eliminar_escritor();
-
+    /*
+    PRE: -
+    POST: Se encarga de solicitarle al usuario los datos de su lectura a agregar.
+    */
     void validar_datos_lectura(char &tipo_lectura, string &titulo, string &referencia, int &minutos, int &anio_publicacion);
+    /*
+    PRE: -
+    POST: Se encarga de volver al menu, solicitandote que pongas cualquier tecla,
+    */
+    void volver_menu();
     
 public:
     // Constructor
