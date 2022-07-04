@@ -8,11 +8,13 @@ private:
 public:
     // Construye un poema.
     Poema(char tipo_lectura, std::string titulo,int minutos, int anio_publicacion, Escritor* escritor, int cant_versos);
+    
     /*
     PRE: - 
     POST: Muestra los atributos del poema. 
     */ 
     void mostrar();
+    
     /*
     PRE: - 
     POST: Devuelve la cantidad de versos que tiene el poema, en forma de string. 

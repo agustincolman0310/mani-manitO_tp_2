@@ -9,9 +9,11 @@ using namespace std;
 class Lista_Escritores{
 
     private:
+        // Atributos
         Nodo<Escritor*>* primero;
-        Nodo<Escritor*>* obtener_nodo(int pos);
         int cantidad;
+        // Metodos
+        Nodo<Escritor*>* obtener_nodo(int pos);
 
     public:
         // Constructor

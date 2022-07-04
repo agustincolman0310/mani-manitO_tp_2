@@ -7,6 +7,7 @@
 using namespace std;
 
 class Vertice {
+
 /*ATRIBUTOS*/
 private:
     Lectura* vertice;
@@ -18,16 +19,19 @@ public:
     Vertice(Lectura* vertice);
     //Constructor por defecto
     Vertice();
+    
     /*
     PRE: - 
     POST: Devuelve la lectura declarada que tiene el vertice. 
     */ 
     Lectura* obtener_vertice();
+    
     /*
     PRE: nuevo_vertice debe estar inicializado.
     POST: Devuelve true si el vertice pasado por parametro ya fue declarado anteriormente.
     */
     bool son_iguales(Vertice nuevo_vertice);
+    
     /*
     PRE: numero debe ser >= 0.
     POST: Se encarga de asignarle al vertice una posición. 
