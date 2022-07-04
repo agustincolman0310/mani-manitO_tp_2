@@ -30,8 +30,5 @@ int Lectura::obtener_tiempo_lectura(){
 }
 
 void Lectura::modificar_escritor(){
-        // escritor->modificar_escritor();
-
         escritor = nullptr;
-        // cout << "El escritor apunta  a NULL" << endl;
 }

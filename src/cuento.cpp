@@ -14,7 +14,6 @@ void Cuento::mostrar(){
     if(escritor != nullptr){
         cout<< "🖊️  El escritor es: " << escritor->obtener_nombre_completo() << endl;
     }else{
-        //escritor->modificar_nombre();
         cout << "🖊️  El escritor es: ANONIMO" << endl;
     }
     cout << "📚 El Cuento se encuentra en el libro: " << libro << endl;

@@ -8,12 +8,14 @@
 using namespace std;
 
 int main() {
-    system("clear");
+    //system("clear");
     Parser parser;
     parser.procesar_escritores();
     parser.procesar_lectura();
 
     Menu menu(parser.devolver_lecturas(),parser.devolver_escritores());
+
+    menu.bienvenida();
 
     int opcion_recibida;
 

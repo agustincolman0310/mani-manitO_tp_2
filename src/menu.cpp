@@ -3,9 +3,51 @@ using namespace std;
 
 Cola cola;
 
+
+
+
 Menu::Menu(Lista_Lecturas lecturas, Tabla_Hashing escritores){
     this->lecturas = lecturas;
     this->escritores = escritores;
+}
+
+void Menu::bienvenida(){
+    string nombre;
+    char tecla;
+    cout << CYAN << "\t _______  ___   _______  __    _  __   __  _______  __    _  ___   ______   _______ \n";
+    cout << "\t|  _    ||   | |       ||  |  | ||  | |  ||       ||  |  | ||   | |      | |       |\n";
+    cout << "\t| |_|   ||   | |    ___||   |_| ||  |_|  ||    ___||   |_| ||   | |  _    ||   _   |\n";
+    cout << "\t|       ||   | |   |___ |       ||       ||   |___ |       ||   | | | |   ||  | |  |\n";
+    cout << "\t|  _   | |   | |    ___||  _    ||       ||    ___||  _    ||   | | |_|   ||  |_|  |\n";
+    cout << "\t| |_|   ||   | |   |___ | | |   | |     | |   |___ | | |   ||   | |       ||       |\n";
+    cout << "\t|_______||___| |_______||_|  |__|  |___|  |_______||_|  |__||___| |______| |_______|\n\n"<< BLANCO;
+
+    cout << "\t\t\t\t  _______"<< AMARILLO <<"    ___" << BLANCO <<"      _______ \n";
+    cout << "\t\t\t\t |   _   |"<< AMARILLO <<"  |   |"<< BLANCO <<"    |   _   |\n";
+    cout << "\t\t\t\t |  |_|  |"<< AMARILLO <<"  |   |" << BLANCO <<"    |  |_|  |\n";
+    cout << "\t\t\t\t |       |"<< AMARILLO <<"  |   |" << BLANCO <<"    |       |\n";
+    cout << "\t\t\t\t |       |"<< AMARILLO <<"  |   |___ " << BLANCO <<"|       |\n";
+    cout << "\t\t\t\t |   _   |"<< AMARILLO <<"  |       |" << BLANCO <<"|   _   |\n";
+    cout << "\t\t\t\t |__| |__|"<< AMARILLO <<"  |_______|" << BLANCO <<"|__| |__|\n";
+
+    cout << CYAN << "\t _______  ___   _______  ___      ___   _______  _______  _______  _______  _______ \n";
+    cout << "\t|  _    ||   | |  _    ||   |    |   | |       ||       ||       ||       ||   _   |\n";
+    cout << "\t| |_|   ||   | | |_|   ||   |    |   | |   _   ||_     _||    ___||       ||  |_|  |\n";
+    cout << "\t|       ||   | |       ||   |    |   | |  | |  |  |   |  |   |___ |      _||       |\n";
+    cout << "\t|  _   | |   | |  _   | |   |___ |   | |  |_|  |  |   |  |    ___||     |_ |       |\n";
+    cout << "\t| |_|   ||   | | |_|   ||       ||   | |       |  |   |  |   |___ |       ||   _   |\n";
+    cout << "\t|_______||___| |_______||_______||___| |_______|  |___|  |_______||_______||__| |__|\n\n" << BLANCO;
+
+    cout << "\tIngrese su nombre: ";
+    cin>>nombre;
+
+    system("clear");
+
+    cout << "\t\tSaludos " << MAGENTA << nombre << BLANCO << " nosotros somos el grupo 🦣 " << CYAN << " MANI MANITO " << BLANCO << "🦣 , esperamos que disfrutes de nuestro programa! \n\n";
+    cout << "\t\t\tPara ingresar al " << VERDE << "MENU" << BLANCO << " presione la tecla" << ROJO << " M" << BLANCO << " y luego " << ROJO <<"ENTER" << BLANCO <<": ";
+    cin >> tecla;
+
+    system("clear");
 }
 
 int Menu::mostrar_menu(){
@@ -185,21 +227,21 @@ void Menu::agregar_escritor(){
     string nombre_completo, nacionalidad, referencia;
     int anio_nacimiento, anio_fallecimiento, isni;
     Escritor* escritor;
-    cout  << "Ingrese el número de ISNI (número de 4 digitos): \n" ;
+    cout  << "🔢 Ingrese el número de "<< VERDE << "ISNI " << BLANCO "(número de 4 digitos): \n" ;
     cin >> isni;
     referencia = "(" + to_string(isni) + ")";
 
-    cout << "Ingrese el nombre completo del escritor: \n";
+    cout << "🏷️  Ingrese el nombre completo del escritor: \n";
     cin.ignore();
     getline(cin, nombre_completo);
 
-    cout << "Ingrese la nacionalidad del escritor: \n";
+    cout << "🌎 Ingrese la nacionalidad del escritor: \n";
     cin >> nacionalidad;
     
-    cout << "Ingrese el año de nacimiento del escritor: \n";
+    cout << "📅 Ingrese el año de nacimiento del escritor: \n";
     cin >> anio_nacimiento;
 
-    cout << "Ingrese el año de fallecimiento del escritor: \n";
+    cout << "🪦 Ingrese el año de fallecimiento del escritor: \n";
     cin >> anio_fallecimiento;
     
     while(anio_nacimiento > anio_fallecimiento && anio_fallecimiento != -1){
@@ -287,6 +329,7 @@ void Menu::listar_por_genero(){
     string genero;
     cout << "Ingresa el genero: \n";
     cin >> genero;
+    cout << "\n";
     lecturas.procesar_genero(genero);
     lecturas.listar_por_genero(genero);
     
@@ -351,7 +394,7 @@ void Menu::eliminar_escritor(){
 
 void Menu::volver_menu(){
     char tecla;
-    cout << "Ingrese cualquier tecla para volver al menú.\n";
+    cout << "Ingrese cualquier tecla para volver al menú 🔁.\n";
     cin >> tecla;
     system("clear");
 } 

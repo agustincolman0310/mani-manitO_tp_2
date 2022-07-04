@@ -32,7 +32,6 @@ void Kruskal::recorrer(){
     cout << "📑 Las lecturas son: ";
     int i = 0, j = 0, minimo = 0, costo_minimo = 0, aux_1 = 1, aux_2 = 0, aux_3 = 0, aux_4 = 0, aux_5 = 0;
     for(int i = 0; i < cantidad_vertices; i++){
-        //cout << "Los vertices son: " << vertices[i].obtener_vertice()->obtener_titulo() <<  endl;
         cout << vertices[i].obtener_vertice()->obtener_titulo() << " - ";
     }
     cout << endl;

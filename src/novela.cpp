@@ -17,7 +17,6 @@ void Novela::mostrar(){
         cout<< "🖊️  El escritor es: " << escritor->obtener_nombre_completo() << std::endl;
     }
     else{
-        //escritor->modificar_nombre();
         cout<< "🖊️  El escritor es: ANONIMO" << std::endl;
     }
     std::cout<< "📙 El genero es: "<< convertir_genero(genero)<< std::endl;

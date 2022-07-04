@@ -51,24 +51,8 @@ Escritor* Tabla_Hashing::consulta(string referencia){
     }
 }
 
-Escritor* Tabla_Hashing::consulta_escritor(string nombre_completo){
-    bool encontrado = false;
-    int i = 0;
-    Escritor* escritor_buscado = NULL;
-    while(!encontrado && i < TAMANIO){
-       if(escritores[i] != nullptr && escritores[i]->consulta(nombre_completo) != NULL){
-           encontrado = true; 
-           escritor_buscado = escritores[i]->consulta(nombre_completo);
-       }
-
-        i++;
-    }
-    return escritor_buscado;
-}
-
 void Tabla_Hashing::mostrar_escritores(){
     for(int i = 0; i < TAMANIO; i++){
-        //cout << "En la posicion: " << i << endl; 
         if(escritores[i] != nullptr){
             escritores[i]->listar_escritores();
         }
@@ -86,7 +70,6 @@ void Tabla_Hashing::vaciar_tabla(){
 
 void Tabla_Hashing::mostrar_referencias(){
     for(int i = 0; i < TAMANIO; i++){
-        //cout << "En la posicion: " << i << endl; 
         if(escritores[i] != nullptr){
             escritores[i]->listar_referencias();
         }

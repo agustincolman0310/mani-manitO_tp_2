@@ -60,7 +60,6 @@ string Lista_Escritores::convertir_en_mayuscula(string cadena){
 Escritor* Lista_Escritores::consulta(string atributo){
     Nodo<Escritor*> *temp = primero;
     Escritor* escritor = NULL;
-    // string atributo_mayuscula = convertir_en_mayuscula(atributo);
     
     while (temp) {
         if (temp->obtener_dato()->obtener_referencia() == atributo) {
